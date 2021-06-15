@@ -10,6 +10,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <Provider store={store}>
       <ChakraProvider>
+        <NavbarComponent />
         <Component {...pageProps} />
       </ChakraProvider>
     </Provider>
