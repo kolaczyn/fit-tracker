@@ -7,3 +7,8 @@ export type Nutrients<T extends number | string> = {
   carbs: T;
   protein: T;
 };
+
+export type BMICalculatorData<T extends string | number> = {
+  weight: T,
+  height: T,
+}
