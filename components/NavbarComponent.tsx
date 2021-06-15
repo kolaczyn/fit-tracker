@@ -9,18 +9,15 @@ interface NavbarComponentProps {}
 
 export const NavbarComponent: React.FC<NavbarComponentProps> = ({}) => {
   return (
-    <Box bg="gray.900" p="2" w="100%" color="white" position="sticky">
+    <Box boxShadow="lg" top="0" zIndex="9001" bg="gray.900" mb="4" px="4" py="2" w="100%" color="white" position="sticky">
       <Flex align="center">
         <LogoComponent />
         <Spacer />
         <HStack spacing={8} >
         <NextLink href="/">Home</NextLink>
-        <NextLink href="/">Calculate BMI</NextLink>
-        <NextLink href="/">Calculate TDEE</NextLink>
         <NextLink href="/">Add Calories</NextLink>
-        <a target="_blank" href="https://github.com/kolaczyn/fit-tracker">
-          Source Code
-        </a>
+        <NextLink href="/">Calculator</NextLink>
+        <a target="_blank" href="https://github.com/kolaczyn/fit-tracker">GitHub</a>
         </HStack>
       </Flex>
     </Box>

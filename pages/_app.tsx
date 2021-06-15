@@ -1,5 +1,5 @@
 import type { AppProps } from 'next/app';
-import { ChakraProvider } from '@chakra-ui/react';
+import { ChakraProvider, Container } from '@chakra-ui/react';
 
 import { Provider } from 'react-redux';
 
@@ -11,7 +11,9 @@ function MyApp({ Component, pageProps }: AppProps) {
     <Provider store={store}>
       <ChakraProvider>
         <NavbarComponent />
+        <Container>
         <Component {...pageProps} />
+        </Container>
       </ChakraProvider>
     </Provider>
   );
