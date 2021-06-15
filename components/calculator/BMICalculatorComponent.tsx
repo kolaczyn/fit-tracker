@@ -5,7 +5,7 @@ import * as Yup from 'yup';
 import { NumberInputWrapper } from '../form/NumberInputWrapper';
 import { BMICalculatorData } from '../../customTypes';
 import { Button, Text } from '@chakra-ui/react';
-import calculateBmi from '../../utils/calculateBmi';
+import calculateBMI from '../../utils/calculateBMI';
 
 interface BMICalculatorComponentProps {}
 
@@ -29,7 +29,7 @@ export const BMICalculatorComponent: React.FC<BMICalculatorComponentProps> =
         validationSchema={validationSchema}
         initialValues={initialFormState}
         onSubmit={({ height, weight }: BMICalculatorData<string>) => {
-          setBmi(calculateBmi(Number(weight), Number(height)));
+          setBmi(calculateBMI(Number(weight), Number(height)));
         }}
       >
         {({ isSubmitting, errors }) => (
