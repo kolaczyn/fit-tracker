@@ -21,7 +21,7 @@ export const CurrentStatsComponent: React.FC<CurrentStatsComponentProps> = ({
   return (
     <Grid templateColumns="repeat(4, 1fr)" gap={4}>
       {keysOfNutrients.map(nutrientName => (
-        <GridItem>
+        <GridItem key={nutrientName}>
           <Stat>
             <StatLabel>{nutrientName}</StatLabel>
             <StatNumber>{nutrients[nutrientName]}</StatNumber>

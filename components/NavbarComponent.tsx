@@ -15,9 +15,8 @@ export const NavbarComponent: React.FC<NavbarComponentProps> = ({}) => {
         <Spacer />
         <HStack spacing={8} >
         <NextLink href="/">Home</NextLink>
-        <NextLink href="/">Add Calories</NextLink>
+        <NextLink href="/">Calories</NextLink>
         <NextLink href="/">Calculator</NextLink>
-        <a target="_blank" href="https://github.com/kolaczyn/fit-tracker">GitHub</a>
         </HStack>
       </Flex>
     </Box>
