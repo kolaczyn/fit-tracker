@@ -1,5 +1,6 @@
-import { VStack } from '@chakra-ui/layout';
-import React from 'react';
+import { Button } from '@chakra-ui/button';
+import { HStack, Spacer, VStack } from '@chakra-ui/layout';
+import React, { useState } from 'react';
 import { FoodComponent } from '../components/FoodComponent';
 import { Food } from '../customTypes';
 
@@ -29,12 +30,46 @@ const apple: Food = {
   },
 };
 
-export const FoodPage: React.FC = () => (
-  <VStack width="100%" alignItems="stretch" spacing="2">
-    {[banana, apple].map(food => (
-      <FoodComponent key={food.id} food={food} />
-    ))}
-  </VStack>
-);
+export const FoodPage: React.FC = () => {
+  const [selectedFoods, setSelectedFoods] = useState<Set<number>>(
+    () => new Set<number>()
+  );
+
+  // TODO I should put Set's toggle logic into some util function
+  // because it look too low level for a part of a page's code
+  const toggleFood = (foodId: number) => {
+    if (selectedFoods.has(foodId)) {
+      setSelectedFoods(old => new Set([...old].filter(num => num !== foodId)));
+    } else {
+      setSelectedFoods(old => new Set(old.add(foodId)));
+    }
+  };
+
+  const handleConsoomSelected = () => {
+    setSelectedFoods(new Set())
+  }
+
+  const isActive = (foodId: number): boolean => selectedFoods.has(foodId);
+
+  return (
+    <VStack width="100%" alignItems="stretch" spacing="4">
+      <HStack>
+        <Button>Add Food</Button>
+        <Spacer />
+        <Button onClick={handleConsoomSelected} isDisabled={selectedFoods.size === 0}>Consoom Selected</Button>
+      </HStack>
+      <VStack width="100%" alignItems="stretch" spacing="2">
+        {[banana, apple].map(food => (
+          <FoodComponent
+            key={food.id}
+            food={food}
+            isActive={isActive(food.id)}
+            toggleFood={toggleFood}
+          />
+        ))}
+      </VStack>
+    </VStack>
+  );
+};
 
 export default FoodPage;

@@ -9,6 +9,8 @@ import { Button, Tag } from '@chakra-ui/react';
 
 interface FoodComponentProps {
   food: Food;
+  toggleFood: (id: number) => void;
+  isActive: boolean;
 }
 
 const HamburgerButton: React.ComponentType = ({ ...props }) => (
@@ -17,34 +19,44 @@ const HamburgerButton: React.ComponentType = ({ ...props }) => (
   </Button>
 );
 
-export const FoodComponent: React.FC<FoodComponentProps> = ({ food }) => {
-  const [isOn, setIsOn] = useState(false);
+export const FoodComponent: React.FC<FoodComponentProps> = ({
+  food,
+  toggleFood,
+  isActive,
+}) => {
   return (
     <Flex
       bg="gray.900"
       p="3"
       cursor="pointer"
-      onClick={() => setIsOn(old => !old)}
+      onClick={() => toggleFood(food.id)}
       rounded="lg"
       shadow="md"
     >
       <VStack align="left">
         <HStack>
           <Text as="b">{food.name}</Text>
-          <Tag size="sm" colorScheme="cyan">{food.category}</Tag>
+          <Tag size="sm" colorScheme="cyan">
+            {food.category}
+          </Tag>
         </HStack>
         <HStack>
-        <Text as="i">{food.nutrients.calories} Calories</Text>
-          <Tag size="sm" colorScheme="red">Fat: {food.nutrients.fat}</Tag>
-          <Tag size="sm" colorScheme="yellow">Carbs: {food.nutrients.carbs}</Tag>
-          <Tag size="sm" colorScheme="green">Protein: {food.nutrients.protein}</Tag>
-
-
+          <Text as="i">{food.nutrients.calories} Calories</Text>
+          <Tag size="sm" colorScheme="red">
+            Fat: {food.nutrients.fat}
+          </Tag>
+          <Tag size="sm" colorScheme="yellow">
+            Carbs: {food.nutrients.carbs}
+          </Tag>
+          <Tag size="sm" colorScheme="green">
+            Protein: {food.nutrients.protein}
+          </Tag>
         </HStack>
       </VStack>
       <Spacer />
       <HStack>
-        <Checkbox isChecked={isOn} />
+        {/* the way I implement this checkbox may not be the most accessable */}
+        <Checkbox isChecked={isActive}/>
         {/* we stop the propagation, so clicking the menu doesn't toggle selection of the food */}
         <Box onClick={e => e.stopPropagation()}>
           <Menu>
