@@ -3,9 +3,7 @@ import { Form, Formik } from 'formik';
 import * as Yup from 'yup';
 
 import { NumberInputWrapper } from '../form/NumberInputWrapper';
-import { BMICalculatorData } from '../../customTypes';
 import { Button, Text } from '@chakra-ui/react';
-import calculateBMI from '../../utils/calculateBMI';
 import { calculateBodyFatForMen } from '../../utils/calculateBodyFat';
 
 interface BodyFatCalculatorForMenComponentProps {}
@@ -24,7 +22,6 @@ const initialFormState: FormState = {
   waist: '',
 };
 
-// I regret including the word 'Component' in the class names
 export const BodyFatCalculatorForMenComponent: React.FC<BodyFatCalculatorForMenComponentProps> =
   ({}) => {
     const [bodyFat, setBodyFat] = useState<number>(420);
@@ -37,7 +34,7 @@ export const BodyFatCalculatorForMenComponent: React.FC<BodyFatCalculatorForMenC
           setBodyFat(calculateBodyFatForMen(Number(weight), Number(waist)));
         }}
       >
-        {({ isSubmitting, errors }) => (
+        {() => (
           <Form>
             <NumberInputWrapper label="Weight in pounds" name="weight" placeholder={0} />
             <NumberInputWrapper label="Waist in football fields" name="waist" placeholder={0} />

@@ -3,6 +3,7 @@ import { TabPanels, Tabs } from '@chakra-ui/tabs';
 import React from 'react';
 import { BMICalculatorComponent } from '../components/calculator/BMICalculatorComponent';
 import { BodyFatCalculatorComponent } from '../components/calculator/BodyFatCalculatorComponent';
+import { TDEECalculatorComponent } from '../components/calculator/TDEECalculatorComponent';
 
 interface CalculatorProps {}
 
@@ -21,7 +22,9 @@ export const Calculator: React.FC<CalculatorProps> = ({}) => {
         <TabPanel>
           <BodyFatCalculatorComponent />
         </TabPanel>
-        <TabPanel>TDEE Calculator</TabPanel>
+        <TabPanel>
+          <TDEECalculatorComponent />
+        </TabPanel>
       </TabPanels>
     </Tabs>
   );

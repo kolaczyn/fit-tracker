@@ -14,9 +14,16 @@ export type BMICalculatorData<T extends string | number> = {
 };
 
 export enum ActivityLevel {
-  Sendetary,
-  LightlyActive,
-  ModerateActive,
-  VeryActive,
-  ExtremelyActive,
+  Sendetary = 'Sendetary',
+  LightlyActive = 'LightlyActive',
+  ModerateActive = 'ModerateActive',
+  VeryActive = 'VeryActive',
+  ExtremelyActive = 'ExtremelyActive',
 }
+
+export type TDEECalculatorData<T extends string | number> = {
+  activityLevel: ActivityLevel;
+  weight: T;
+  height: T;
+  age: T;
+};

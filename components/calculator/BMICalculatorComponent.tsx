@@ -32,7 +32,7 @@ export const BMICalculatorComponent: React.FC<BMICalculatorComponentProps> =
           setBmi(calculateBMI(Number(weight), Number(height)));
         }}
       >
-        {({ isSubmitting, errors }) => (
+        {() => (
           <Form>
             <NumberInputWrapper label="Height" name="height" placeholder={0} />
             <NumberInputWrapper label="Weight" name="weight" placeholder={0} />
