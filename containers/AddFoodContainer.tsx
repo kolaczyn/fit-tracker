@@ -54,7 +54,7 @@ export const AddFoodContainer: React.FC<AddFoodContainerProps> = ({
   onClose,
 }) => {
   return (
-    <Modal size="lg" isOpen={isOpen} onClose={onClose}>
+    <Modal  size="lg" isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
       <ModalContent>
         <ModalHeader>Add Food</ModalHeader>
