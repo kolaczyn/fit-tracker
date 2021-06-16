@@ -5,7 +5,7 @@ import { Box, Flex, HStack, Spacer, Text, VStack } from '@chakra-ui/layout';
 import { Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/menu';
 
 import { Food } from '../customTypes';
-import { Button } from '@chakra-ui/react';
+import { Button, Tag } from '@chakra-ui/react';
 
 interface FoodComponentProps {
   food: Food;
@@ -29,8 +29,18 @@ export const FoodComponent: React.FC<FoodComponentProps> = ({ food }) => {
       shadow="md"
     >
       <VStack align="left">
-        <Text as="b">{food.name}</Text>
+        <HStack>
+          <Text as="b">{food.name}</Text>
+          <Tag size="sm" colorScheme="cyan">{food.category}</Tag>
+        </HStack>
+        <HStack>
         <Text as="i">{food.nutrients.calories} Calories</Text>
+          <Tag size="sm" colorScheme="red">Fat: {food.nutrients.fat}</Tag>
+          <Tag size="sm" colorScheme="yellow">Carbs: {food.nutrients.carbs}</Tag>
+          <Tag size="sm" colorScheme="green">Protein: {food.nutrients.protein}</Tag>
+
+
+        </HStack>
       </VStack>
       <Spacer />
       <HStack>

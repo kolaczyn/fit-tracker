@@ -1,13 +1,13 @@
 import { VStack } from '@chakra-ui/layout';
 import React from 'react';
 import { FoodComponent } from '../components/FoodComponent';
-import { FoodContainer } from '../containers/FoodContainer';
 import { Food } from '../customTypes';
 
 const banana: Food = {
   name: 'Banana',
   portion: 118,
   id: 0,
+  category: 'Fruit',
   nutrients: {
     calories: 105,
     fat: 0.389,
@@ -20,6 +20,7 @@ const apple: Food = {
   name: 'Apple',
   portion: 91,
   id: 1,
+  category: 'Fruit',
   nutrients: {
     calories: 91,
     fat: 0.273,

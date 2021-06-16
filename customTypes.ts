@@ -48,8 +48,9 @@ export type Metrics = {
   gender: Gender;
 };
 
-export type Food= {
+export type Food = {
   name: string;
+  category: string;
   id: number;
   portion: number;
   nutrients: Nutrients<number>;
