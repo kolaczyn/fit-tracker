@@ -27,3 +27,11 @@ export type TDEECalculatorData<T extends string | number> = {
   height: T;
   age: T;
 };
+
+export type Metrics = {
+  activityLevel: ActivityLevel | null;
+  weight: number | null;
+  height: number | null;
+  age: number | null;
+  waist: number | null;
+};
