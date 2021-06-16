@@ -1,7 +1,7 @@
 import { Text } from '@chakra-ui/layout';
 import React from 'react';
 import NextLink from 'next/link';
-import { HStack } from '@chakra-ui/react';
+import {  HStack } from '@chakra-ui/react';
 
 interface LogoComponentProps {}
 
