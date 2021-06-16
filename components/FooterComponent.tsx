@@ -14,7 +14,7 @@ export const FooterComponent: React.FC<FooterComponentProps> = ({}) => {
   return (
     <Box
       boxShadow="lg"
-      zIndex="9001"
+      zIndex="100"
       bg="gray.900"
       mt="4"
       px="4"
