@@ -26,7 +26,6 @@ export const InputWrapper: React.FC<InputWrapper> = ({
   ...props
 }) => {
   const [field, meta] = useField(props);
-  console.log(meta.error);
   return (
     <>
       <FormControl isInvalid={meta.touched && !!meta.error}>

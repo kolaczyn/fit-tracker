@@ -39,7 +39,6 @@ export const BodyFatWomen: React.FC<BodyFatWomenProps> = ({}) => {
       // validationSchema={validationSchema}
       initialValues={initialFormState}
       onSubmit={({ weight, wrist, hip, forearm, waist }: FormState) => {
-        console.log(weight, wrist, hip, forearm, waist);
         const tempBodyFat = calculateBodyFatForWomen(
           // ...convertStringsToNums(
           Number(weight),
