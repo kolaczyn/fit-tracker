@@ -1,6 +1,7 @@
 import { Grid, GridItem, StatLabel, StatNumber } from '@chakra-ui/react';
 import { Stat } from '@chakra-ui/stat';
 import React from 'react';
+
 import { Nutrients } from '../customTypes';
 
 interface CurrentStatsComponentProps {

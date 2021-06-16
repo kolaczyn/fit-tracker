@@ -2,7 +2,7 @@ import { FormLabel, RadioGroup } from '@chakra-ui/react';
 import { Formik } from 'formik';
 import React from 'react';
 
-import { ActivityLevel, Gender } from '../../customTypes';
+import { Gender } from '../../customTypes';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { updateMetrics } from '../../redux/metricsSlice';
 import { RadioWrapper } from './RadioWrapper';
@@ -28,7 +28,7 @@ export const GenderSelector: React.FC<GenderSelectorProps> = ({}) => {
         dispatch(updateMetrics({ gender }));
       }}
     >
-      {({ values }) => (
+      {() => (
         <>
           <RadioGroup>
             <FormLabel>Gender</FormLabel>

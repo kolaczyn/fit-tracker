@@ -1,6 +1,6 @@
 import React from 'react';
-import { CurrentStatsComponent } from '../components/CurrentStatsComponent';
 
+import { CurrentStatsComponent } from '../components/CurrentStatsComponent';
 import { useAppSelector } from '../redux/hooks';
 
 interface CurrentStatsContainerProps {}

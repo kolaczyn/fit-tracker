@@ -1,16 +1,21 @@
 import { TabList, Tab, TabPanel } from '@chakra-ui/react';
 import { TabPanels, Tabs } from '@chakra-ui/tabs';
 import React from 'react';
-import { BMICalculatorComponent } from '../components/calculator/BMICalculatorComponent';
-import { BodyFatCalculatorComponent } from '../components/calculator/BodyFatCalculatorComponent';
-import { TDEECalculatorComponent } from '../components/calculator/TDEECalculatorComponent';
+
+import { BMICalculator } from '../components/calculator/BMICalculator';
+import { BodyFatMen } from '../components/calculator/BodyFatMen';
+import { TDEEMen } from '../components/calculator/TDEEMen';
+import { TDEECalculatorForWomen } from '../components/calculator/TDEEWomen';
 import { GenderSelector } from '../components/form/GenderSelector';
-import { useAppSelector } from '../redux/hooks';
+import { GenderDependentContainer } from '../containers/GenderDependentContainer';
+
+// I don't have a Female calculator, and I need to pass in a component
+// so for now it's the easier to create a throway component
+const ThrowawayBodyFatFemale: React.FC = () => <section>TODO</section>;
 
 interface CalculatorProps {}
 
 export const Calculator: React.FC<CalculatorProps> = ({}) => {
-  const metrics = useAppSelector(state => state.metrics);
   return (
     <>
       <GenderSelector />
@@ -22,13 +27,19 @@ export const Calculator: React.FC<CalculatorProps> = ({}) => {
         </TabList>
         <TabPanels>
           <TabPanel>
-            <BMICalculatorComponent />
+            <BMICalculator />
           </TabPanel>
           <TabPanel>
-            <BodyFatCalculatorComponent />
+            <GenderDependentContainer
+              MaleComponent={BodyFatMen}
+              FemaleComponent={ThrowawayBodyFatFemale}
+            />
           </TabPanel>
           <TabPanel>
-            <TDEECalculatorComponent />
+            <GenderDependentContainer
+              MaleComponent={TDEEMen}
+              FemaleComponent={TDEECalculatorForWomen}
+            />
           </TabPanel>
         </TabPanels>
       </Tabs>

@@ -6,11 +6,10 @@ import { NumberInputWrapper } from '../form/NumberInputWrapper';
 import { BMICalculatorData } from '../../customTypes';
 import { Button, Text } from '@chakra-ui/react';
 import calculateBMI from '../../utils/calculateBMI';
-import { useDispatch } from 'react-redux';
 import { updateMetrics } from '../../redux/metricsSlice';
 import { useAppDispatch } from '../../redux/hooks';
 
-interface BMICalculatorComponentProps {}
+interface BMICalculatorProps {}
 
 const validationSchema = Yup.object({
   height: Yup.number().min(0).required(),
@@ -22,7 +21,7 @@ const initialFormState: BMICalculatorData<string> = {
   weight: '',
 };
 
-export const BMICalculatorComponent: React.FC<BMICalculatorComponentProps> =
+export const BMICalculator: React.FC<BMICalculatorProps> =
   ({}) => {
     const dispatch = useAppDispatch();
 

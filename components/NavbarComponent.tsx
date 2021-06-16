@@ -4,7 +4,6 @@ import React from 'react';
 
 import { LogoComponent } from './LogoComponent';
 
-
 interface NavbarComponentProps {}
 
 export const NavbarComponent: React.FC<NavbarComponentProps> = ({}) => {

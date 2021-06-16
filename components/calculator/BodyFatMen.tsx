@@ -6,7 +6,7 @@ import { NumberInputWrapper } from '../form/NumberInputWrapper';
 import { Button, Text } from '@chakra-ui/react';
 import { calculateBodyFatForMen } from '../../utils/calculateBodyFat';
 
-interface BodyFatCalculatorForMenComponentProps {}
+interface BodyFatMenProps {}
 const validationSchema = Yup.object({
   weight: Yup.number().min(0).required(),
   waist: Yup.number().min(0).required(),
@@ -22,7 +22,7 @@ const initialFormState: FormState = {
   waist: '',
 };
 
-export const BodyFatCalculatorForMenComponent: React.FC<BodyFatCalculatorForMenComponentProps> =
+export const BodyFatMen: React.FC<BodyFatMenProps> =
   ({}) => {
     const [bodyFat, setBodyFat] = useState<number>(420);
     const roundedBodyFat = bodyFat.toFixed(2);

@@ -21,8 +21,8 @@ const initialFormState: TDEECalculatorData<string> = {
   age: '',
 };
 
-interface TDEECalculatorForMenComponentProps {}
-export const TDEECalculatorForMenComponent: React.FC<TDEECalculatorForMenComponentProps> =
+interface TDEEMenProps {}
+export const TDEEMen: React.FC<TDEEMenProps> =
   ({}) => {
     const [userTDEE, setUserTDEE] = useState<number>(100);
     const roundedTDEE = userTDEE.toFixed(2);
