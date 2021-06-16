@@ -42,8 +42,8 @@ export const BMICalculatorComponent: React.FC<BMICalculatorComponentProps> =
       >
         {() => (
           <Form>
-            <NumberInputWrapper label="Height" name="height" placeholder={0} />
-            <NumberInputWrapper label="Weight" name="weight" placeholder={0} />
+            <NumberInputWrapper label="Height" name="height" placeholder={0}  unit="cm"/>
+            <NumberInputWrapper label="Weight" name="weight" placeholder={0} unit="kg" />
             <Text>You BMI is: {roundedBmi}</Text>
             <Button type="submit">Submit</Button>
           </Form>

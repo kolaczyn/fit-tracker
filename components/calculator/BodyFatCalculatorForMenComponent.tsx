@@ -36,8 +36,8 @@ export const BodyFatCalculatorForMenComponent: React.FC<BodyFatCalculatorForMenC
       >
         {() => (
           <Form>
-            <NumberInputWrapper label="Weight in pounds" name="weight" placeholder={0} />
-            <NumberInputWrapper label="Waist in football fields" name="waist" placeholder={0} />
+            <NumberInputWrapper label="Weight" name="weight" placeholder={0} unit="pounds" />
+            <NumberInputWrapper label="Waist" name="waist" placeholder={0} unit="inches" />
             <Text>Body fat percentage: {roundedBodyFat}%</Text>
             <Button type="submit">Submit</Button>
           </Form>

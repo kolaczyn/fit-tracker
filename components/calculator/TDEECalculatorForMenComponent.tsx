@@ -77,16 +77,18 @@ export const TDEECalculatorForMenComponent: React.FC<TDEECalculatorForMenCompone
               />
             </RadioGroup>
             <NumberInputWrapper
-              label="Weight in kg"
+              label="Weight"
               name="weight"
               placeholder={0}
+              unit="kg"
             />
             <NumberInputWrapper
-              label="Height in cm"
+              label="Height"
               name="height"
               placeholder={0}
+              unit="cm"
             />
-            <NumberInputWrapper label="Age" name="age" placeholder={0} />
+            <NumberInputWrapper label="Age" name="age" placeholder={0} unit="years" />
             <Text>Your TDEE is: {roundedTDEE}%</Text>
             <Button type="submit">Submit</Button>
           </Form>
