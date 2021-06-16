@@ -4,14 +4,11 @@ import React from 'react';
 
 import { BMICalculator } from '../components/calculator/BMICalculator';
 import { BodyFatMen } from '../components/calculator/BodyFatMen';
+import { BodyFatWomen } from '../components/calculator/BodyFatWomen';
 import { TDEEMen } from '../components/calculator/TDEEMen';
 import { TDEECalculatorForWomen } from '../components/calculator/TDEEWomen';
 import { GenderSelector } from '../components/form/GenderSelector';
 import { GenderDependentContainer } from '../containers/GenderDependentContainer';
-
-// I don't have a Female calculator, and I need to pass in a component
-// so for now it's the easier to create a throway component
-const ThrowawayBodyFatFemale: React.FC = () => <section>TODO</section>;
 
 interface CalculatorProps {}
 
@@ -32,7 +29,7 @@ export const Calculator: React.FC<CalculatorProps> = ({}) => {
           <TabPanel>
             <GenderDependentContainer
               MaleComponent={BodyFatMen}
-              FemaleComponent={ThrowawayBodyFatFemale}
+              FemaleComponent={BodyFatWomen}
             />
           </TabPanel>
           <TabPanel>
