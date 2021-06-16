@@ -1,7 +1,7 @@
-import { Button } from '@chakra-ui/react';
+import React from 'react';
 import * as Yup from 'yup';
 import { Form, Formik } from 'formik';
-import React from 'react';
+import { Button } from '@chakra-ui/react';
 
 import { Nutrients } from '../customTypes';
 import { useAppDispatch } from '../redux/hooks';
@@ -24,7 +24,7 @@ const initialFormState: Nutrients<string> = {
   protein: '',
 };
 
-// I should rename this to NutrientsFormContainerProps
+// TODO I should rename this to NutrientsFormContainerProps
 export const NutrientsInputContainer: React.FC<NutrientsInputContainerProps> =
   ({}) => {
     const dispatch = useAppDispatch();

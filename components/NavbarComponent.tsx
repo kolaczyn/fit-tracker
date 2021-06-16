@@ -4,7 +4,6 @@ import React from 'react';
 
 import { LogoComponent } from './LogoComponent';
 
-
 interface NavbarComponentProps {}
 
 export const NavbarComponent: React.FC<NavbarComponentProps> = ({}) => {
@@ -16,7 +15,7 @@ export const NavbarComponent: React.FC<NavbarComponentProps> = ({}) => {
         <HStack spacing={8} >
         <NextLink href="/">Home</NextLink>
         <NextLink href="/">Calories</NextLink>
-        <NextLink href="/">Calculator</NextLink>
+        <NextLink href="/calculator">Calculator</NextLink>
         </HStack>
       </Flex>
     </Box>
