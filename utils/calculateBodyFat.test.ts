@@ -1,6 +1,6 @@
 import {
   calculateBodyFatForMen,
-  // calculateBodyFatForWomen,
+  calculateBodyFatForWomen,
   exportedForTesting,
 } from './calculateBodyFat';
 
@@ -23,5 +23,8 @@ describe('calculateBodyFatForMen', () => {
 });
 
 describe('calculateBodyFatForWomen', () => {
-  it.todo('correctly calculates body fat for women');
+  it('correctly calculates body fat for women', () => {
+    expect(calculateBodyFatForWomen(180, 10, 32, 50, 24)).toBeCloseTo(14.5);
+    expect(calculateBodyFatForWomen(140, 8, 30, 48, 22)).toBeCloseTo(11.48);
+  });
 });

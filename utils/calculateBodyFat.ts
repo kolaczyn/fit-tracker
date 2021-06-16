@@ -3,23 +3,22 @@
 // TODO IMPORTANT it looks like these function accept measurements in imperial units (pounds and inches)
 // I'm gonna have to write a wrapper around these functions which accepts metric units
 
-// TODO I've yet to test the code, so this code will remain commented out until I make sure the code works correctly
-// export const calculateBodyFatForWomen = (
-//   totalBodyWeight: number,
-//   wristMeasurement: number,
-//   hipMeasurement: number,
-//   forearmMeasurement: number,
-//   waistMeasurement: number
-// ) => {
-//   const factor1 = totalBodyWeight * 0.732 + 8.987;
-//   const factor2 = wristMeasurement / 3.14;
-//   const factor3 = waistMeasurement * 0.157;
-//   const factor4 = hipMeasurement * 0.249;
-//   const factor5 = forearmMeasurement * 0.434;
+export const calculateBodyFatForWomen = (
+  totalBodyWeight: number,
+  wristMeasurement: number,
+  hipMeasurement: number,
+  forearmMeasurement: number,
+  waistMeasurement: number
+) => {
+  const factor1 = totalBodyWeight * 0.732 + 8.987;
+  const factor2 = wristMeasurement / 3.14;
+  const factor3 = waistMeasurement * 0.157;
+  const factor4 = hipMeasurement * 0.249;
+  const factor5 = forearmMeasurement * 0.434;
 
-//   const leanBodyMass = factor1 + factor2 - factor3 - factor4 + factor5;
-//   return calculateBodyFat(totalBodyWeight, leanBodyMass);
-// };
+  const leanBodyMass = factor1 + factor2 - factor3 - factor4 + factor5;
+  return calculateBodyFat(totalBodyWeight, leanBodyMass);
+};
 
 export const calculateBodyFatForMen = (
   totalBodyWeight: number,
