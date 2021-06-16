@@ -8,6 +8,7 @@ import { Button, HStack, Text, VStack } from '@chakra-ui/react';
 import calculateBMI from '../../utils/calculateBMI';
 import { updateMetrics } from '../../redux/metricsSlice';
 import { useAppDispatch } from '../../redux/hooks';
+import { SubmitAndResult } from '../form/SubmitAndResult';
 
 interface BMICalculatorProps {}
 
@@ -25,7 +26,6 @@ export const BMICalculator: React.FC<BMICalculatorProps> = ({}) => {
   const dispatch = useAppDispatch();
 
   const [bmi, setBmi] = useState<number | null>(null);
-  const roundedBmi = bmi === null ? null : bmi.toFixed(2);
 
   return (
     <Formik
@@ -53,12 +53,7 @@ export const BMICalculator: React.FC<BMICalculatorProps> = ({}) => {
               placeholder={0}
               unit="kg"
             />
-            <HStack justify="space-between">
-              <Button type="submit" colorScheme="cyan">
-                Calculate
-              </Button>
-              {bmi ? <Text>You BMI is: {roundedBmi}</Text> : null}
-            </HStack>
+            <SubmitAndResult value={bmi} text="Your BMI is:" />
           </VStack>
         </Form>
       )}

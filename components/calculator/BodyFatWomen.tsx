@@ -3,9 +3,10 @@ import { Form, Formik } from 'formik';
 // import * as Yup from 'yup';
 
 import { InputWrapper } from '../form/InputWrapper';
-import { Button, Text } from '@chakra-ui/react';
+import { Button, Text, VStack } from '@chakra-ui/react';
 import { calculateBodyFatForWomen } from '../../utils/calculateBodyFat';
 import convertStringsToNums from '../../utils/convertStringsToNums';
+import { SubmitAndResult } from '../form/SubmitAndResult';
 
 interface BodyFatWomenProps {}
 
@@ -31,8 +32,8 @@ const initialFormState: FormState = {
 };
 
 export const BodyFatWomen: React.FC<BodyFatWomenProps> = ({}) => {
-  const [bodyFat, setBodyFat] = useState<number>(420);
-  const roundedBodyFat = bodyFat.toFixed(2);
+  const [bodyFat, setBodyFat] = useState<number|null>(null);
+  
   return (
     <Formik
       // TODO add validation schema and make it more generic so I can reuse it for all the other calculators
@@ -53,38 +54,39 @@ export const BodyFatWomen: React.FC<BodyFatWomenProps> = ({}) => {
     >
       {() => (
         <Form>
-          <InputWrapper
-            label="Weight"
-            name="weight"
-            placeholder={0}
-            unit="pounds"
-          />
-          <InputWrapper
-            label="Wrist"
-            name="wrist"
-            placeholder={0}
-            unit="inches"
-          />
-          <InputWrapper
-            label="Hip"
-            name="hip"
-            placeholder={0}
-            unit="inches"
-          />
-          <InputWrapper
-            label="Forearm"
-            name="forearm"
-            placeholder={0}
-            unit="inches"
-          />
-          <InputWrapper
-            label="Waist"
-            name="waist"
-            placeholder={0}
-            unit="inches"
-          />
-          <Text>Body fat percentage: {roundedBodyFat}%</Text>
-          <Button type="submit">Submit</Button>
+          <VStack spacing={4} alignItems="stretch">
+            <InputWrapper
+              label="Weight"
+              name="weight"
+              placeholder={0}
+              unit="pounds"
+            />
+            <InputWrapper
+              label="Wrist"
+              name="wrist"
+              placeholder={0}
+              unit="inches"
+            />
+            <InputWrapper
+              label="Hip"
+              name="hip"
+              placeholder={0}
+              unit="inches"
+            />
+            <InputWrapper
+              label="Forearm"
+              name="forearm"
+              placeholder={0}
+              unit="inches"
+            />
+            <InputWrapper
+              label="Waist"
+              name="waist"
+              placeholder={0}
+              unit="inches"
+            />
+            <SubmitAndResult value={bodyFat} text="Body fat percentage" />
+          </VStack>
         </Form>
       )}
     </Formik>
