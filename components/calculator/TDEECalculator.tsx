@@ -1,7 +1,16 @@
 import React, { useState } from 'react';
 import { Form, Formik } from 'formik';
 import * as Yup from 'yup';
-import { Button, FormLabel, RadioGroup, Text, VStack } from '@chakra-ui/react';
+import {
+  Button,
+  Flex,
+  FormLabel,
+  Grid,
+  HStack,
+  RadioGroup,
+  Text,
+  VStack,
+} from '@chakra-ui/react';
 
 import { InputWrapper } from '../form/InputWrapper';
 import {
@@ -31,7 +40,7 @@ const initialFormState: TDEECalculatorData<string> = {
 interface TDEECalculatorProps {}
 export const TDEECalculator: React.FC<TDEECalculatorProps> = ({}) => {
   const gender = useAppSelector(data => data.metrics.gender);
-  const [userTDEE, setUserTDEE] = useState<number|null>(null);
+  const [userTDEE, setUserTDEE] = useState<number | null>(null);
   return (
     <Formik
       validationSchema={validationSchema}
@@ -65,31 +74,33 @@ export const TDEECalculator: React.FC<TDEECalculatorProps> = ({}) => {
           <VStack spacing={4} alignItems="stretch">
             <RadioGroup>
               <FormLabel>Activity Level</FormLabel>
-              <RadioWrapper
-                label="Sendetary"
-                name="activityLevel"
-                value={ActivityLevel.Sendetary}
-              />
-              <RadioWrapper
-                label="Lightly Active"
-                name="activityLevel"
-                value={ActivityLevel.LightlyActive}
-              />
-              <RadioWrapper
-                label="Moderate Active"
-                name="activityLevel"
-                value={ActivityLevel.ModerateActive}
-              />
-              <RadioWrapper
-                label="Very Active"
-                name="activityLevel"
-                value={ActivityLevel.VeryActive}
-              />
-              <RadioWrapper
-                label="Extremely Active"
-                name="activityLevel"
-                value={ActivityLevel.ExtremelyActive}
-              />
+              <Grid templateColumns="repeat(3, 1fr)" gap={1.5}>
+                <RadioWrapper
+                  label="Sendetary"
+                  name="activityLevel"
+                  value={ActivityLevel.Sendetary}
+                />
+                <RadioWrapper
+                  label="Lightly Active"
+                  name="activityLevel"
+                  value={ActivityLevel.LightlyActive}
+                />
+                <RadioWrapper
+                  label="Moderate Active"
+                  name="activityLevel"
+                  value={ActivityLevel.ModerateActive}
+                />
+                <RadioWrapper
+                  label="Very Active"
+                  name="activityLevel"
+                  value={ActivityLevel.VeryActive}
+                />
+                <RadioWrapper
+                  label="Extremely Active"
+                  name="activityLevel"
+                  value={ActivityLevel.ExtremelyActive}
+                />
+              </Grid>
             </RadioGroup>
             <InputWrapper
               label="Weight"
