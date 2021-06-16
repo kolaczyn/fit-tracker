@@ -1,18 +1,19 @@
 import React from 'react';
-import { Gender } from '../../customTypes';
-import { useAppSelector } from '../../redux/hooks';
+import { GenderDependentContainer } from '../../containers/GenderDependentContainer';
 import { BodyFatCalculatorForMenComponent } from './BodyFatCalculatorForMenComponent';
 
 interface BodyFatCalculatorComponentProps {}
 
+// I don't have a Female calculator, and I need to pass in a component
+// so for now it's the easier to create a throway component
+const ThrowawayFemaleComponent: React.FC = () => <section>TODO</section>;
+
 export const BodyFatCalculatorComponent: React.FC<BodyFatCalculatorComponentProps> =
   ({}) => {
-    const gender = useAppSelector(state => state.metrics.gender);
-    const isMale: boolean = gender === Gender.Male;
-
-    return isMale ? (
-      <BodyFatCalculatorForMenComponent />
-    ) : (
-      <section>TODO</section>
+    return (
+      <GenderDependentContainer
+        MaleComponent={BodyFatCalculatorForMenComponent}
+        FemaleComponent={ThrowawayFemaleComponent}
+      />
     );
   };
