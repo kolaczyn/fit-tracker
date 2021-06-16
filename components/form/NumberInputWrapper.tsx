@@ -22,9 +22,10 @@ export const NumberInputWrapper: React.FC<NumberInputWrapperProps> = ({
   ...props
 }) => {
   const [field, meta] = useField(props);
+  console.log(meta.error)
   return (
     <>
-      <FormControl isInvalid={meta.touched && meta.error === ''}>
+      <FormControl isInvalid={meta.touched && !!meta.error}>
         <FormLabel>{label}</FormLabel>
         <InputGroup>
           <NumberInput>
