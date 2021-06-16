@@ -1,10 +1,11 @@
-import { FormLabel, RadioGroup } from '@chakra-ui/react';
+import { Flex, FormLabel, HStack, RadioGroup, Text, VStack } from '@chakra-ui/react';
 import { Formik } from 'formik';
 import React from 'react';
 
 import { Gender } from '../../customTypes';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { updateMetrics } from '../../redux/metricsSlice';
+import { GenderFAQ } from '../GenderFAQ';
 import { RadioWrapper } from './RadioWrapper';
 
 interface GenderSelectorProps {}
@@ -29,9 +30,13 @@ export const GenderSelector: React.FC<GenderSelectorProps> = ({}) => {
       }}
     >
       {() => (
-        <>
-          <RadioGroup>
-            <FormLabel>Gender</FormLabel>
+        <Flex direction="column">
+        <RadioGroup defaultValue={loadedGender} mb="2">
+          <HStack>
+            {/* I add m="0", because there's some weight margin on the component by default */}
+            <FormLabel fontWeight="bold" pr="2" m="0">
+              Gender
+            </FormLabel>
             <RadioWrapper
               label="Male"
               name="gender"
@@ -44,9 +49,10 @@ export const GenderSelector: React.FC<GenderSelectorProps> = ({}) => {
               value={Gender.Female}
               onChange={handleChange}
             />
-          </RadioGroup>
-          {/* <pre>{JSON.stringify(values, null, 2)}</pre> */}
-        </>
+          </HStack>
+        </RadioGroup>
+        <GenderFAQ />
+        </Flex>
       )}
     </Formik>
   );

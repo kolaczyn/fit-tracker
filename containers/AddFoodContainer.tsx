@@ -46,7 +46,7 @@ const initialFormState: FormState = {
 
 interface AddFoodContainerProps {
   isOpen: boolean;
-  onClose: () => {};
+  onClose: () => void;
 }
 
 export const AddFoodContainer: React.FC<AddFoodContainerProps> = ({

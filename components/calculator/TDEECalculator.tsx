@@ -1,7 +1,16 @@
 import React, { useState } from 'react';
 import { Form, Formik } from 'formik';
 import * as Yup from 'yup';
-import { Button, FormLabel, RadioGroup, Text } from '@chakra-ui/react';
+import {
+  Button,
+  Flex,
+  FormLabel,
+  Grid,
+  HStack,
+  RadioGroup,
+  Text,
+  VStack,
+} from '@chakra-ui/react';
 
 import { InputWrapper } from '../form/InputWrapper';
 import {
@@ -12,6 +21,8 @@ import { ActivityLevel, TDEECalculatorData } from '../../customTypes';
 import { RadioWrapper } from '../form/RadioWrapper';
 import { useAppSelector } from '../../redux/hooks';
 import isMale from '../../utils/isMale';
+import { SubmitAndResult } from '../form/SubmitAndResult';
+import { useRouter } from 'next/dist/client/router';
 
 const validationSchema = Yup.object({
   weight: Yup.number().min(0).required(),
@@ -29,8 +40,7 @@ const initialFormState: TDEECalculatorData<string> = {
 interface TDEECalculatorProps {}
 export const TDEECalculator: React.FC<TDEECalculatorProps> = ({}) => {
   const gender = useAppSelector(data => data.metrics.gender);
-  const [userTDEE, setUserTDEE] = useState<number>(100);
-  const roundedTDEE = userTDEE.toFixed(2);
+  const [userTDEE, setUserTDEE] = useState<number | null>(null);
   return (
     <Formik
       validationSchema={validationSchema}
@@ -61,54 +71,52 @@ export const TDEECalculator: React.FC<TDEECalculatorProps> = ({}) => {
     >
       {() => (
         <Form>
-          <RadioGroup>
-            <FormLabel>Activity Level</FormLabel>
-            <RadioWrapper
-              label="Sendetary"
-              name="activityLevel"
-              value={ActivityLevel.Sendetary}
+          <VStack spacing={4} alignItems="stretch">
+            <RadioGroup>
+              <FormLabel>Activity Level</FormLabel>
+              <Grid templateColumns="repeat(3, 1fr)" gap={1.5}>
+                <RadioWrapper
+                  label="Sendetary"
+                  name="activityLevel"
+                  value={ActivityLevel.Sendetary}
+                />
+                <RadioWrapper
+                  label="Lightly Active"
+                  name="activityLevel"
+                  value={ActivityLevel.LightlyActive}
+                />
+                <RadioWrapper
+                  label="Moderate Active"
+                  name="activityLevel"
+                  value={ActivityLevel.ModerateActive}
+                />
+                <RadioWrapper
+                  label="Very Active"
+                  name="activityLevel"
+                  value={ActivityLevel.VeryActive}
+                />
+                <RadioWrapper
+                  label="Extremely Active"
+                  name="activityLevel"
+                  value={ActivityLevel.ExtremelyActive}
+                />
+              </Grid>
+            </RadioGroup>
+            <InputWrapper
+              label="Weight"
+              name="weight"
+              placeholder={0}
+              unit="kg"
             />
-            <RadioWrapper
-              label="Lightly Active"
-              name="activityLevel"
-              value={ActivityLevel.LightlyActive}
+            <InputWrapper
+              label="Height"
+              name="height"
+              placeholder={0}
+              unit="cm"
             />
-            <RadioWrapper
-              label="Moderate Active"
-              name="activityLevel"
-              value={ActivityLevel.ModerateActive}
-            />
-            <RadioWrapper
-              label="Very Active"
-              name="activityLevel"
-              value={ActivityLevel.VeryActive}
-            />
-            <RadioWrapper
-              label="Extremely Active"
-              name="activityLevel"
-              value={ActivityLevel.ExtremelyActive}
-            />
-          </RadioGroup>
-          <InputWrapper
-            label="Weight"
-            name="weight"
-            placeholder={0}
-            unit="kg"
-          />
-          <InputWrapper
-            label="Height"
-            name="height"
-            placeholder={0}
-            unit="cm"
-          />
-          <InputWrapper
-            label="Age"
-            name="age"
-            placeholder={0}
-            unit="years"
-          />
-          <Text>Your TDEE is: {roundedTDEE} Calories</Text>
-          <Button type="submit">Submit</Button>
+            <InputWrapper label="Age" name="age" placeholder={0} unit="years" />
+            <SubmitAndResult value={userTDEE} text="Your TDEE is" />
+          </VStack>
         </Form>
       )}
     </Formik>
