@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { Gender } from '../customTypes';
 import { useAppSelector } from '../redux/hooks';
+import isMale from '../utils/isMale';
 
 interface GenderDependentContainerProps {
   MaleComponent: React.ComponentType;
@@ -11,7 +11,6 @@ interface GenderDependentContainerProps {
 export const GenderDependentContainer: React.FC<GenderDependentContainerProps> =
   ({ MaleComponent, FemaleComponent }) => {
     const gender = useAppSelector(state => state.metrics.gender);
-    const isMale: boolean = gender === Gender.Male;
 
-    return isMale ? <MaleComponent /> : <FemaleComponent />;
+    return isMale(gender) ? <MaleComponent /> : <FemaleComponent />;
   };

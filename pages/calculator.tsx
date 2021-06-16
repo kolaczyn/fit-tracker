@@ -5,8 +5,7 @@ import React from 'react';
 import { BMICalculator } from '../components/calculator/BMICalculator';
 import { BodyFatMen } from '../components/calculator/BodyFatMen';
 import { BodyFatWomen } from '../components/calculator/BodyFatWomen';
-import { TDEEMen } from '../components/calculator/TDEEMen';
-import { TDEECalculatorForWomen } from '../components/calculator/TDEEWomen';
+import { TDEECalculator } from '../components/calculator/TDEECalculator';
 import { GenderSelector } from '../components/form/GenderSelector';
 import { GenderDependentContainer } from '../containers/GenderDependentContainer';
 
@@ -33,10 +32,7 @@ export const Calculator: React.FC<CalculatorProps> = ({}) => {
             />
           </TabPanel>
           <TabPanel>
-            <GenderDependentContainer
-              MaleComponent={TDEEMen}
-              FemaleComponent={TDEECalculatorForWomen}
-            />
+            <TDEECalculator />
           </TabPanel>
         </TabPanels>
       </Tabs>
