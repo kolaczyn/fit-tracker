@@ -14,3 +14,4 @@
 - add indicators saying if e.g. your BMI is okay, give explanation what does BMI and TDEE mean and their uses cases, give instructions on how you should measure yourself
 - make the logo a link to the home page
 - rename the site into **Track** *Fit* ('Track' is bold, 'Fit' is think)
+- for some reason I can't put floats in the input

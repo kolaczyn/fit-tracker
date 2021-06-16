@@ -28,8 +28,8 @@ export const GenderFAQ: React.FC = ({}) => {
           <p>
             Because of this, the formulas for <em>Body Fat</em> and{' '}
             <em>TDEE</em> are quite different and the former needs quite a few
-            more measurements for women. BMI calculation for men and women is
-            the same.
+            more measurements for women.
+            <p>BMI calculation for men and women is the same.</p>
           </p>
         </AccordionPanel>
       </AccordionItem>
