@@ -9,6 +9,14 @@ export type Nutrients<T extends number | string> = {
 };
 
 export type BMICalculatorData<T extends string | number> = {
-  weight: T,
-  height: T,
+  weight: T;
+  height: T;
+};
+
+export enum ActivityLevel {
+  Sendetary,
+  LightlyActive,
+  ModerateActive,
+  VeryActive,
+  ExtremelyActive,
 }
