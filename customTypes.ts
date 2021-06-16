@@ -24,8 +24,8 @@ export enum ActivityLevel {
 }
 
 export enum Gender {
-  Male = "Male",
-  Female = "Female",
+  Male = 'Male',
+  Female = 'Female',
   // before you scream at me for not including MtF, FtM,
   // I don't know if there are well defined transgender formulas
   // and I'm assuming that it also depends on the person,
@@ -46,4 +46,11 @@ export type Metrics = {
   age: number | null;
   waist: number | null;
   gender: Gender;
+};
+
+export type Food= {
+  name: string;
+  id: number;
+  portion: number;
+  nutrients: Nutrients<number>;
 };

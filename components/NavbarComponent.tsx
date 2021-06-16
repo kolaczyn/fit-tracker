@@ -15,6 +15,8 @@ export const NavbarComponent: React.FC<NavbarComponentProps> = ({}) => {
         <HStack spacing={8} >
         <NextLink href="/">Home</NextLink>
         <NextLink href="/">Calories</NextLink>
+        <NextLink href="/food">Food</NextLink>
+        <NextLink href="/meals">Meals</NextLink>
         <NextLink href="/calculator">Calculator</NextLink>
         </HStack>
       </Flex>
