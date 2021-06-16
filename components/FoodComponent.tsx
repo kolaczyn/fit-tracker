@@ -6,6 +6,7 @@ import { Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/menu';
 
 import { Food } from '../customTypes';
 import { Button, Tag } from '@chakra-ui/react';
+import prettyPrintGrams from '../utils/prettyPrintGrams';
 
 interface FoodComponentProps {
   food: Food;
@@ -43,13 +44,13 @@ export const FoodComponent: React.FC<FoodComponentProps> = ({
         <HStack>
           <Text as="i">{food.nutrients.calories} Calories</Text>
           <Tag size="sm" colorScheme="red">
-            Fat: {food.nutrients.fat}
+            Fat: {prettyPrintGrams(food.nutrients.fat)}
           </Tag>
           <Tag size="sm" colorScheme="yellow">
-            Carbs: {food.nutrients.carbs}
+            Carbs: {prettyPrintGrams(food.nutrients.carbs)}
           </Tag>
           <Tag size="sm" colorScheme="green">
-            Protein: {food.nutrients.protein}
+            Protein: {prettyPrintGrams(food.nutrients.protein)}
           </Tag>
         </HStack>
       </VStack>
