@@ -35,7 +35,7 @@ export const InputWrapper: React.FC<InputWrapper> = ({
         <Input {...field} {...props} type={type} />
           {unit ? <InputRightAddon children={unit} /> : null}
         </InputGroup>
-         {/* I capitalize the the first letter error, because Yup's validation includes the field's name in lowercase, and it look akward. */}
+        {/* I capitalize the the first letter error, because Yup's validation includes the field's name in lowercase, and it look akward. */}
         <FormErrorMessage>
           {meta.error ? capitalizeFirstLetter(meta.error) : null}
         </FormErrorMessage>

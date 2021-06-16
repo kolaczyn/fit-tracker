@@ -1,7 +1,10 @@
 import { Button } from '@chakra-ui/button';
+import { useDisclosure } from '@chakra-ui/hooks';
 import { HStack, Spacer, VStack } from '@chakra-ui/layout';
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { FoodComponent } from '../components/FoodComponent';
+import { AddFoodContainer } from '../containers/AddFoodContainer';
 import { Food } from '../customTypes';
 
 const banana: Food = {
@@ -35,6 +38,8 @@ export const FoodPage: React.FC = () => {
     () => new Set<number>()
   );
 
+  const {isOpen, onOpen, onClose} = useDisclosure();
+
   // TODO I should put Set's toggle logic into some util function
   // because it look too low level for a part of a page's code
   const toggleFood = (foodId: number) => {
@@ -54,7 +59,8 @@ export const FoodPage: React.FC = () => {
   return (
     <VStack width="100%" alignItems="stretch" spacing="4">
       <HStack>
-        <Button>Add Food</Button>
+        <Button onClick={onOpen}>Add Food</Button>
+        <AddFoodContainer isOpen={isOpen} onClose={onClose} />
         <Spacer />
         <Button onClick={handleConsoomSelected} isDisabled={selectedFoods.size === 0}>Consoom Selected</Button>
       </HStack>
