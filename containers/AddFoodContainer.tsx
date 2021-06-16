@@ -49,8 +49,6 @@ interface AddFoodContainerProps {
   onClose: () => {};
 }
 
-const AddFoodForm = () => {};
-
 export const AddFoodContainer: React.FC<AddFoodContainerProps> = ({
   isOpen,
   onClose,
@@ -61,70 +59,73 @@ export const AddFoodContainer: React.FC<AddFoodContainerProps> = ({
       <ModalContent>
         <ModalHeader>Add Food</ModalHeader>
         <ModalCloseButton />
-        <ModalBody>
-          <Formik
-            validationSchema={validationSchema}
-            initialValues={initialFormState}
-            onSubmit={(data: FormState) => {
-              alert(JSON.stringify(data, null, 2));
-            }}
-          >
-            {() => (
+        <Formik
+          validationSchema={validationSchema}
+          initialValues={initialFormState}
+          onSubmit={(data: FormState) => {
+            alert(JSON.stringify(data, null, 2));
+          }}
+        >
+          {() => (
+            <>
               <Form>
-                <InputWrapper
-                  label="Name"
-                  name="name"
-                  placeholder="Food's name"
-                  type="text"
-                />
-                {/* TODO make this a dropdown menu */}
-                <InputWrapper
-                  label="Category"
-                  name="category"
-                  placeholder="Category's name"
-                  type="text"
-                />
-                <InputWrapper
-                  label="Portion"
-                  name="portion"
-                  placeholder={0}
-                  // TODO in the future make the unit dynamic, base on another field - Unit
-                  // It may look a little bit weird, we'll see
-                  unit="g"
-                />
-                <Divider my="2" />
-                <InputWrapper
-                  label="Calores"
-                  name="nutrients.calories"
-                  placeholder={0}
-                  unit="Calories"
-                />
-                <InputWrapper
-                  label="Fat"
-                  name="nutrients.fat"
-                  placeholder={0}
-                  unit="g"
-                />
-                <InputWrapper
-                  label="Carbs"
-                  name="nutrients.carbs"
-                  placeholder={0}
-                  unit="g"
-                />
-                <InputWrapper
-                  label="Protein"
-                  name="nutrients.protein"
-                  placeholder={0}
-                  unit="g"
-                />
-                <Button type="submit">Submit</Button>
+                <ModalBody>
+                  <InputWrapper
+                    label="Name"
+                    name="name"
+                    placeholder="Food's name"
+                    type="text"
+                  />
+                  {/* TODO make this a dropdown menu */}
+                  <InputWrapper
+                    label="Category"
+                    name="category"
+                    placeholder="Category's name"
+                    type="text"
+                  />
+                  <InputWrapper
+                    label="Portion"
+                    name="portion"
+                    placeholder={0}
+                    // TODO in the future make the unit dynamic, base on another field - Unit
+                    // It may look a little bit weird, we'll see
+                    unit="g"
+                  />
+                  <Divider my="2" />
+                  <InputWrapper
+                    label="Calores"
+                    name="nutrients.calories"
+                    placeholder={0}
+                    unit="Calories"
+                  />
+                  <InputWrapper
+                    label="Fat"
+                    name="nutrients.fat"
+                    placeholder={0}
+                    unit="g"
+                  />
+                  <InputWrapper
+                    label="Carbs"
+                    name="nutrients.carbs"
+                    placeholder={0}
+                    unit="g"
+                  />
+                  <InputWrapper
+                    label="Protein"
+                    name="nutrients.protein"
+                    placeholder={0}
+                    unit="g"
+                  />
+                </ModalBody>
+                <ModalFooter>
+                  <Button colorScheme="green" type="submit">
+                    Add Food
+                  </Button>
+                </ModalFooter>
               </Form>
-            )}
-          </Formik>
-        </ModalBody>
-        <ModalFooter>
-          <Button colorScheme="green">Add Food</Button>
-        </ModalFooter>
+            </>
+          )}
+        </Formik>
       </ModalContent>
     </Modal>
   );
