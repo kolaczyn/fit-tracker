@@ -8,3 +8,4 @@
 - refactor checking if user is male logic into a `useMale` hook
 - highlight current active link in the Navbar
 - there are rounded corner on the input box's right side, I might be using the components a little bit incorrect
+- add redirection to tabs in `/calculator`, e.g. `/calculator/tdee` redirects to TDEE Calculator tab

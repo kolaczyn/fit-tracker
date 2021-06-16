@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Form, Formik } from 'formik';
 import * as Yup from 'yup';
 
-import { NumberInputWrapper } from '../form/NumberInputWrapper';
+import { InputWrapper } from '../form/InputWrapper';
 import { Button, Text } from '@chakra-ui/react';
 import { calculateBodyFatForMen } from '../../utils/calculateBodyFat';
 
@@ -36,8 +36,8 @@ export const BodyFatMen: React.FC<BodyFatMenProps> =
       >
         {() => (
           <Form>
-            <NumberInputWrapper label="Weight" name="weight" placeholder={0} unit="pounds" />
-            <NumberInputWrapper label="Waist" name="waist" placeholder={0} unit="inches" />
+            <InputWrapper label="Weight" name="weight" placeholder={0} unit="pounds" />
+            <InputWrapper label="Waist" name="waist" placeholder={0} unit="inches" />
             <Text>Body fat percentage: {roundedBodyFat}%</Text>
             <Button type="submit">Submit</Button>
           </Form>

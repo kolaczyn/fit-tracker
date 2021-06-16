@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Form, Formik } from 'formik';
 import * as Yup from 'yup';
 
-import { NumberInputWrapper } from '../form/NumberInputWrapper';
+import { InputWrapper } from '../form/InputWrapper';
 import { BMICalculatorData } from '../../customTypes';
 import { Button, Text } from '@chakra-ui/react';
 import calculateBMI from '../../utils/calculateBMI';
@@ -41,8 +41,8 @@ export const BMICalculator: React.FC<BMICalculatorProps> =
       >
         {() => (
           <Form>
-            <NumberInputWrapper label="Height" name="height" placeholder={0}  unit="cm"/>
-            <NumberInputWrapper label="Weight" name="weight" placeholder={0} unit="kg" />
+            <InputWrapper label="Height" name="height" placeholder={0}  unit="cm"/>
+            <InputWrapper label="Weight" name="weight" placeholder={0} unit="kg" />
             <Text>You BMI is: {roundedBmi}</Text>
             <Button type="submit">Submit</Button>
           </Form>

@@ -3,7 +3,7 @@ import { Form, Formik } from 'formik';
 import * as Yup from 'yup';
 import { Button, FormLabel, RadioGroup, Text } from '@chakra-ui/react';
 
-import { NumberInputWrapper } from '../form/NumberInputWrapper';
+import { InputWrapper } from '../form/InputWrapper';
 import {
   calculateTDEEForFemale,
   calculateTDEEForMale,
@@ -89,19 +89,19 @@ export const TDEECalculator: React.FC<TDEECalculatorProps> = ({}) => {
               value={ActivityLevel.ExtremelyActive}
             />
           </RadioGroup>
-          <NumberInputWrapper
+          <InputWrapper
             label="Weight"
             name="weight"
             placeholder={0}
             unit="kg"
           />
-          <NumberInputWrapper
+          <InputWrapper
             label="Height"
             name="height"
             placeholder={0}
             unit="cm"
           />
-          <NumberInputWrapper
+          <InputWrapper
             label="Age"
             name="age"
             placeholder={0}

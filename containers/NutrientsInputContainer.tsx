@@ -6,7 +6,7 @@ import { Button } from '@chakra-ui/react';
 import { Nutrients } from '../customTypes';
 import { useAppDispatch } from '../redux/hooks';
 import { addNutrients } from '../redux/nutrientsSlice';
-import { NumberInputWrapper } from '../components/form/NumberInputWrapper';
+import { InputWrapper } from '../components/form/InputWrapper';
 
 interface NutrientsInputContainerProps {}
 
@@ -53,14 +53,14 @@ export const NutrientsInputContainer: React.FC<NutrientsInputContainerProps> =
       >
         {({ isSubmitting, errors }) => (
           <Form>
-            <NumberInputWrapper
+            <InputWrapper
               label="Calories"
               name="calories"
               placeholder={0}
             />
-            <NumberInputWrapper label="Fat" name="fat" placeholder={0} />
-            <NumberInputWrapper label="Carbs" name="carbs" placeholder={0} />
-            <NumberInputWrapper
+            <InputWrapper label="Fat" name="fat" placeholder={0} />
+            <InputWrapper label="Carbs" name="carbs" placeholder={0} />
+            <InputWrapper
               label="Protein"
               name="protein"
               placeholder={0}
