@@ -46,7 +46,7 @@ export const TDEECalculatorForMenComponent: React.FC<TDEECalculatorForMenCompone
           );
         }}
       >
-        {({ values }) => (
+        {() => (
           <Form>
             <RadioGroup>
               <FormLabel>Activity Level</FormLabel>

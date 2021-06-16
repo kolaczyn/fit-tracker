@@ -1,5 +1,6 @@
-import { Tabs, TabList, Tab, TabPanels, TabPanel } from '@chakra-ui/react';
 import React from 'react';
+import { Gender } from '../../customTypes';
+import { useAppSelector } from '../../redux/hooks';
 import { TDEECalculatorForMenComponent } from './TDEECalculatorForMenComponent';
 import { TDEECalculatorForWomen } from './TDEECalculatorForWomenComponent';
 
@@ -7,20 +8,11 @@ interface TDEECalculatorComponentProps {}
 
 export const TDEECalculatorComponent: React.FC<TDEECalculatorComponentProps> =
   ({}) => {
-    return (
-      <Tabs>
-        <TabList>
-          <Tab>For Men</Tab>
-          <Tab>For Women</Tab>
-        </TabList>
-        <TabPanels>
-          <TabPanel>
-            <TDEECalculatorForMenComponent />
-          </TabPanel>
-          <TabPanel>
-            <TDEECalculatorForWomen />
-          </TabPanel>
-        </TabPanels>
-      </Tabs>
+    const gender = useAppSelector(state => state.metrics.gender);
+    const isMale: boolean = gender === Gender.Male;
+    return isMale ? (
+      <TDEECalculatorForMenComponent />
+    ) : (
+      <TDEECalculatorForWomen />
     );
   };

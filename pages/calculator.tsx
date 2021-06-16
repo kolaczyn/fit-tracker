@@ -4,6 +4,7 @@ import React from 'react';
 import { BMICalculatorComponent } from '../components/calculator/BMICalculatorComponent';
 import { BodyFatCalculatorComponent } from '../components/calculator/BodyFatCalculatorComponent';
 import { TDEECalculatorComponent } from '../components/calculator/TDEECalculatorComponent';
+import { GenderSelector } from '../components/form/GenderSelector';
 import { useAppSelector } from '../redux/hooks';
 
 interface CalculatorProps {}
@@ -12,10 +13,7 @@ export const Calculator: React.FC<CalculatorProps> = ({}) => {
   const metrics = useAppSelector(state => state.metrics);
   return (
     <>
-      <section>
-        Your tracked metrics are:
-        <pre>{JSON.stringify(metrics, null, 2)}</pre>
-      </section>
+      <GenderSelector />
       <Tabs>
         <TabList>
           <Tab>BMI Calculator</Tab>

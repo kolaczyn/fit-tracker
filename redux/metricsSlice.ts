@@ -1,5 +1,5 @@
 import { createSlice, Action, PayloadAction } from '@reduxjs/toolkit';
-import { ActivityLevel, Nutrients, Metrics } from '../customTypes';
+import { ActivityLevel, Nutrients, Metrics, Gender } from '../customTypes';
 
 type State = Metrics;
 
@@ -9,6 +9,7 @@ const initialState: State = {
   height: null,
   waist: null,
   weight: null,
+  gender: Gender.Male,
 };
 
 const metricsSlice = createSlice({
@@ -17,11 +18,8 @@ const metricsSlice = createSlice({
   reducers: {
     updateMetrics: (
       state: State,
-      // action: PayloadAction<Partial<PayloadAction<Metrics>>>
       action: PayloadAction<Partial<Metrics>>
     ) => {
-      // overwrite the old values
-      console.log({...state,...action.payload})
       return { ...state, ...action.payload };
     },
   },
