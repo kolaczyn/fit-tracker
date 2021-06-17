@@ -17,3 +17,5 @@
 - for some reason I can't put floats in the input
 - make it possible to add e.g. % at the end in SubmitAndResult
 - form logic is a little bit repetetive, there might be a better way to handle the form logic
+- make it responsive on mobile, maybe I should use Drawer
+- figure out themes - why tf is the mode dark in my dev setup, but light in the Internet?
