@@ -38,7 +38,7 @@ export const FoodPage: React.FC = () => {
     () => new Set<number>()
   );
 
-  const {isOpen, onOpen, onClose} = useDisclosure();
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   // TODO I should put Set's toggle logic into some util function
   // because it look too low level for a part of a page's code
@@ -51,8 +51,8 @@ export const FoodPage: React.FC = () => {
   };
 
   const handleConsoomSelected = () => {
-    setSelectedFoods(new Set())
-  }
+    setSelectedFoods(new Set());
+  };
 
   const isActive = (foodId: number): boolean => selectedFoods.has(foodId);
 
@@ -62,7 +62,12 @@ export const FoodPage: React.FC = () => {
         <Button onClick={onOpen}>Add Food</Button>
         <AddFoodContainer isOpen={isOpen} onClose={onClose} />
         <Spacer />
-        <Button onClick={handleConsoomSelected} isDisabled={selectedFoods.size === 0}>Consoom Selected</Button>
+        <Button
+          onClick={handleConsoomSelected}
+          isDisabled={selectedFoods.size === 0}
+        >
+          Consoom Selected
+        </Button>
       </HStack>
       <VStack width="100%" alignItems="stretch" spacing="2">
         {[banana, apple].map(food => (

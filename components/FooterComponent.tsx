@@ -7,6 +7,7 @@ import { MdWeb as WebsiteIcon } from 'react-icons/md';
 import {AiOutlineMail as MailIcon } from 'react-icons/ai'
 
 import { FooterLinkComponent } from './FooterLinkComponent';
+import theme from '../theme';
 
 interface FooterComponentProps {}
 
@@ -14,7 +15,7 @@ export const FooterComponent: React.FC<FooterComponentProps> = ({}) => {
   return (
     <Box
       boxShadow="lg"
-      zIndex="100"
+      zIndex="docked"
       bg="gray.900"
       mt="4"
       px="4"

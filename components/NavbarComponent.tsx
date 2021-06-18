@@ -12,7 +12,7 @@ export const NavbarComponent: React.FC<NavbarComponentProps> = ({}) => {
     <Box
       boxShadow="lg"
       top="0"
-      zIndex="100"
+      zIndex="docked"
       bg="gray.900"
       mb="4"
       px="4"
