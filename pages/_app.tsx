@@ -4,13 +4,14 @@ import React from 'react';
 import { Provider } from 'react-redux';
 
 import { ChakraWrapper } from '../components/ChakraWrapper';
+import { ContextContainer } from '../containers/ContextContainer';
 import { FooterComponent } from '../components/FooterComponent';
 import { NavbarComponent } from '../components/NavbarComponent';
 import store from '../redux/store';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <Provider store={store}>
+    <ContextContainer>
       <ChakraWrapper>
         <Flex direction="column" minH="100vh">
           <NavbarComponent />
@@ -21,7 +22,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           <FooterComponent />
         </Flex>
       </ChakraWrapper>
-    </Provider>
+    </ContextContainer>
   );
 }
 export default MyApp;

@@ -18,7 +18,7 @@ export const SubmitAndResult: React.FC<SubmitAndResultProps> = ({
         Calculate
       </Button>
       {value ? (
-        <Text>
+        <Text data-testid="calculator-result">
           {text}: {calculateRoundedValue(value)}
         </Text>
       ) : null}
