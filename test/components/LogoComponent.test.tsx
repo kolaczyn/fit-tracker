@@ -5,7 +5,7 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
-import { LogoComponent } from './LogoComponent';
+import { LogoComponent } from '../../components/LogoComponent';
 
 describe('<LogoComponent/>', () => {
   it('correctly renders the component', () => {

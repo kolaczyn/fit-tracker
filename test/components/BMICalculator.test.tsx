@@ -6,7 +6,7 @@ import { render, fireEvent } from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
 import '@testing-library/jest-dom';
 
-import { BMICalculator } from './BMICalculator';
+import { BMICalculator } from '../../components/calculator/BMICalculator';
 import { ContextContainer } from '../../containers/ContextContainer';
 
 describe('<BMICalculator/>', () => {
