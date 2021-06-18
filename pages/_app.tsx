@@ -1,17 +1,18 @@
+import { Container, Flex, Spacer } from '@chakra-ui/react';
 import type { AppProps } from 'next/app';
-import { Box, ChakraProvider, Container, Flex, Spacer } from '@chakra-ui/react';
-
+import React from 'react';
 import { Provider } from 'react-redux';
 
-import store from '../redux/store';
-import { NavbarComponent } from '../components/NavbarComponent';
+import { ChakraWrapper } from '../components/ChakraWrapper';
+import { ContextContainer } from '../containers/ContextContainer';
 import { FooterComponent } from '../components/FooterComponent';
-import React from 'react';
+import { NavbarComponent } from '../components/NavbarComponent';
+import store from '../redux/store';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <Provider store={store}>
-      <ChakraProvider>
+    <ContextContainer>
+      <ChakraWrapper>
         <Flex direction="column" minH="100vh">
           <NavbarComponent />
           <Container>
@@ -20,8 +21,8 @@ function MyApp({ Component, pageProps }: AppProps) {
           <Spacer />
           <FooterComponent />
         </Flex>
-      </ChakraProvider>
-    </Provider>
+      </ChakraWrapper>
+    </ContextContainer>
   );
 }
 export default MyApp;

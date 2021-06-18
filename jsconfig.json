@@ -1,5 +1,12 @@
 {
   "typeAcquisition": {
     "include": ["jest"]
+  },
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": ["components/*", "containers/*"],
+      "@pages/*": ["pages/*"]
+    }
   }
 }

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Checkbox } from '@chakra-ui/checkbox';
-import { HamburgerIcon } from '@chakra-ui/icons';
+import { ChevronDownIcon, EditIcon, HamburgerIcon } from '@chakra-ui/icons';
 import { Box, Flex, HStack, Spacer, Text, VStack } from '@chakra-ui/layout';
 import { Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/menu';
 
@@ -15,9 +15,14 @@ interface FoodComponentProps {
 }
 
 const HamburgerButton: React.ComponentType = ({ ...props }) => (
-  <Button {...props} backgroundColor="transparent">
-    <HamburgerIcon />
-  </Button>
+  <Box {...props}>Helo</Box>
+  // <Button {...props} backgroundColor="transparent">
+  //   hello
+  //   {/* <Box>
+  //   <HamburgerIcon />
+
+  //   </Box> */}
+  // </Button>
 );
 
 export const FoodComponent: React.FC<FoodComponentProps> = ({
@@ -27,6 +32,7 @@ export const FoodComponent: React.FC<FoodComponentProps> = ({
 }) => {
   return (
     <Flex
+      data-testid="food-component"
       bg="gray.900"
       p="3"
       cursor="pointer"
@@ -57,13 +63,19 @@ export const FoodComponent: React.FC<FoodComponentProps> = ({
       <Spacer />
       <HStack>
         {/* the way I implement this checkbox may not be the most accessable */}
-        <Checkbox isChecked={isActive}/>
+        <Checkbox data-testid="food-toggle-checkbox" isChecked={isActive}/>
         {/* we stop the propagation, so clicking the menu doesn't toggle selection of the food */}
         <Box onClick={e => e.stopPropagation()}>
           <Menu>
-            <MenuButton as={HamburgerButton} />
+            <MenuButton  p="1">
+              <HamburgerIcon  />
+            </MenuButton>
             <MenuList>
-              <MenuItem>Edit</MenuItem>
+              <MenuItem>
+              <EditIcon />
+              Edit
+
+              </MenuItem>
               <MenuItem>Delete</MenuItem>
             </MenuList>
           </Menu>
