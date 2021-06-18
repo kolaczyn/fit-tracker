@@ -18,9 +18,9 @@
 - make it possible to add e.g. % at the end in SubmitAndResult
 - form logic is a little bit repetetive, there might be a better way to handle the form logic
 - make it responsive on mobile, maybe I should use Drawer
-- figure out themes - why tf is the mode dark in my dev setup, but light in the Internet?
 - add goals - e.g. 2000 Calories, 100g of protein per day, show progress bar, show it red it the user went orderboard, etc
 - show "progres" of the intake of the day on the side bar, hide it on mobile, also add seperate page of the "progress" and add only show link to "progress" page in the navbar. this way both desktop and mobile users get a better experience
 - light and dark theme toggle should be reletively easy
 - if a form is partilally filled it (e.g. add food) send an alert asking user if he's sure, and he'll loose progress
 - for some reason, I can't get a button with an icon, because of [some weirdness](https://github.com/chakra-ui/chakra-ui/issues/683).The workaround I came up with doesn't really give a feedback if the icon is "hovered"
+- figure out themes - why tf is the mode dark in my dev setup, but light in the Internet?
