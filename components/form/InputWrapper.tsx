@@ -1,8 +1,6 @@
 import {
   FormControl,
   FormLabel,
-  NumberInput,
-  NumberInputField,
   FormErrorMessage,
   InputGroup,
   InputRightAddon,

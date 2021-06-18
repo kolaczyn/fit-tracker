@@ -7,7 +7,7 @@ import { BodyFatMen } from '../components/calculator/BodyFatMen';
 import { BodyFatWomen } from '../components/calculator/BodyFatWomen';
 import { TDEECalculator } from '../components/calculator/TDEECalculator';
 import { GenderSelector } from '../components/form/GenderSelector';
-import { GenderDependentContainer } from '../containers/GenderDependentContainer';
+import { GenderDependent } from '../components/render/GenderDependent';
 
 interface CalculatorProps {}
 
@@ -26,7 +26,7 @@ export const Calculator: React.FC<CalculatorProps> = ({}) => {
             <BMICalculator />
           </TabPanel>
           <TabPanel>
-            <GenderDependentContainer
+            <GenderDependent
               MaleComponent={BodyFatMen}
               FemaleComponent={BodyFatWomen}
             />

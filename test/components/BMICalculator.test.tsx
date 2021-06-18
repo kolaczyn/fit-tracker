@@ -7,13 +7,13 @@ import { act } from 'react-dom/test-utils';
 import '@testing-library/jest-dom';
 
 import { BMICalculator } from '../../components/calculator/BMICalculator';
-import { ContextContainer } from '../../containers/ContextContainer';
+import { StoreProvider } from '../../components/providers/StoreProvider';
 
 describe('<BMICalculator/>', () => {
   it('correctly calculates BMI', async () => {
     const { getByLabelText, getByText, getByTestId } = render(
       <BMICalculator />,
-      { wrapper: ContextContainer }
+      { wrapper: StoreProvider }
     );
 
     await act(async () => {

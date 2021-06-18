@@ -1,11 +1,9 @@
-import React, { useState } from 'react';
+import { VStack } from '@chakra-ui/react';
 import { Form, Formik } from 'formik';
-// import * as Yup from 'yup';
-
-import { InputWrapper } from '../form/InputWrapper';
-import { Button, Text, VStack } from '@chakra-ui/react';
+import React, { useState } from 'react';
 import { calculateBodyFatForWomen } from '../../utils/calculateBodyFat';
-import convertStringsToNums from '../../utils/convertStringsToNums';
+// import * as Yup from 'yup';
+import { InputWrapper } from '../form/InputWrapper';
 import { SubmitAndResult } from '../form/SubmitAndResult';
 
 interface BodyFatWomenProps {}

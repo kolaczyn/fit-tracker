@@ -2,9 +2,9 @@ import { Button } from '@chakra-ui/button';
 import { useDisclosure } from '@chakra-ui/hooks';
 import { HStack, Spacer, VStack } from '@chakra-ui/layout';
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { FoodComponent } from '../components/FoodComponent';
-import { AddFoodContainer } from '../containers/AddFoodContainer';
+
+import { FoodItem} from '../components/food/FoodItem';
+import { AddFoodContainer } from '../components/food/AddFood';
 import { Food } from '../customTypes';
 
 const banana: Food = {
@@ -71,7 +71,7 @@ export const FoodPage: React.FC = () => {
       </HStack>
       <VStack width="100%" alignItems="stretch" spacing="2">
         {[banana, apple].map(food => (
-          <FoodComponent
+          <FoodItem
             key={food.id}
             food={food}
             isActive={isActive(food.id)}

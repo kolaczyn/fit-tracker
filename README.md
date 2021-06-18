@@ -20,3 +20,4 @@
 - if a form is partilally filled it (e.g. add food) send an alert asking user if he's sure, and he'll loose progress
 - for some reason, I can't get a button with an icon, because of [some weirdness](https://github.com/chakra-ui/chakra-ui/issues/683).The workaround I came up with doesn't really give a feedback if the icon is "hovered"
 - cleanup the components/ containers mess - I started randomly picking which components goes where
+- add selector functions into slices

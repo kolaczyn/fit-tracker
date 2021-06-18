@@ -3,9 +3,7 @@ import React from 'react';
 import NextLink from 'next/link';
 import {  HStack } from '@chakra-ui/react';
 
-interface LogoComponentProps {}
-
-export const LogoComponent: React.FC<LogoComponentProps> = ({}) => {
+export const Logo: React.FC = ({}) => {
   return (
     <NextLink href="/">
       <a>

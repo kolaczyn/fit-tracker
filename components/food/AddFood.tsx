@@ -10,8 +10,8 @@ import { ModalFooter, Button, Divider } from '@chakra-ui/react';
 import { Form, Formik } from 'formik';
 import React from 'react';
 import * as Yup from 'yup';
-import { InputWrapper } from '../components/form/InputWrapper';
-import { Nutrients } from '../customTypes';
+import { InputWrapper } from '../form/InputWrapper';
+import { Nutrients } from '../../customTypes';
 
 type FormState = {
   name: string;

@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
+import { VStack } from '@chakra-ui/react';
 import { Form, Formik } from 'formik';
+import React, { useState } from 'react';
 import * as Yup from 'yup';
-
-import { InputWrapper } from '../form/InputWrapper';
 import { BMICalculatorData } from '../../customTypes';
-import { Button, HStack, Text, VStack } from '@chakra-ui/react';
-import calculateBMI from '../../utils/calculateBMI';
-import { updateMetrics } from '../../redux/metricsSlice';
 import { useAppDispatch } from '../../redux/hooks';
+import { updateMetrics } from '../../redux/metricsSlice';
+import calculateBMI from '../../utils/calculateBMI';
+import { InputWrapper } from '../form/InputWrapper';
 import { SubmitAndResult } from '../form/SubmitAndResult';
+
 
 interface BMICalculatorProps {}
 

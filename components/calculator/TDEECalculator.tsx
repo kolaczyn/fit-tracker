@@ -1,28 +1,18 @@
-import React, { useState } from 'react';
+import { FormLabel, Grid, RadioGroup, VStack } from '@chakra-ui/react';
 import { Form, Formik } from 'formik';
+import React, { useState } from 'react';
 import * as Yup from 'yup';
-import {
-  Button,
-  Flex,
-  FormLabel,
-  Grid,
-  HStack,
-  RadioGroup,
-  Text,
-  VStack,
-} from '@chakra-ui/react';
-
-import { InputWrapper } from '../form/InputWrapper';
+import { ActivityLevel, TDEECalculatorData } from '../../customTypes';
+import { useAppSelector } from '../../redux/hooks';
 import {
   calculateTDEEForFemale,
   calculateTDEEForMale,
 } from '../../utils/calculateTDEE';
-import { ActivityLevel, TDEECalculatorData } from '../../customTypes';
-import { RadioWrapper } from '../form/RadioWrapper';
-import { useAppSelector } from '../../redux/hooks';
+
 import isMale from '../../utils/isMale';
+import { InputWrapper } from '../form/InputWrapper';
+import { RadioWrapper } from '../form/RadioWrapper';
 import { SubmitAndResult } from '../form/SubmitAndResult';
-import { useRouter } from 'next/dist/client/router';
 
 const validationSchema = Yup.object({
   weight: Yup.number().min(0).required(),

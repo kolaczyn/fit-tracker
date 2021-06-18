@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import { VStack } from '@chakra-ui/react';
 import { Form, Formik } from 'formik';
+import React, { useState } from 'react';
 import * as Yup from 'yup';
-
-import { InputWrapper } from '../form/InputWrapper';
-import { Button, HStack, Text, VStack } from '@chakra-ui/react';
 import { calculateBodyFatForMen } from '../../utils/calculateBodyFat';
+import { InputWrapper } from '../form/InputWrapper';
 import { SubmitAndResult } from '../form/SubmitAndResult';
+
 
 interface BodyFatMenProps {}
 const validationSchema = Yup.object({

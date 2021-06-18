@@ -1,13 +1,11 @@
-import { CurrentStatsContainer } from '../containers/CurrentStatsContainer';
-import { NutrientsInputContainer } from '../containers/NutrientsInputContainer';
+import { CurrentStats } from '../components/stats/CurrentStats';
+import { NutrientsInput } from '../components/stats/NutrientsInput';
 
 export default function Home() {
   return (
-    <div>
-      <main>
-        <CurrentStatsContainer />
-        <NutrientsInputContainer />
-      </main>
-    </div>
+    <>
+      <CurrentStats />
+      <NutrientsInput />
+    </>
   );
 }

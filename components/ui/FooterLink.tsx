@@ -3,13 +3,13 @@ import { Flex } from '@chakra-ui/react';
 import React from 'react';
 import { IconType } from 'react-icons';
 
-interface FooterLinkComponentProps {
+interface FooterLinkProps {
   href: string;
   Icon?: IconType;
   shouldOpenInNewTab?: boolean
 }
 
-export const FooterLinkComponent: React.FC<FooterLinkComponentProps> = ({
+export const FooterLink: React.FC<FooterLinkProps> = ({
   href,
   Icon,
   children,
@@ -25,6 +25,6 @@ export const FooterLinkComponent: React.FC<FooterLinkComponentProps> = ({
   );
 };
 
-FooterLinkComponent.defaultProps = {
+FooterLink.defaultProps = {
   shouldOpenInNewTab: true
 }

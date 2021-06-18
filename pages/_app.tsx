@@ -1,28 +1,19 @@
-import { Container, Flex, Spacer } from '@chakra-ui/react';
 import type { AppProps } from 'next/app';
 import React from 'react';
-import { Provider } from 'react-redux';
 
-import { ChakraWrapper } from '../components/ChakraWrapper';
-import { ContextContainer } from '../containers/ContextContainer';
-import { FooterComponent } from '../components/FooterComponent';
-import { NavbarComponent } from '../components/NavbarComponent';
-import store from '../redux/store';
+import { AppChakraProvider } from '../components/providers/AppChakraProvider';
+import { StoreProvider } from '../components/providers/StoreProvider';
+import { GeneralLayout } from '../components/layout/GeneralLayout';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ContextContainer>
-      <ChakraWrapper>
-        <Flex direction="column" minH="100vh" backgroundColor="gray.800">
-          <NavbarComponent />
-          <Container>
-            <Component {...pageProps} />
-          </Container>
-          <Spacer />
-          <FooterComponent />
-        </Flex>
-      </ChakraWrapper>
-    </ContextContainer>
+    <StoreProvider>
+      <AppChakraProvider>
+        <GeneralLayout>
+          <Component {...pageProps} />
+        </GeneralLayout>
+      </AppChakraProvider>
+    </StoreProvider>
   );
 }
 export default MyApp;
