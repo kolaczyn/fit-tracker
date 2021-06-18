@@ -13,7 +13,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ContextContainer>
       <ChakraWrapper>
-        <Flex direction="column" minH="100vh">
+        <Flex direction="column" minH="100vh" backgroundColor="gray.800">
           <NavbarComponent />
           <Container>
             <Component {...pageProps} />

@@ -23,5 +23,5 @@
 - light and dark theme toggle should be reletively easy
 - if a form is partilally filled it (e.g. add food) send an alert asking user if he's sure, and he'll loose progress
 - for some reason, I can't get a button with an icon, because of [some weirdness](https://github.com/chakra-ui/chakra-ui/issues/683).The workaround I came up with doesn't really give a feedback if the icon is "hovered"
-- figure out themes - why tf is the mode dark in my dev setup, but light in the Internet?
 - cleanup the components/ containers mess - I started randomly picking which components goes where
+- use [Chakra-UI's z-index thingy](https://chakra-ui.com/docs/theming/theme#z-index-values) in the footer and the navbar. Earlier, using `zIndex="9000"` caused issues 
