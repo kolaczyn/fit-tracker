@@ -36,7 +36,7 @@ export const Footer: React.FC = ({}) => {
             Email
           </FooterLink>
           <FooterLink Icon={WebsiteIcon} href="https://kolaczyn.com">
-            My Website
+            Website
           </FooterLink>
         </HStack>
       </VStack>
