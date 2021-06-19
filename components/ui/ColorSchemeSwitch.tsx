@@ -3,7 +3,6 @@ import { useColorMode } from '@chakra-ui/color-mode';
 import { SunIcon, MoonIcon } from '@chakra-ui/icons';
 import React from 'react';
 
-
 export const ColorSchemeSwitch: React.FC = ({}) => {
   const { toggleColorMode, colorMode } = useColorMode();
   return (

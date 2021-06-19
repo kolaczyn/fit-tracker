@@ -18,9 +18,11 @@
 - add goals - e.g. 2000 Calories, 100g of protein per day, show progress bar, show it red it the user went orderboard, etc
 - show "progres" of the intake of the day on the side bar, hide it on mobile, also add seperate page of the "progress" and add only show link to "progress" page in the navbar. this way both desktop and mobile users get a better experience
 - if a form is partilally filled it (e.g. add food) send an alert asking user if he's sure, and he'll loose progress
-- for some reason, I can't get a button with an icon, because of [some weirdness](https://github.com/chakra-ui/chakra-ui/issues/683).The workaround I came up with doesn't really give a feedback if the icon is "hovered"
 - cleanup the components/ containers mess - I started randomly picking which components goes where
 - add selector functions into slices
 - color scheme issue is still not resolved, but it's likely it's because of `textColor` and `bg` attributes that I've added
 - you can use imperial or metric units
 - add 404 page
+- I'm using teal ghost buttons all over the place, I should put it in a AppButton component or something like this
+- for some reason, I can't get a button with an icon, because of [some weirdness](https://github.com/chakra-ui/chakra-ui/issues/683).The workaround I came up with doesn't really give a feedback if the icon is "hovered" **Solution - use IconButton**
+- convert `<ColorSchemeSwitch>` into `<IconButton>`

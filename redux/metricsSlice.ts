@@ -1,5 +1,5 @@
-import { createSlice, Action, PayloadAction } from '@reduxjs/toolkit';
-import { ActivityLevel, Nutrients, Metrics, Gender } from '../customTypes';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { Gender, Metrics } from '../customTypes';
 
 type State = Metrics;
 
