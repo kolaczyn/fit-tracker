@@ -3,7 +3,7 @@ import { useDisclosure } from '@chakra-ui/hooks';
 import { HStack, Spacer, VStack } from '@chakra-ui/layout';
 import React, { useState } from 'react';
 
-import { FoodItem} from '../components/food/FoodItem';
+import { FoodItem } from '../components/food/FoodItem';
 import { AddFoodContainer } from '../components/food/AddFood';
 import { Food } from '../customTypes';
 
@@ -70,9 +70,22 @@ export const FoodPage: React.FC = () => {
         </Button>
       </HStack>
       <VStack width="100%" alignItems="stretch" spacing="2">
-        {[banana, apple].map(food => (
+        {[
+          banana,
+          apple,
+          banana,
+          apple,
+          apple,
+          apple,
+          banana,
+          apple,
+          banana,
+          apple,
+          banana,
+        ].map(food => (
           <FoodItem
-            key={food.id}
+            // key={food.id}
+            key={Math.random()}
             food={food}
             isActive={isActive(food.id)}
             toggleFood={toggleFood}

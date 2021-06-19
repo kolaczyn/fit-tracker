@@ -7,7 +7,7 @@ export const GeneralLayout: React.FC = ({ children }) => {
   return (
     <Flex direction="column" minH="100vh">
       <Navbar />
-      <Container>{children}</Container>
+      <Container my="4">{children}</Container>
       <Spacer />
       <Footer />
     </Flex>
