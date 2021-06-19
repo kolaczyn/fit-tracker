@@ -10,8 +10,13 @@ import { ModalFooter, Button, Divider } from '@chakra-ui/react';
 import { Form, Formik } from 'formik';
 import React from 'react';
 import * as Yup from 'yup';
+import {v4 as uuidv4 } from 'uuid';
+
 import { InputWrapper } from '../form/InputWrapper';
 import { Nutrients } from '../../customTypes';
+import { useAppDispatch } from '../../redux/hooks';
+import { addtoFoodList } from '../../redux/trackIntakeSlice';
+import stringValuesToNums from '../../utils/stringValuesToNums';
 
 type FormState = {
   name: string;
@@ -53,8 +58,9 @@ export const AddFoodContainer: React.FC<AddFoodContainerProps> = ({
   isOpen,
   onClose,
 }) => {
+  const dispatch = useAppDispatch();
   return (
-    <Modal  size="lg" isOpen={isOpen} onClose={onClose}>
+    <Modal size="lg" isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
       <ModalContent>
         <ModalHeader>Add Food</ModalHeader>
@@ -63,7 +69,15 @@ export const AddFoodContainer: React.FC<AddFoodContainerProps> = ({
           validationSchema={validationSchema}
           initialValues={initialFormState}
           onSubmit={(data: FormState) => {
-            alert(JSON.stringify(data, null, 2));
+            // TODO this is so fucking ugly, I can't even
+            dispatch(
+              addtoFoodList({
+                ...data,
+                nutrients: stringValuesToNums(data.nutrients),
+                portion: Number(data.portion),
+                id: uuidv4(),
+              })
+            );
           }}
         >
           {() => (

@@ -34,3 +34,5 @@
 - get rid of redundant TS annotations
 - find some way to utilize the horizontal space on desktop, maybe latest stats?
 - start with empty gender, so the user is forced to select the correct gender
+- close the add food modal on submit
+- read the docs for NextSeo and use some of its features
