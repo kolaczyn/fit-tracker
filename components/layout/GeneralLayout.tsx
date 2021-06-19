@@ -5,7 +5,7 @@ import { Navbar } from './Navbar';
 
 export const GeneralLayout: React.FC = ({ children }) => {
   return (
-    <Flex direction="column" minH="100vh" backgroundColor="gray.800">
+    <Flex direction="column" minH="100vh">
       <Navbar />
       <Container>{children}</Container>
       <Spacer />

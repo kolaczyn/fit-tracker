@@ -10,14 +10,11 @@ import { FooterLink } from '../ui/FooterLink';
 export const Footer: React.FC = ({}) => {
   return (
     <Box
-      boxShadow="lg"
       zIndex="docked"
-      bg="gray.900"
       mt="4"
       px="4"
       py="2"
       w="100%"
-      color="white"
       position="sticky"
     >
       <VStack spacing={3}>

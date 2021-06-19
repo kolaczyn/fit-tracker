@@ -32,7 +32,6 @@ export const FoodItem: React.FC<FoodItemProps> = ({
   return (
     <Flex
       data-testid="food-component"
-      bg="gray.900"
       p="3"
       cursor="pointer"
       onClick={() => toggleFood(food.id)}

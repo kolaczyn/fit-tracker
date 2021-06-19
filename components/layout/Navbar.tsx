@@ -1,16 +1,16 @@
-import { Box, Flex, HStack, Spacer } from '@chakra-ui/react';
+import { Box, Button, Flex, HStack, Spacer, useColorMode } from '@chakra-ui/react';
 import React from 'react';
 
 import { AppLink } from '../ui/AppLink';
 import { Logo } from '../ui/Logo';
 
 export const Navbar: React.FC = ({}) => {
+  const {colorMode, toggleColorMode} = useColorMode()
   return (
     <Box
       boxShadow="lg"
       top="0"
       zIndex="docked"
-      bg="gray.900"
       mb="4"
       px="4"
       py="2"
@@ -26,6 +26,7 @@ export const Navbar: React.FC = ({}) => {
           <AppLink href="/food" label="Food" />
           <AppLink href="/meals" label="Meals" />
           <AppLink href="/calculator" label="Calculator" />
+          <Button onClick={toggleColorMode}>Toggle Dark Mode</Button>
         </HStack>
       </Flex>
     </Box>

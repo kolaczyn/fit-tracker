@@ -23,3 +23,4 @@
 - add selector functions into slices
 - color scheme issue is still not resolved, but it's likely it's because of `textColor` and `bg` attributes that I've added
 - you can use imperial or metric units
+- add 404 page

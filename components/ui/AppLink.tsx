@@ -13,7 +13,7 @@ export const AppLink: React.FC<AppLinkProps> = ({ href, label }) => {
   const isActive = router.pathname === href;
   return (
     <NextLink href={href}>
-      <Button mx="0.5" colorScheme="cyan" variant={isActive ? 'outline' : 'ghost'}>{label}</Button>
+      <Button mx="0.5" colorScheme="teal" variant={isActive ? 'outline' : 'ghost'}>{label}</Button>
     </NextLink>
   );
 };
