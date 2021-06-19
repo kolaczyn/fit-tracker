@@ -6,9 +6,9 @@ import { BMICalculatorData } from '../../customTypes';
 import { useAppDispatch } from '../../redux/hooks';
 import { updateMetrics } from '../../redux/metricsSlice';
 import calculateBMI from '../../utils/calculateBMI';
+import stringValuesToNums from '../../utils/stringValuesToNums';
 import { InputWrapper } from '../form/InputWrapper';
 import { SubmitAndResult } from '../form/SubmitAndResult';
-
 
 interface BMICalculatorProps {}
 
@@ -31,11 +31,11 @@ export const BMICalculator: React.FC<BMICalculatorProps> = ({}) => {
     <Formik
       validationSchema={validationSchema}
       initialValues={initialFormState}
-      onSubmit={({ height, weight }: BMICalculatorData<string>) => {
-        const numWeight = Number(weight);
-        const numHeight = Number(height);
-        setBmi(calculateBMI(numWeight, numHeight));
-        dispatch(updateMetrics({ weight: numWeight, height: numHeight }));
+      onSubmit={(formState: BMICalculatorData<string>) => {
+        const { height: heightInCm, weight: weightInKg } =
+          stringValuesToNums(formState);
+        setBmi(calculateBMI({ weightInKg, heightInCm }));
+        dispatch(updateMetrics({ weight: weightInKg, height: heightInCm }));
       }}
     >
       {() => (

@@ -21,3 +21,5 @@
 - for some reason, I can't get a button with an icon, because of [some weirdness](https://github.com/chakra-ui/chakra-ui/issues/683).The workaround I came up with doesn't really give a feedback if the icon is "hovered"
 - cleanup the components/ containers mess - I started randomly picking which components goes where
 - add selector functions into slices
+- color scheme issue is still not resolved, but it's likely it's because of `textColor` and `bg` attributes that I've added
+- you can use imperial or metric units

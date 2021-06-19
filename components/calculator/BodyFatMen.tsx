@@ -3,9 +3,9 @@ import { Form, Formik } from 'formik';
 import React, { useState } from 'react';
 import * as Yup from 'yup';
 import { calculateBodyFatForMen } from '../../utils/calculateBodyFat';
+import stringValuesToNums from '../../utils/stringValuesToNums';
 import { InputWrapper } from '../form/InputWrapper';
 import { SubmitAndResult } from '../form/SubmitAndResult';
-
 
 interface BodyFatMenProps {}
 const validationSchema = Yup.object({
@@ -30,8 +30,16 @@ export const BodyFatMen: React.FC<BodyFatMenProps> = ({}) => {
     <Formik
       validationSchema={validationSchema}
       initialValues={initialFormState}
-      onSubmit={({ weight, waist }: FormState) => {
-        setBodyFat(calculateBodyFatForMen(Number(weight), Number(waist)));
+      onSubmit={(formState: FormState) => {
+        // setBodyFat(calculateBodyFatForMen(Number(weight), Number(waist)));
+        const { weight: weightInLb, waist: waistInInch } =
+          stringValuesToNums(formState);
+        // @ts-ignore
+        const tempBodyFat = calculateBodyFatForMen({
+          weightInLb,
+          waistInInch,
+        });
+        setBodyFat(tempBodyFat);
       }}
     >
       {() => (
