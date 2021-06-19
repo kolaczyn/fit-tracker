@@ -1,4 +1,4 @@
-import { Flex, HStack, Spacer } from '@chakra-ui/react';
+import { Box, Flex, HStack, Spacer } from '@chakra-ui/react';
 import React from 'react';
 
 import { ColorSchemeSwitch } from '../ui/ColorSchemeSwitch';
@@ -14,7 +14,9 @@ export const Navbar: React.FC = ({}) => {
         <Logo />
         <Spacer />
         <HStack spacing={2}>
-          <NavLinks />
+          <Box display={["none", "none", "initial"]}>
+            <NavLinks />
+          </Box>
           <ColorSchemeSwitch />
           <AppDrawer />
         </HStack>
