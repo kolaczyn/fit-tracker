@@ -69,7 +69,7 @@ export const FoodPage: React.FC = () => {
           Consoom Selected
         </Button>
       </HStack>
-      <VStack width="100%" alignItems="stretch" spacing="2">
+      <VStack width="100%" alignItems="stretch" spacing="3">
         {[
           banana,
           apple,

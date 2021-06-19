@@ -2,7 +2,7 @@ import { Checkbox } from '@chakra-ui/checkbox';
 import { EditIcon, HamburgerIcon } from '@chakra-ui/icons';
 import { Box, Flex, HStack, Spacer, Text, VStack } from '@chakra-ui/layout';
 import { Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/menu';
-import { Tag } from '@chakra-ui/react';
+import { Tag, useColorModeValue } from '@chakra-ui/react';
 import React from 'react';
 
 import { Food } from '../../customTypes';
@@ -29,6 +29,8 @@ export const FoodItem: React.FC<FoodItemProps> = ({
   toggleFood,
   isActive,
 }) => {
+  const bg = useColorModeValue('purple.50', 'gray.800');
+  const color = useColorModeValue('gray.900', 'white');
   return (
     <Flex
       data-testid="food-component"
@@ -37,6 +39,8 @@ export const FoodItem: React.FC<FoodItemProps> = ({
       onClick={() => toggleFood(food.id)}
       rounded="lg"
       shadow="md"
+      bg={bg}
+      color={color}
     >
       <VStack align="left">
         <HStack>

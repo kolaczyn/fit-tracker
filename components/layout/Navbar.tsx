@@ -1,10 +1,4 @@
-import {
-  Button,
-  Flex,
-  HStack,
-  Spacer,
-  useColorMode,
-} from '@chakra-ui/react';
+import { Button, Flex, HStack, Spacer, useColorMode } from '@chakra-ui/react';
 import React from 'react';
 
 import { AppLink } from '../ui/AppLink';
@@ -12,7 +6,7 @@ import { Logo } from '../ui/Logo';
 import { Bar } from './Bar';
 
 export const Navbar: React.FC = ({}) => {
-  const { colorMode, toggleColorMode } = useColorMode();
+  const { toggleColorMode } = useColorMode();
   return (
     <Bar top="0" zIndex="sticky" position="sticky">
       <Flex align="center">
