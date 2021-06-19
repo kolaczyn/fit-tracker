@@ -14,6 +14,7 @@ function createNormalizedIndex<T>(): NormalizedIndex<T> {
 type State = {
   // add categories
   foodList: NormalizedIndex<Food>;
+  // this should be just a reference to foodList, e.g. ids
   foodEaten: NormalizedIndex<Food>;
   intakeGoal: Nutrients<number>;
 };

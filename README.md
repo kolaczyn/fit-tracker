@@ -36,3 +36,5 @@
 - start with empty gender, so the user is forced to select the correct gender
 - close the add food modal on submit
 - read the docs for NextSeo and use some of its features
+- start using classes, use constructors setting values to 0, etc in the `models/` directory
+- make a utility for Formik, there's a lot of `number().require().min(0)` in here
