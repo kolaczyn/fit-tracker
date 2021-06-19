@@ -9,8 +9,7 @@ export const GeneralLayout: React.FC = ({ children }) => {
   return (
     <Flex direction="column" minH="100vh" bg={bg} color={color}>
       <Navbar />
-      <Container my="4">{children}</Container>
-      <Spacer />
+      <Container flexGrow={1} my="4">{children}</Container>
       <Footer />
     </Flex>
   );

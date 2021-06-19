@@ -26,6 +26,6 @@
 - I'm using teal ghost buttons all over the place, I should put it in a AppButton component or something like this
 - for some reason, I can't get a button with an icon, because of [some weirdness](https://github.com/chakra-ui/chakra-ui/issues/683).The workaround I came up with doesn't really give a feedback if the icon is "hovered" **Solution - use IconButton**
 - convert `<ColorSchemeSwitch>` into `<IconButton>`
-- app drawer - clicking back (on mobile) should hide the drawer
 - make dark mode the default theme
 - add fancy slide in of the content on page load
+- add icons
