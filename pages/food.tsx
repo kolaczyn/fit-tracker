@@ -6,6 +6,7 @@ import React, { useState } from 'react';
 import { FoodItem } from '../components/food/FoodItem';
 import { AddFoodContainer } from '../components/food/AddFood';
 import { Food } from '../customTypes';
+import { NextSeo } from 'next-seo';
 
 const banana: Food = {
   name: 'Banana',
@@ -57,6 +58,8 @@ export const FoodPage: React.FC = () => {
   const isActive = (foodId: number): boolean => selectedFoods.has(foodId);
 
   return (
+    <>
+    <NextSeo title="Add Food | Track Fit" />
     <VStack width="100%" alignItems="stretch" spacing="4">
       <HStack>
         <Button onClick={onOpen}>Add Food</Button>
@@ -93,6 +96,7 @@ export const FoodPage: React.FC = () => {
         ))}
       </VStack>
     </VStack>
+    </>
   );
 };
 
