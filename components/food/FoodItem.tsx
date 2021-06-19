@@ -1,31 +1,30 @@
-import React, { useState } from 'react';
 import { Checkbox } from '@chakra-ui/checkbox';
-import { ChevronDownIcon, EditIcon, HamburgerIcon } from '@chakra-ui/icons';
+import { EditIcon, HamburgerIcon } from '@chakra-ui/icons';
 import { Box, Flex, HStack, Spacer, Text, VStack } from '@chakra-ui/layout';
 import { Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/menu';
+import { Tag } from '@chakra-ui/react';
+import React from 'react';
 
-import { Food } from '../customTypes';
-import { Button, Tag } from '@chakra-ui/react';
-import prettyPrintGrams from '../utils/prettyPrintGrams';
+import { Food } from '../../customTypes';
+import prettyPrintGrams from '../../utils/prettyPrintGrams';
 
-interface FoodComponentProps {
+interface FoodItemProps {
   food: Food;
   toggleFood: (id: number) => void;
   isActive: boolean;
 }
 
-const HamburgerButton: React.ComponentType = ({ ...props }) => (
-  <Box {...props}>Helo</Box>
-  // <Button {...props} backgroundColor="transparent">
-  //   hello
-  //   {/* <Box>
-  //   <HamburgerIcon />
+// const HamburgerButton: React.ComponentType = ({ ...props }) => (
+//   <Box {...props}>Helo</Box>
+//   // <Button {...props} backgroundColor="transparent">
+//   //   hello
+//   //   {/* <Box>
+//   //   <HamburgerIcon />
+//   //   </Box> */}
+//   // </Button>
+// );
 
-  //   </Box> */}
-  // </Button>
-);
-
-export const FoodComponent: React.FC<FoodComponentProps> = ({
+export const FoodItem: React.FC<FoodItemProps> = ({
   food,
   toggleFood,
   isActive,
@@ -63,18 +62,17 @@ export const FoodComponent: React.FC<FoodComponentProps> = ({
       <Spacer />
       <HStack>
         {/* the way I implement this checkbox may not be the most accessable */}
-        <Checkbox data-testid="food-toggle-checkbox" isChecked={isActive}/>
+        <Checkbox data-testid="food-toggle-checkbox" isChecked={isActive} />
         {/* we stop the propagation, so clicking the menu doesn't toggle selection of the food */}
         <Box onClick={e => e.stopPropagation()}>
           <Menu>
-            <MenuButton  p="1">
-              <HamburgerIcon  />
+            <MenuButton p="1">
+              <HamburgerIcon />
             </MenuButton>
             <MenuList>
               <MenuItem>
-              <EditIcon />
-              Edit
-
+                <EditIcon />
+                Edit
               </MenuItem>
               <MenuItem>Delete</MenuItem>
             </MenuList>

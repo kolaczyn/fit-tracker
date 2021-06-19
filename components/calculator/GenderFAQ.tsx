@@ -1,10 +1,12 @@
 import { Accordion } from '@chakra-ui/accordion';
 import {
-  AccordionItem,
   AccordionButton,
-  Box,
-  AccordionIcon,
-  AccordionPanel,
+
+  AccordionIcon, AccordionItem,
+
+
+
+  AccordionPanel, Box
 } from '@chakra-ui/react';
 import React from 'react';
 

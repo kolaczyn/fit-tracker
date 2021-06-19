@@ -3,12 +3,10 @@ import * as Yup from 'yup';
 import { Form, Formik } from 'formik';
 import { Button } from '@chakra-ui/react';
 
-import { Nutrients } from '../customTypes';
-import { useAppDispatch } from '../redux/hooks';
-import { addNutrients } from '../redux/nutrientsSlice';
-import { InputWrapper } from '../components/form/InputWrapper';
-
-interface NutrientsInputContainerProps {}
+import { Nutrients } from '../../customTypes';
+import { useAppDispatch } from '../../redux/hooks';
+import { addNutrients } from '../../redux/nutrientsSlice';
+import { InputWrapper } from '../form/InputWrapper';
 
 const validationSchema = Yup.object({
   calories: Yup.number().min(0).required(),
@@ -25,7 +23,7 @@ const initialFormState: Nutrients<string> = {
 };
 
 // TODO I should rename this to NutrientsFormContainerProps
-export const NutrientsInputContainer: React.FC<NutrientsInputContainerProps> =
+export const NutrientsInput: React.FC =
   ({}) => {
     const dispatch = useAppDispatch();
 

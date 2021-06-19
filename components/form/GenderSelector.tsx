@@ -5,7 +5,7 @@ import React from 'react';
 import { Gender } from '../../customTypes';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { updateMetrics } from '../../redux/metricsSlice';
-import { GenderFAQ } from '../GenderFAQ';
+import { GenderFAQ } from '../calculator/GenderFAQ';
 import { RadioWrapper } from './RadioWrapper';
 
 interface GenderSelectorProps {}

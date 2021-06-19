@@ -1,18 +1,15 @@
 import { Box, Flex, HStack, Spacer } from '@chakra-ui/react';
-import NextLink from 'next/link';
 import React from 'react';
-import { AppLink } from './AppLink';
 
-import { LogoComponent } from './LogoComponent';
+import { AppLink } from '../ui/AppLink';
+import { Logo } from '../ui/Logo';
 
-interface NavbarComponentProps {}
-
-export const NavbarComponent: React.FC<NavbarComponentProps> = ({}) => {
+export const Navbar: React.FC = ({}) => {
   return (
     <Box
       boxShadow="lg"
       top="0"
-      zIndex="100"
+      zIndex="docked"
       bg="gray.900"
       mb="4"
       px="4"
@@ -21,7 +18,7 @@ export const NavbarComponent: React.FC<NavbarComponentProps> = ({}) => {
       position="sticky"
     >
       <Flex align="center">
-        <LogoComponent />
+        <Logo />
         <Spacer />
         <HStack spacing={2}>
           <AppLink href="/" label="Home" />

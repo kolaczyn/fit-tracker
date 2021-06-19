@@ -3,18 +3,15 @@ import React from 'react';
 import { AiFillGithub as GithubIcon } from 'react-icons/ai';
 import { FiTwitter as TwitterIcon } from 'react-icons/fi';
 import { MdWeb as WebsiteIcon } from 'react-icons/md';
-// import {AiOmu} from 'react-icons/ai'
 import {AiOutlineMail as MailIcon } from 'react-icons/ai'
 
-import { FooterLinkComponent } from './FooterLinkComponent';
+import { FooterLink } from '../ui/FooterLink';
 
-interface FooterComponentProps {}
-
-export const FooterComponent: React.FC<FooterComponentProps> = ({}) => {
+export const Footer: React.FC = ({}) => {
   return (
     <Box
       boxShadow="lg"
-      zIndex="100"
+      zIndex="docked"
       bg="gray.900"
       mt="4"
       px="4"
@@ -26,28 +23,26 @@ export const FooterComponent: React.FC<FooterComponentProps> = ({}) => {
       <VStack spacing={3}>
         <Text>created by Paweł Kołaczyński</Text>
         <HStack spacing={10}>
-          <FooterLinkComponent
+          <FooterLink
             Icon={GithubIcon}
             href="https://github.com/kolaczyn"
           >
             GitHub
-          </FooterLinkComponent>
-          <FooterLinkComponent
+          </FooterLink>
+          <FooterLink
             Icon={TwitterIcon}
             href="https://twitter.com/kolaczyn"
           >
             Twitter
-          </FooterLinkComponent>
-          <FooterLinkComponent shouldOpenInNewTab={false} Icon={MailIcon} href="mailto:kolaczyn@protonmail.com">
+          </FooterLink>
+          <FooterLink shouldOpenInNewTab={false} Icon={MailIcon} href="mailto:kolaczyn@protonmail.com">
             Email
-          </FooterLinkComponent>
-          <FooterLinkComponent Icon={WebsiteIcon} href="https://kolaczyn.com">
+          </FooterLink>
+          <FooterLink Icon={WebsiteIcon} href="https://kolaczyn.com">
             My Website
-          </FooterLinkComponent>
+          </FooterLink>
         </HStack>
       </VStack>
     </Box>
   );
 };
-
-// 12 minutes left

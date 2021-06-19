@@ -1,12 +1,11 @@
-import React, { useState } from 'react';
+import { VStack } from '@chakra-ui/react';
 import { Form, Formik } from 'formik';
-// import * as Yup from 'yup';
-
-import { InputWrapper } from '../form/InputWrapper';
-import { Button, Text, VStack } from '@chakra-ui/react';
+import React, { useState } from 'react';
 import { calculateBodyFatForWomen } from '../../utils/calculateBodyFat';
-import convertStringsToNums from '../../utils/convertStringsToNums';
+// import * as Yup from 'yup';
+import { InputWrapper } from '../form/InputWrapper';
 import { SubmitAndResult } from '../form/SubmitAndResult';
+import stringValuesToNums from '../../utils/stringValuesToNums';
 
 interface BodyFatWomenProps {}
 
@@ -15,6 +14,7 @@ interface BodyFatWomenProps {}
 //   waist: Yup.number().min(0).required(),
 // });
 
+// I had to add the Record<string, string> thingie, because of TypeScript's screaming
 interface FormState {
   weight: string;
   wrist: string;
@@ -32,23 +32,29 @@ const initialFormState: FormState = {
 };
 
 export const BodyFatWomen: React.FC<BodyFatWomenProps> = ({}) => {
-  const [bodyFat, setBodyFat] = useState<number|null>(null);
-  
+  const [bodyFat, setBodyFat] = useState<number | null>(null);
+
   return (
     <Formik
       // TODO add validation schema and make it more generic so I can reuse it for all the other calculators
       // validationSchema={validationSchema}
       initialValues={initialFormState}
-      onSubmit={({ weight, wrist, hip, forearm, waist }: FormState) => {
-        const tempBodyFat = calculateBodyFatForWomen(
-          // ...convertStringsToNums(
-          Number(weight),
-          Number(wrist),
-          Number(hip),
-          Number(forearm),
-          Number(waist)
-          // )
-        );
+      onSubmit={(formState: FormState) => {
+        const {
+          weight: weightInLb,
+          hip: hipInInch,
+          waist: waistInInch,
+          forearm: forearmInInch,
+          wrist: writstInInch,
+        } = stringValuesToNums(formState);
+        // @ts-ignore
+        const tempBodyFat = calculateBodyFatForWomen({
+          weightInLb,
+          hipInInch,
+          waistInInch,
+          forearmInInch,
+          writstInInch,
+        });
         setBodyFat(tempBodyFat);
       }}
     >

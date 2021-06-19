@@ -1,0 +1,15 @@
+import { Flex, Container, Spacer } from '@chakra-ui/react';
+import React from 'react';
+import { Footer } from './Footer';
+import { Navbar } from './Navbar';
+
+export const GeneralLayout: React.FC = ({ children }) => {
+  return (
+    <Flex direction="column" minH="100vh" backgroundColor="gray.800">
+      <Navbar />
+      <Container>{children}</Container>
+      <Spacer />
+      <Footer />
+    </Flex>
+  );
+};

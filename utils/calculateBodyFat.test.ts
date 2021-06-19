@@ -2,6 +2,8 @@ import {
   calculateBodyFatForMen,
   calculateBodyFatForWomen,
   exportedForTesting,
+  BodyFatMenData,
+  BodyFatWomenData,
 } from './calculateBodyFat';
 
 const { calculateBodyFat } = exportedForTesting;
@@ -15,16 +17,47 @@ describe('calculateBodyFat', () => {
   });
 });
 
+const menCases: [number, BodyFatMenData][] = [
+  [21.22, { weightInLb: 201, waistInInch: 37 }],
+];
 // TODO finish this
 describe('calculateBodyFatForMen', () => {
-  it('correctly calculates body fat for men', () => {
-    expect(calculateBodyFatForMen(201, 37)).toBeCloseTo(21.22);
-  });
+  test.each(menCases)(
+    'correctly calculates body fat for men %s <- %s',
+    (correct, data) => {
+      expect(calculateBodyFatForMen(data)).toBeCloseTo(correct);
+    }
+  );
 });
 
+const womenCases: [number, BodyFatWomenData][] = [
+  [
+    14.5,
+    {
+      weightInLb: 180,
+      writstInInch: 10,
+      hipInInch: 32,
+      forearmInInch: 50,
+      waistInInch: 24,
+    },
+  ],
+  [
+    11.48,
+    {
+      weightInLb: 140,
+      writstInInch: 8,
+      hipInInch: 30,
+      forearmInInch: 48,
+      waistInInch: 22,
+    },
+  ],
+];
+
 describe('calculateBodyFatForWomen', () => {
-  it('correctly calculates body fat for women', () => {
-    expect(calculateBodyFatForWomen(180, 10, 32, 50, 24)).toBeCloseTo(14.5);
-    expect(calculateBodyFatForWomen(140, 8, 30, 48, 22)).toBeCloseTo(11.48);
-  });
+  test.each(womenCases)(
+    'correctly calculates body fat for women %s <- %s',
+    (correct, data) => {
+      expect(calculateBodyFatForWomen(data)).toBeCloseTo(correct);
+    }
+  );
 });

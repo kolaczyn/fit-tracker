@@ -1,10 +1,17 @@
 import calculateBMI from './calculateBMI';
 
+const cases: [number, number, number][] = [
+  [25.5, 87.3, 185],
+  [31.0, 95, 175],
+  [21.2, 65, 175],
+  [22.2, 50, 150],
+];
+
 describe('calculateBMI', () => {
-  it('correctly calculates BMI', () => {
-    expect(calculateBMI(87.3, 185)).toBeCloseTo(25.5, 1);
-    expect(calculateBMI(95, 175)).toBeCloseTo(31.0, 1);
-    expect(calculateBMI(65, 175)).toBeCloseTo(21.2, 1);
-    expect(calculateBMI(50, 150)).toBeCloseTo(22.2, 1);
-  });
+  test.each(cases)(
+    'should correctly calculate BMI of %s for %s kg %s cm',
+    (correct, weightInKg, heightInCm) => {
+      expect(calculateBMI({ weightInKg, heightInCm })).toBeCloseTo(correct, 1);
+    }
+  );
 });
