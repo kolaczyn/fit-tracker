@@ -1,22 +1,14 @@
-import { Box, Flex, HStack, Spacer } from '@chakra-ui/react';
+import { Flex, HStack, Spacer } from '@chakra-ui/react';
 import React from 'react';
 
 import { AppLink } from '../ui/AppLink';
+import { ColorSchemeSwitch } from '../ui/ColorSchemeSwitch';
 import { Logo } from '../ui/Logo';
+import { Bar } from './Bar';
 
 export const Navbar: React.FC = ({}) => {
   return (
-    <Box
-      boxShadow="lg"
-      top="0"
-      zIndex="docked"
-      bg="gray.900"
-      mb="4"
-      px="4"
-      py="2"
-      w="100%"
-      position="sticky"
-    >
+    <Bar top="0" zIndex="sticky" position="sticky">
       <Flex align="center">
         <Logo />
         <Spacer />
@@ -26,8 +18,9 @@ export const Navbar: React.FC = ({}) => {
           <AppLink href="/food" label="Food" />
           <AppLink href="/meals" label="Meals" />
           <AppLink href="/calculator" label="Calculator" />
+          <ColorSchemeSwitch />
         </HStack>
       </Flex>
-    </Box>
+    </Bar>
   );
 };
