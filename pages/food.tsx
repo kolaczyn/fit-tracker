@@ -7,7 +7,7 @@ import { FoodItem } from '../components/food/FoodItem';
 import { AddFoodContainer } from '../components/food/AddFood';
 import { NextSeo } from 'next-seo';
 import useSelectedFood from '../hooks/useSelectedFood';
-import { SelectedFoodIntake } from '../components/food/SelectedFoodIntake';
+import { NutrientsStats } from '../components/food/NutrientsStats';
 import useEatenCalories from '../hooks/useEatenCalories';
 
 export const FoodPage: React.FC = () => {
@@ -26,8 +26,8 @@ export const FoodPage: React.FC = () => {
     <>
       <NextSeo title="Add Food | Track Fit" />
       <VStack width="100%" alignItems="stretch" spacing="4">
-        <SelectedFoodIntake nutrients={eatenCalories} />
-        <SelectedFoodIntake nutrients={foodIntake} />
+        <NutrientsStats nutrients={eatenCalories} />
+        <NutrientsStats nutrients={foodIntake} />
         <HStack>
           <Button onClick={onOpen}>Add Food</Button>
           <AddFoodContainer isOpen={isOpen} onClose={onClose} />

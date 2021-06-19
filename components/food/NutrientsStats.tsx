@@ -3,7 +3,7 @@ import React from 'react';
 import { Nutrients } from '../../customTypes';
 import prettyPrintGrams from '../../utils/prettyPrintGrams';
 
-interface SelectedFoodIntakeProps {
+interface NutrientsStatsProps {
   nutrients: Nutrients<number>;
 }
 
@@ -15,7 +15,7 @@ const keysOfNutrients: Array<keyof Nutrients<number>> = [
   'protein',
 ];
 
-export const SelectedFoodIntake: React.FC<SelectedFoodIntakeProps> = ({
+export const NutrientsStats: React.FC<NutrientsStatsProps> = ({
   nutrients,
 }) => {
   return (
