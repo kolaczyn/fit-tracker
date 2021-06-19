@@ -1,5 +1,6 @@
 import { TabList, Tab, TabPanel } from '@chakra-ui/react';
 import { TabPanels, Tabs } from '@chakra-ui/tabs';
+import { NextSeo } from 'next-seo';
 import React from 'react';
 
 import { BMICalculator } from '../components/calculator/BMICalculator';
@@ -14,6 +15,7 @@ interface CalculatorProps {}
 export const Calculator: React.FC<CalculatorProps> = ({}) => {
   return (
     <>
+      <NextSeo title="Calculator | Track Fit" />
       <GenderSelector />
       <Tabs>
         <TabList>

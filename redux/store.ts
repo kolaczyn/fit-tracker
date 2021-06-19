@@ -8,6 +8,6 @@ const store = configureStore({
     metrics: metricsSlice,
   },
 });
-export type AppDispatch = typeof store.dispatch
+export type AppDispatch = typeof store.dispatch;
 export type RootState = ReturnType<typeof store.getState>;
 export default store;

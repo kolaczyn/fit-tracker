@@ -1,10 +1,11 @@
-import { Flex, HStack, Spacer } from '@chakra-ui/react';
+import { Box, Flex, HStack, Spacer } from '@chakra-ui/react';
 import React from 'react';
 
-import { AppLink } from '../ui/AppLink';
 import { ColorSchemeSwitch } from '../ui/ColorSchemeSwitch';
 import { Logo } from '../ui/Logo';
+import { AppDrawer } from './AppDrawer';
 import { Bar } from './Bar';
+import { NavLinks } from './NavLinks';
 
 export const Navbar: React.FC = ({}) => {
   return (
@@ -13,12 +14,11 @@ export const Navbar: React.FC = ({}) => {
         <Logo />
         <Spacer />
         <HStack spacing={2}>
-          <AppLink href="/" label="Home" />
-          <AppLink href="/calories" label="Calories" />
-          <AppLink href="/food" label="Food" />
-          <AppLink href="/meals" label="Meals" />
-          <AppLink href="/calculator" label="Calculator" />
+          <Box display={["none", "none", "initial"]}>
+            <NavLinks />
+          </Box>
           <ColorSchemeSwitch />
+          <AppDrawer />
         </HStack>
       </Flex>
     </Bar>
