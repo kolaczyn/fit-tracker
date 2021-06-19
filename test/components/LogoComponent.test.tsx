@@ -9,7 +9,7 @@ import { Logo } from '../../components/ui/Logo';
 
 describe('<LogoComponent/>', () => {
   it('correctly renders the component', () => {
-    const { queryByText } = render(<Logo />);
+    const { queryByText } = render(<Logo />, );
 
     expect(queryByText('Track')).toBeTruthy();
     expect(queryByText('Fit')).toBeTruthy();

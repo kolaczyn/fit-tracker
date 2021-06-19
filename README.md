@@ -28,4 +28,9 @@
 - convert `<ColorSchemeSwitch>` into `<IconButton>`
 - make dark mode the default theme
 - add fancy slide in of the content on page load
-- add icons
+- figure out how to properly name `loremSlice`
+- finish the *remember-user's-measurements-across-calculators* feature
+- cleanup the `/food` page, there's a lot of low level code in there
+- get rid of redundant TS annotations
+- find some way to utilize the horizontal space on desktop, maybe latest stats?
+- start with empty gender, so the user is forced to select the correct gender

@@ -51,7 +51,14 @@ export type Metrics = {
 export type Food = {
   name: string;
   category: string;
-  id: number;
+  id: string;
   portion: number;
   nutrients: Nutrients<number>;
 };
+
+
+export interface NormalizedIndex<T> {
+  byId: Record<string, T>;
+  allIds: string[];
+}
+

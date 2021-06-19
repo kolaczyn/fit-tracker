@@ -6,17 +6,22 @@ import { render, fireEvent, within } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
 import FoodPage from '../../pages/food';
+import { StoreProvider } from '../../components/providers/StoreProvider';
 
-describe('<LogoComponent/>', () => {
+describe('food page', () => {
   it('correctly renders the component', () => {
-    const { queryByText } = render(<FoodPage />);
+    const { queryByText } = render(<FoodPage />, {
+      wrapper: StoreProvider,
+    });
 
     expect(queryByText('Add Food')).toBeTruthy();
   });
   it('correctly enables and disables the `Consome` button', () => {
-    const { getByText, getAllByTestId } = render(
-      <FoodPage />
-    );
+    // TODO this test is bad, the values are no longer hardcoded, and I'm using Redux to handle the state
+    // it only works because I'm using the same values in the store
+    const { getByText, getAllByTestId } = render(<FoodPage />, {
+      wrapper: StoreProvider,
+    });
 
     const consumeButton = getByText('Consoom Selected');
     expect(consumeButton).toBeDisabled();

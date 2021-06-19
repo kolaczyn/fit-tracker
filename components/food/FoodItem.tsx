@@ -10,7 +10,7 @@ import prettyPrintGrams from '../../utils/prettyPrintGrams';
 
 interface FoodItemProps {
   food: Food;
-  toggleFood: (id: number) => void;
+  toggleFood: (id: string) => void;
   isActive: boolean;
 }
 
