@@ -28,4 +28,13 @@
 - convert `<ColorSchemeSwitch>` into `<IconButton>`
 - make dark mode the default theme
 - add fancy slide in of the content on page load
-- add icons
+- figure out how to properly name `loremSlice`
+- finish the *remember-user's-measurements-across-calculators* feature
+- cleanup the `/food` page, there's a lot of low level code in there
+- get rid of redundant TS annotations
+- find some way to utilize the horizontal space on desktop, maybe latest stats?
+- start with empty gender, so the user is forced to select the correct gender
+- close the add food modal on submit
+- read the docs for NextSeo and use some of its features
+- start using classes, use constructors setting values to 0, etc in the `models/` directory
+- make a utility for Formik, there's a lot of `number().require().min(0)` in here
