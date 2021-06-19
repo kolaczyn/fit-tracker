@@ -3,7 +3,7 @@ import { cleanup } from '@testing-library/react';
 import { useState, useEffect } from 'react';
 import { Food, Nutrients } from '../customTypes';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
-import { addtoFoodList } from '../redux/trackIntakeSlice';
+import { addtoFoodList, addtoFoodEaten } from '../redux/trackIntakeSlice';
 import normalizedToArray from '../utils/normalizedToArray';
 
 const banana: Food = {
@@ -70,6 +70,7 @@ const useSelectedFood = () => {
   }, []);
 
   const handleConsoomSelected = () => {
+    dispatch(addtoFoodEaten([...selectedFoodIds]));
     setSelectedFoodIds(new Set());
   };
   const isActive = (foodId: string): boolean => selectedFoodIds.has(foodId);

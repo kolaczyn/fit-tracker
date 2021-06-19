@@ -8,6 +8,7 @@ import { AddFoodContainer } from '../components/food/AddFood';
 import { NextSeo } from 'next-seo';
 import useSelectedFood from '../hooks/useSelectedFood';
 import { SelectedFoodIntake } from '../components/food/SelectedFoodIntake';
+import useEatenCalories from '../hooks/useEatenCalories';
 
 export const FoodPage: React.FC = () => {
   const {
@@ -19,11 +20,13 @@ export const FoodPage: React.FC = () => {
     toggleFood,
   } = useSelectedFood();
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { eatenCalories } = useEatenCalories();
 
   return (
     <>
       <NextSeo title="Add Food | Track Fit" />
       <VStack width="100%" alignItems="stretch" spacing="4">
+        <SelectedFoodIntake nutrients={eatenCalories} />
         <SelectedFoodIntake nutrients={foodIntake} />
         <HStack>
           <Button onClick={onOpen}>Add Food</Button>
@@ -46,7 +49,6 @@ export const FoodPage: React.FC = () => {
             />
           ))}
         </VStack>
-
       </VStack>
     </>
   );
