@@ -11,22 +11,23 @@ const activityLevelToMultiplier: Record<ActivityLevel, number> = {
   [ActivityLevel.ExtremelyActive]: 1.9,
 };
 
-export const calculateTDEEForMale = (
-  activityLevel: ActivityLevel,
-  weight: number,
-  height: number,
-  age: number
-) => {
+export interface TDEEData {
+  activityLevel: ActivityLevel;
+  weightInKg: number;
+  heightInCm: number;
+  age: number;
+}
+
+export const calculateTDEEForMale = (data: TDEEData) => {
+  const { heightInCm, weightInKg, activityLevel, age } = data;
   const multiplier = activityLevelToMultiplier[activityLevel];
-  return multiplier * (13.75 * weight + 5 * height - 6.76 * age + 66);
+  return multiplier * (13.75 * weightInKg + 5 * heightInCm - 6.76 * age + 66);
 };
 
-export const calculateTDEEForFemale = (
-  activityLevel: ActivityLevel,
-  weight: number,
-  height: number,
-  age: number
-) => {
+export const calculateTDEEForFemale = (data: TDEEData) => {
+  const { heightInCm, weightInKg, activityLevel, age } = data;
   const multiplier = activityLevelToMultiplier[activityLevel];
-  return multiplier * (9.56 * weight + 1.85 * height - 4.68 * age + 655);
+  return (
+    multiplier * (9.56 * weightInKg + 1.85 * heightInCm - 4.68 * age + 655)
+  );
 };

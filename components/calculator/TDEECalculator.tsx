@@ -2,14 +2,15 @@ import { FormLabel, Grid, RadioGroup, VStack } from '@chakra-ui/react';
 import { Form, Formik } from 'formik';
 import React, { useState } from 'react';
 import * as Yup from 'yup';
+
 import { ActivityLevel, TDEECalculatorData } from '../../customTypes';
 import { useAppSelector } from '../../redux/hooks';
 import {
   calculateTDEEForFemale,
   calculateTDEEForMale,
 } from '../../utils/calculateTDEE';
-
 import isMale from '../../utils/isMale';
+import stringValuesToNums from '../../utils/stringValuesToNums';
 import { InputWrapper } from '../form/InputWrapper';
 import { RadioWrapper } from '../form/RadioWrapper';
 import { SubmitAndResult } from '../form/SubmitAndResult';
@@ -37,25 +38,25 @@ export const TDEECalculator: React.FC<TDEECalculatorProps> = ({}) => {
       initialValues={initialFormState}
       onSubmit={({
         activityLevel,
-        weight,
-        height,
-        age,
+        ...restData
       }: TDEECalculatorData<string>) => {
+        const calcFunc = isMale(gender)
+          ? calculateTDEEForMale
+          : calculateTDEEForFemale;
+        const {
+          weight: weightInKg,
+          height: heightInCm,
+          age,
+        } = stringValuesToNums(restData);
         setUserTDEE(
+          calcFunc({ weightInKg, heightInCm, age, activityLevel })
           // TODO I don't like the duplication in here, might do something about this later
-          isMale(gender)
-            ? calculateTDEEForMale(
-                activityLevel,
-                Number(weight),
-                Number(height),
-                Number(age)
-              )
-            : calculateTDEEForFemale(
-                activityLevel,
-                Number(weight),
-                Number(height),
-                Number(age)
-              )
+          // : calculateTDEEForFemale(
+          //     activityLevel,
+          //     Number(weight),
+          //     Number(height),
+          //     Number(age)
+          //   )
         );
       }}
     >

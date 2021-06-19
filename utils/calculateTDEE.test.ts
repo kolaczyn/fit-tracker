@@ -1,29 +1,56 @@
 import { ActivityLevel } from '../customTypes';
 import {
   calculateTDEEForMale,
-  calculateTDEEForFemale
+  calculateTDEEForFemale,
+  TDEEData,
 } from './calculateTDEE';
 
+const maleCases: [number, TDEEData][] = [
+  [
+    2546.29,
+    {
+      activityLevel: ActivityLevel.LightlyActive,
+      weightInKg: 83,
+      heightInCm: 183,
+      age: 40,
+    },
+  ],
+  [
+    2241.564,
+    {
+      activityLevel: ActivityLevel.Sendetary,
+      weightInKg: 83,
+      heightInCm: 170,
+      age: 28,
+    },
+  ],
+];
+
+const femaleCases: [number, TDEEData][] = [
+  [
+    2553.24,
+    {
+      activityLevel: ActivityLevel.VeryActive,
+      weightInKg: 69,
+      heightInCm: 178,
+      age: 35,
+    },
+  ],
+];
+
 describe('CalculateTDEEforMale', () => {
-  it('correctly calculates TDEE for male', () => {
-    // Vince
-    expect(
-      calculateTDEEForMale(ActivityLevel.LightlyActive, 83, 183, 40)
-    ).toBeCloseTo(2546.29);
-
-    // Dillon
-    expect(
-      calculateTDEEForMale(ActivityLevel.Sendetary, 83, 170, 28)
-    ).toBeCloseTo(2241.564);
-  });
+  test.each(maleCases)(
+    'correctly calculates TDEE for male %s <- %s',
+    (correct, data) => {
+      expect(calculateTDEEForMale(data)).toBeCloseTo(correct);
+    }
+  );
 });
-
-describe('CalculateTDEEforFemal', () => {
-  it('correctly calculates TDEE for female', () => {
-    // Jennifer
-    expect(
-      calculateTDEEForFemale(ActivityLevel.VeryActive, 69, 178, 35)
-    ).toBeCloseTo(2553.24);
-
-  });
+describe('CalculateTDEEforFemale', () => {
+  test.each(femaleCases)(
+    'correctly calculates TDEE for female %s <- %s',
+    (correct, data) => {
+      expect(calculateTDEEForFemale(data)).toBeCloseTo(correct);
+    }
+  );
 });

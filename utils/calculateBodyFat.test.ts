@@ -1,4 +1,3 @@
-import { textDecoration } from '@chakra-ui/styled-system';
 import {
   calculateBodyFatForMen,
   calculateBodyFatForWomen,
