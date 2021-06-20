@@ -1,5 +1,6 @@
 import { VStack } from '@chakra-ui/react';
 import { Form, Formik } from 'formik';
+import { NextSeo } from 'next-seo';
 import React, { useState } from 'react';
 import * as Yup from 'yup';
 import { BMICalculatorData } from '../../customTypes';
@@ -28,6 +29,8 @@ export const BMICalculator: React.FC<BMICalculatorProps> = ({}) => {
   const [bmi, setBmi] = useState<number | null>(null);
 
   return (
+    <>
+    <NextSeo title="BMI Calculator | Track Fit" />
     <Formik
       validationSchema={validationSchema}
       initialValues={initialFormState}
@@ -58,5 +61,6 @@ export const BMICalculator: React.FC<BMICalculatorProps> = ({}) => {
         </Form>
       )}
     </Formik>
+    </>
   );
 };

@@ -22,7 +22,6 @@
 - add find feature with `fuse.js`
 - for mobile, add alternative for tooltip
 
-- add redirection to tabs in `/calculator`, e.g. `/calculator/tdee` redirects to TDEE Calculator tab
 - add indicators saying if e.g. your BMI is okay, give explanation what does BMI and TDEE mean and their uses cases, give instructions on how you should measure yourself
 - for some reason I can't put floats in the input
 - sometimes numbers like 102.000000003 show up - round floats to second digit after period

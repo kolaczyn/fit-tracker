@@ -6,6 +6,7 @@ import { calculateBodyFatForWomen } from '../../utils/calculateBodyFat';
 import { InputWrapper } from '../form/InputWrapper';
 import { SubmitAndResult } from '../form/SubmitAndResult';
 import stringValuesToNums from '../../utils/stringValuesToNums';
+import { NextSeo } from 'next-seo';
 
 interface BodyFatWomenProps {}
 
@@ -35,6 +36,8 @@ export const BodyFatWomen: React.FC<BodyFatWomenProps> = ({}) => {
   const [bodyFat, setBodyFat] = useState<number | null>(null);
 
   return (
+    <>
+    <NextSeo title="Body Fat Calculator | Track Fit" />
     <Formik
       // TODO add validation schema and make it more generic so I can reuse it for all the other calculators
       // validationSchema={validationSchema}
@@ -96,5 +99,6 @@ export const BodyFatWomen: React.FC<BodyFatWomenProps> = ({}) => {
         </Form>
       )}
     </Formik>
+    </>
   );
 };
