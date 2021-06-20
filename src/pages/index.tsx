@@ -1,6 +1,5 @@
 import { Heading, Text } from '@chakra-ui/layout';
 import { NextSeo } from 'next-seo';
-
 export default function Home() {
   return (
     <>

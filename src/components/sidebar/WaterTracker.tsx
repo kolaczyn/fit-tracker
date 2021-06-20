@@ -14,7 +14,7 @@ export const WaterTracker: React.FC<WaterTrackerProps> = ({}) => {
   const incrementGlasses = () => setGlassesDrank(old => old + 1);
   return (
     <AppBox>
-      <Heading fontSize="3xl" borderBottomWidth="1px" mb="1">
+      <Heading fontSize="3xl" borderBottomWidth="1px">
         Water Tracker
       </Heading>
       <Text my="2">

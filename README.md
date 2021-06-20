@@ -27,3 +27,4 @@
 - start using classes, use constructors setting values to 0, etc in the `models/` directory
 - make a utility for Formik, there's a lot of `number().require().min(0)` in here
 - currently the food category is optional, so it shouldn't show up in the food item component. It might be a good idea to 'randomize' the color scheme of the category chip
+- always show the scrollbar and customize it to make it fit with the theme
