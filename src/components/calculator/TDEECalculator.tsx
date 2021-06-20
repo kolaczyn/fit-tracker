@@ -1,4 +1,14 @@
-import { FormLabel, Grid, RadioGroup, VStack } from '@chakra-ui/react';
+import { PhoneIcon, QuestionOutlineIcon } from '@chakra-ui/icons';
+import {
+  Box,
+  FormLabel,
+  Grid,
+  HStack,
+  Radio,
+  RadioGroup,
+  Tooltip,
+  VStack,
+} from '@chakra-ui/react';
 import { Form, Formik } from 'formik';
 import React, { useState } from 'react';
 import * as Yup from 'yup';
@@ -12,6 +22,7 @@ import {
 import isMale from '../../utils/isMale';
 import stringValuesToNums from '../../utils/stringValuesToNums';
 import { InputWrapper } from '../form/InputWrapper';
+import { RadioWithTooltip } from '../form/RadioWithTooltip';
 import { RadioWrapper } from '../form/RadioWrapper';
 import { SubmitAndResult } from '../form/SubmitAndResult';
 
@@ -48,16 +59,7 @@ export const TDEECalculator: React.FC<TDEECalculatorProps> = ({}) => {
           height: heightInCm,
           age,
         } = stringValuesToNums(restData);
-        setUserTDEE(
-          calcFunc({ weightInKg, heightInCm, age, activityLevel })
-          // TODO I don't like the duplication in here, might do something about this later
-          // : calculateTDEEForFemale(
-          //     activityLevel,
-          //     Number(weight),
-          //     Number(height),
-          //     Number(age)
-          //   )
-        );
+        setUserTDEE(calcFunc({ weightInKg, heightInCm, age, activityLevel }));
       }}
     >
       {() => (
@@ -66,30 +68,41 @@ export const TDEECalculator: React.FC<TDEECalculatorProps> = ({}) => {
             <RadioGroup>
               <FormLabel>Activity Level</FormLabel>
               <Grid templateColumns="repeat(3, 1fr)" gap={1.5}>
-                <RadioWrapper
+                <RadioWithTooltip
                   label="Sendetary"
                   name="activityLevel"
                   value={ActivityLevel.Sendetary}
+                  tooltipText="Little or no exercise, desk job"
                 />
-                <RadioWrapper
+
+                <RadioWithTooltip
                   label="Lightly Active"
                   name="activityLevel"
                   value={ActivityLevel.LightlyActive}
+                  tooltipText="Light exercise, sports 1 to 3 days/week"
                 />
-                <RadioWrapper
+
+                <RadioWithTooltip
                   label="Moderate Active"
                   name="activityLevel"
                   value={ActivityLevel.ModerateActive}
+                  tooltipText="Moderate exercise, sports 3 to 5 days/week"
                 />
-                <RadioWrapper
+
+                <RadioWithTooltip
                   label="Very Active"
                   name="activityLevel"
                   value={ActivityLevel.VeryActive}
+                  tooltipText="Heavy exercise, sports 6 to 7 days/week"
+                  placement="bottom"
                 />
-                <RadioWrapper
+
+                <RadioWithTooltip
                   label="Extremely Active"
                   name="activityLevel"
                   value={ActivityLevel.ExtremelyActive}
+                  tooltipText="Exercise, sports several times a day"
+                  placement="bottom"
                 />
               </Grid>
             </RadioGroup>

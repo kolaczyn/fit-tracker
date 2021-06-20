@@ -19,7 +19,7 @@ export const Calculator: React.FC<CalculatorProps> = ({}) => {
       <NextSeo title="Calculator | Track Fit" />
       <AppBox>
         <GenderSelector />
-        <Tabs>
+        <Tabs isLazy variant="enclosed" isFitted>
           <TabList>
             <Tab>BMI Calculator</Tab>
             <Tab>Body Fat Calculator</Tab>
