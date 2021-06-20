@@ -1,5 +1,16 @@
-import { FormLabel, Grid, RadioGroup, VStack } from '@chakra-ui/react';
+import { PhoneIcon, QuestionOutlineIcon } from '@chakra-ui/icons';
+import {
+  Box,
+  FormLabel,
+  Grid,
+  HStack,
+  Radio,
+  RadioGroup,
+  Tooltip,
+  VStack,
+} from '@chakra-ui/react';
 import { Form, Formik } from 'formik';
+import { NextSeo } from 'next-seo';
 import React, { useState } from 'react';
 import * as Yup from 'yup';
 
@@ -12,6 +23,7 @@ import {
 import isMale from '../../utils/isMale';
 import stringValuesToNums from '../../utils/stringValuesToNums';
 import { InputWrapper } from '../form/InputWrapper';
+import { RadioWithTooltip } from '../form/RadioWithTooltip';
 import { RadioWrapper } from '../form/RadioWrapper';
 import { SubmitAndResult } from '../form/SubmitAndResult';
 
@@ -33,83 +45,93 @@ export const TDEECalculator: React.FC<TDEECalculatorProps> = ({}) => {
   const gender = useAppSelector(data => data.metrics.gender);
   const [userTDEE, setUserTDEE] = useState<number | null>(null);
   return (
-    <Formik
-      validationSchema={validationSchema}
-      initialValues={initialFormState}
-      onSubmit={({
-        activityLevel,
-        ...restData
-      }: TDEECalculatorData<string>) => {
-        const calcFunc = isMale(gender)
-          ? calculateTDEEForMale
-          : calculateTDEEForFemale;
-        const {
-          weight: weightInKg,
-          height: heightInCm,
-          age,
-        } = stringValuesToNums(restData);
-        setUserTDEE(
-          calcFunc({ weightInKg, heightInCm, age, activityLevel })
-          // TODO I don't like the duplication in here, might do something about this later
-          // : calculateTDEEForFemale(
-          //     activityLevel,
-          //     Number(weight),
-          //     Number(height),
-          //     Number(age)
-          //   )
-        );
-      }}
-    >
-      {() => (
-        <Form>
-          <VStack spacing={4} alignItems="stretch">
-            <RadioGroup>
-              <FormLabel>Activity Level</FormLabel>
-              <Grid templateColumns="repeat(3, 1fr)" gap={1.5}>
-                <RadioWrapper
-                  label="Sendetary"
-                  name="activityLevel"
-                  value={ActivityLevel.Sendetary}
-                />
-                <RadioWrapper
-                  label="Lightly Active"
-                  name="activityLevel"
-                  value={ActivityLevel.LightlyActive}
-                />
-                <RadioWrapper
-                  label="Moderate Active"
-                  name="activityLevel"
-                  value={ActivityLevel.ModerateActive}
-                />
-                <RadioWrapper
-                  label="Very Active"
-                  name="activityLevel"
-                  value={ActivityLevel.VeryActive}
-                />
-                <RadioWrapper
-                  label="Extremely Active"
-                  name="activityLevel"
-                  value={ActivityLevel.ExtremelyActive}
-                />
-              </Grid>
-            </RadioGroup>
-            <InputWrapper
-              label="Weight"
-              name="weight"
-              placeholder={0}
-              unit="kg"
-            />
-            <InputWrapper
-              label="Height"
-              name="height"
-              placeholder={0}
-              unit="cm"
-            />
-            <InputWrapper label="Age" name="age" placeholder={0} unit="years" />
-            <SubmitAndResult value={userTDEE} text="Your TDEE is" />
-          </VStack>
-        </Form>
-      )}
-    </Formik>
+    <>
+      <NextSeo title="TDEE Calculator | Track Fit" />
+      <Formik
+        validationSchema={validationSchema}
+        initialValues={initialFormState}
+        onSubmit={({
+          activityLevel,
+          ...restData
+        }: TDEECalculatorData<string>) => {
+          const calcFunc = isMale(gender)
+            ? calculateTDEEForMale
+            : calculateTDEEForFemale;
+          const {
+            weight: weightInKg,
+            height: heightInCm,
+            age,
+          } = stringValuesToNums(restData);
+          setUserTDEE(calcFunc({ weightInKg, heightInCm, age, activityLevel }));
+        }}
+      >
+        {() => (
+          <Form>
+            <VStack spacing={4} alignItems="stretch">
+              <RadioGroup>
+                <FormLabel>Activity Level</FormLabel>
+                <Grid templateColumns="repeat(3, 1fr)" gap={1.5}>
+                  <RadioWithTooltip
+                    label="Sendetary"
+                    name="activityLevel"
+                    value={ActivityLevel.Sendetary}
+                    tooltipText="Little or no exercise, desk job"
+                  />
+
+                  <RadioWithTooltip
+                    label="Lightly Active"
+                    name="activityLevel"
+                    value={ActivityLevel.LightlyActive}
+                    tooltipText="Light exercise, sports 1 to 3 days/week"
+                  />
+
+                  <RadioWithTooltip
+                    label="Moderate Active"
+                    name="activityLevel"
+                    value={ActivityLevel.ModerateActive}
+                    tooltipText="Moderate exercise, sports 3 to 5 days/week"
+                  />
+
+                  <RadioWithTooltip
+                    label="Very Active"
+                    name="activityLevel"
+                    value={ActivityLevel.VeryActive}
+                    tooltipText="Heavy exercise, sports 6 to 7 days/week"
+                    placement="bottom"
+                  />
+
+                  <RadioWithTooltip
+                    label="Extremely Active"
+                    name="activityLevel"
+                    value={ActivityLevel.ExtremelyActive}
+                    tooltipText="Exercise, sports several times a day"
+                    placement="bottom"
+                  />
+                </Grid>
+              </RadioGroup>
+              <InputWrapper
+                label="Weight"
+                name="weight"
+                placeholder={0}
+                unit="kg"
+              />
+              <InputWrapper
+                label="Height"
+                name="height"
+                placeholder={0}
+                unit="cm"
+              />
+              <InputWrapper
+                label="Age"
+                name="age"
+                placeholder={0}
+                unit="years"
+              />
+              <SubmitAndResult value={userTDEE} text="Your TDEE is" />
+            </VStack>
+          </Form>
+        )}
+      </Formik>
+    </>
   );
 };

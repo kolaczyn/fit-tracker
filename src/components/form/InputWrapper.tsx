@@ -29,7 +29,7 @@ export const InputWrapper: React.FC<InputWrapper> = ({
       <FormControl isInvalid={meta.touched && !!meta.error}>
         <FormLabel>{label}</FormLabel>
         <InputGroup>
-          <Input {...field} {...props} type={type} />
+          <Input step="any" {...field} {...props} type={type} />
           {unit ? <InputRightAddon children={unit} /> : null}
         </InputGroup>
         {/* I capitalize the the first letter error, because Yup's validation includes the field's name in lowercase, and it look akward. */}
