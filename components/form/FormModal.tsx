@@ -9,21 +9,23 @@ import {
   ModalOverlay,
   useDisclosure,
 } from '@chakra-ui/react';
-import { Form, Formik } from 'formik';
+import { Form, Formik, FormikConfig, FormikValues } from 'formik';
 import React from 'react';
 
-type FormModalProps = {
+type Temp<Values extends FormikValues = FormikValues, ExtraProps = {}> =
+  FormikConfig<Values> & ExtraProps;
+
+type PropTypes = {
   title: string;
   buttonLabel: string;
-} & any;
+  formikProps: Temp;
+};
 
-// (alias) function Formik<Values extends FormikValues = FormikValues, ExtraProps = {}>(props: FormikConfig<Values> & ExtraProps): JSX.Element
-
-export const FormModal: React.FC<FormModalProps> = ({
+export const FormModal: React.FC<PropTypes> = ({
   title,
   buttonLabel,
   children,
-  ...formikProps
+  formikProps,
 }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (

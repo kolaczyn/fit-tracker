@@ -31,12 +31,13 @@ export const SetGoal: React.FC = ({}) => {
     <FormModal
       title="Change Goal"
       buttonLabel="Change Goal"
-      validationSchema={validationSchema}
-      initialValues={initialFormState}
-      onSubmit={(data: FormState) => {
-        console.log(data);
-        // TODO this is so fucking ugly, I can't even
-        dispatch(setIntakeGoal(stringValuesToNums(data)));
+      formikProps={{
+        initialValues: initialFormState,
+        validationSchema,
+        // @ts-ignore
+        onSubmit(data: FormState) {
+          dispatch(setIntakeGoal(stringValuesToNums(data)));
+        },
       }}
     >
       <InputWrapper

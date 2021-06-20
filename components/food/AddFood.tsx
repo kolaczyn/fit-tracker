@@ -46,18 +46,21 @@ export const AddFood: React.FC = () => {
     <FormModal
       title="Add Food"
       buttonLabel="Add Food"
-      validationSchema={validationSchema}
-      initialValues={initialFormState}
-      onSubmit={(data: FormState) => {
-        // TODO this is so fucking ugly, I can't even
-        dispatch(
-          addtoFoodList({
-            ...data,
-            nutrients: stringValuesToNums(data.nutrients),
-            portion: Number(data.portion),
-            id: uuidv4(),
-          })
-        );
+      formikProps={{
+        validationSchema,
+        initialValues: initialFormState,
+        // @ts-ignore
+        onSubmit(data: FormState) {
+          // TODO this is so fucking ugly, I can't even
+          dispatch(
+            addtoFoodList({
+              ...data,
+              nutrients: stringValuesToNums(data.nutrients),
+              portion: Number(data.portion),
+              id: uuidv4(),
+            })
+          );
+        },
       }}
     >
       <InputWrapper
