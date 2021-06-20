@@ -9,6 +9,18 @@ import FoodPage from '../../pages/food';
 import { StoreProvider } from '../../components/providers/StoreProvider';
 
 describe('food page', () => {
+  // I'm using event listeners to change the button's size, because it looks like Chakra UI doesn't support media queries for Button's size
+  // JSDOM that Jest uses doesn't implement this event listener, so I have to mock it
+  Object.defineProperty(window, 'matchMedia', {
+    value: () => {
+      return {
+        matches: false,
+        addListener: () => {},
+        removeListener: () => {},
+      };
+    },
+  });
+
   it('correctly renders the component', () => {
     const { queryByText } = render(<FoodPage />, {
       wrapper: StoreProvider,
