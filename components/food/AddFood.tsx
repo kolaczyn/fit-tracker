@@ -6,11 +6,11 @@ import {
   ModalHeader,
   ModalOverlay,
 } from '@chakra-ui/modal';
-import { ModalFooter, Button, Divider } from '@chakra-ui/react';
+import { ModalFooter, Button, Divider, useDisclosure } from '@chakra-ui/react';
 import { Form, Formik } from 'formik';
 import React from 'react';
 import * as Yup from 'yup';
-import {v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 
 import { InputWrapper } from '../form/InputWrapper';
 import { Nutrients } from '../../customTypes';
@@ -49,98 +49,94 @@ const initialFormState: FormState = {
   },
 };
 
-interface AddFoodContainerProps {
-  isOpen: boolean;
-  onClose: () => void;
-}
-
-export const AddFoodContainer: React.FC<AddFoodContainerProps> = ({
-  isOpen,
-  onClose,
-}) => {
+export const AddFoodContainer: React.FC = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const dispatch = useAppDispatch();
   return (
-    <Modal size="lg" isOpen={isOpen} onClose={onClose}>
-      <ModalOverlay />
-      <ModalContent>
-        <ModalHeader>Add Food</ModalHeader>
-        <ModalCloseButton />
-        <Formik
-          validationSchema={validationSchema}
-          initialValues={initialFormState}
-          onSubmit={(data: FormState) => {
-            // TODO this is so fucking ugly, I can't even
-            dispatch(
-              addtoFoodList({
-                ...data,
-                nutrients: stringValuesToNums(data.nutrients),
-                portion: Number(data.portion),
-                id: uuidv4(),
-              })
-            );
-          }}
-        >
-          {() => (
-            <>
-              <Form>
-                <ModalBody>
-                  <InputWrapper
-                    label="Name"
-                    name="name"
-                    placeholder="Food's name"
-                    type="text"
-                  />
-                  {/* TODO make this a dropdown menu */}
-                  <InputWrapper
-                    label="Category"
-                    name="category"
-                    placeholder="Category's name"
-                    type="text"
-                  />
-                  <InputWrapper
-                    label="Portion"
-                    name="portion"
-                    placeholder={0}
-                    // TODO in the future make the unit dynamic, base on another field - Unit
-                    // It may look a little bit weird, we'll see
-                    unit="g"
-                  />
-                  <Divider my="2" />
-                  <InputWrapper
-                    label="Calores"
-                    name="nutrients.calories"
-                    placeholder={0}
-                    unit="Calories"
-                  />
-                  <InputWrapper
-                    label="Fat"
-                    name="nutrients.fat"
-                    placeholder={0}
-                    unit="g"
-                  />
-                  <InputWrapper
-                    label="Carbs"
-                    name="nutrients.carbs"
-                    placeholder={0}
-                    unit="g"
-                  />
-                  <InputWrapper
-                    label="Protein"
-                    name="nutrients.protein"
-                    placeholder={0}
-                    unit="g"
-                  />
-                </ModalBody>
-                <ModalFooter>
-                  <Button colorScheme="green" type="submit">
-                    Add Food
-                  </Button>
-                </ModalFooter>
-              </Form>
-            </>
-          )}
-        </Formik>
-      </ModalContent>
-    </Modal>
+    <>
+      <Button onClick={onOpen}>Add Food</Button>
+      <Modal size="lg" isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Add Food</ModalHeader>
+          <ModalCloseButton />
+          <Formik
+            validationSchema={validationSchema}
+            initialValues={initialFormState}
+            onSubmit={(data: FormState) => {
+              // TODO this is so fucking ugly, I can't even
+              dispatch(
+                addtoFoodList({
+                  ...data,
+                  nutrients: stringValuesToNums(data.nutrients),
+                  portion: Number(data.portion),
+                  id: uuidv4(),
+                })
+              );
+            }}
+          >
+            {() => (
+              <>
+                <Form>
+                  <ModalBody>
+                    <InputWrapper
+                      label="Name"
+                      name="name"
+                      placeholder="Food's name"
+                      type="text"
+                    />
+                    {/* TODO make this a dropdown menu */}
+                    <InputWrapper
+                      label="Category"
+                      name="category"
+                      placeholder="Category's name"
+                      type="text"
+                    />
+                    <InputWrapper
+                      label="Portion"
+                      name="portion"
+                      placeholder={0}
+                      // TODO in the future make the unit dynamic, base on another field - Unit
+                      // It may look a little bit weird, we'll see
+                      unit="g"
+                    />
+                    <Divider my="2" />
+                    <InputWrapper
+                      label="Calores"
+                      name="nutrients.calories"
+                      placeholder={0}
+                      unit="Calories"
+                    />
+                    <InputWrapper
+                      label="Fat"
+                      name="nutrients.fat"
+                      placeholder={0}
+                      unit="g"
+                    />
+                    <InputWrapper
+                      label="Carbs"
+                      name="nutrients.carbs"
+                      placeholder={0}
+                      unit="g"
+                    />
+                    <InputWrapper
+                      label="Protein"
+                      name="nutrients.protein"
+                      placeholder={0}
+                      unit="g"
+                    />
+                  </ModalBody>
+                  <ModalFooter>
+                    <Button colorScheme="green" type="submit">
+                      Add Food
+                    </Button>
+                  </ModalFooter>
+                </Form>
+              </>
+            )}
+          </Formik>
+        </ModalContent>
+      </Modal>
+    </>
   );
 };

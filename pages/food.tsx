@@ -19,7 +19,6 @@ export const FoodPage: React.FC = () => {
     isActive,
     toggleFood,
   } = useSelectedFood();
-  const { isOpen, onOpen, onClose } = useDisclosure();
   const { eatenCalories } = useEatenCalories();
 
   return (
@@ -29,15 +28,15 @@ export const FoodPage: React.FC = () => {
         <NutrientsStats nutrients={eatenCalories} />
         <NutrientsStats nutrients={foodIntake} />
         <HStack>
-          <Button onClick={onOpen}>Add Food</Button>
-          <AddFoodContainer isOpen={isOpen} onClose={onClose} />
-          <Spacer />
           <Button
             onClick={handleConsoomSelected}
             isDisabled={selectedFoods.size === 0}
           >
-            Consoom Selected
+            Consoom
           </Button>
+          <Spacer />
+          <AddFoodContainer />
+          <Button>Change goal</Button>
         </HStack>
         <VStack width="100%" alignItems="stretch" spacing="3">
           {foodListArray.map(food => (
