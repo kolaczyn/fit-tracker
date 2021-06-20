@@ -1,5 +1,5 @@
 import { Box, Flex, HStack, Spacer } from '@chakra-ui/react';
-import React, { RefObject, useRef } from 'react';
+import React from 'react';
 
 import { ColorSchemeSwitch } from '../ui/ColorSchemeSwitch';
 import { Logo } from '../ui/Logo';

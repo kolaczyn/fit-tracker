@@ -17,9 +17,9 @@ export const GeneralLayout: React.FC = ({ children }) => {
     <Flex direction="column" minH="100vh" bg={bg} color={color}>
       <Navbar />
       <Container maxW="container.lg" flexGrow={1} my="4">
-        <Grid templateColumns="3fr 1fr" gap="4">
+        <Grid templateColumns={['1fr', '1fr', '3fr 1fr']} gap="4">
           <Box>{children}</Box>
-          <Sidebar />
+          <Sidebar display={['none', 'none', 'initial']} />
         </Grid>
       </Container>
       <Footer />
