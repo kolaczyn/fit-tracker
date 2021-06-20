@@ -23,10 +23,10 @@ const initialState: State = {
   foodList: createNormalizedIndex<Food>(),
   foodEaten: [],
   intakeGoal: {
-    calories: 2000,
-    fat: 0,
-    carbs: 0,
-    protein: 0,
+    calories: 2525,
+    fat: 168,
+    carbs: 95,
+    protein: 158,
   },
 };
 
@@ -43,9 +43,13 @@ const nutrientsSlice = createSlice({
     addtoFoodEaten: (state: State, action: PayloadAction<string[]>) => {
       state.foodEaten = [...state.foodEaten, ...action.payload];
     },
+    setIntakeGoal: (state: State, action: PayloadAction<Nutrients<number>>) => {
+      state.intakeGoal = action.payload;
+    },
   },
 });
 
-export const { addtoFoodList, addtoFoodEaten } = nutrientsSlice.actions;
+export const { addtoFoodList, addtoFoodEaten, setIntakeGoal } =
+  nutrientsSlice.actions;
 
 export default nutrientsSlice.reducer;

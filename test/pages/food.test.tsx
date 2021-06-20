@@ -23,7 +23,7 @@ describe('food page', () => {
       wrapper: StoreProvider,
     });
 
-    const consumeButton = getByText('Consoom Selected');
+    const consumeButton = getByText(/consoom/i);
     expect(consumeButton).toBeDisabled();
 
     const foodSections = getAllByTestId('food-component');
