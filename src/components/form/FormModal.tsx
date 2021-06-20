@@ -7,9 +7,16 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
+  useBreakpointValue,
   useDisclosure,
 } from '@chakra-ui/react';
-import { Form, Formik, FormikConfig, FormikHelpers, FormikValues } from 'formik';
+import {
+  Form,
+  Formik,
+  FormikConfig,
+  FormikHelpers,
+  FormikValues,
+} from 'formik';
 import React from 'react';
 
 type Temp<Values extends FormikValues = FormikValues, ExtraProps = {}> =
@@ -28,6 +35,7 @@ export const FormModal: React.FC<PropTypes> = ({
   formikProps,
 }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const btnSize = useBreakpointValue(['sm', 'md']);
   const { onSubmit } = formikProps;
   const closeOnSubmit = (
     vals: FormikValues,
@@ -38,7 +46,9 @@ export const FormModal: React.FC<PropTypes> = ({
   };
   return (
     <>
-      <Button onClick={onOpen}>{buttonLabel}</Button>
+      <Button size={btnSize} onClick={onOpen}>
+        {buttonLabel}
+      </Button>
       <Modal size="lg" isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>

@@ -1,5 +1,6 @@
 import { Button } from '@chakra-ui/button';
 import { HStack, Spacer, VStack } from '@chakra-ui/layout';
+import { useBreakpointValue } from '@chakra-ui/media-query';
 import { NextSeo } from 'next-seo';
 import React from 'react';
 
@@ -18,6 +19,7 @@ export const FoodPage: React.FC = () => {
     isActive,
     toggleFood,
   } = useSelectedFood();
+  const btnSize = useBreakpointValue(['sm', 'md']);
 
   return (
     <>
@@ -26,6 +28,7 @@ export const FoodPage: React.FC = () => {
         <IntakeProgress selected={foodIntake} />
         <HStack>
           <Button
+            size={btnSize}
             onClick={handleConsoomSelected}
             isDisabled={selectedFoods.size === 0}
           >

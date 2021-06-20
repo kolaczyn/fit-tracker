@@ -14,7 +14,7 @@ export const Navbar: React.FC = ({}) => {
         <Logo />
         <Spacer />
         <HStack spacing={2}>
-          <Box display={["none", "none", "initial"]}>
+          <Box display={['none', 'none', 'initial']}>
             <NavLinks />
           </Box>
           <ColorSchemeSwitch />
