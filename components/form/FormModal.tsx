@@ -9,7 +9,7 @@ import {
   ModalOverlay,
   useDisclosure,
 } from '@chakra-ui/react';
-import { Form, Formik, FormikConfig, FormikValues } from 'formik';
+import { Form, Formik, FormikConfig, FormikHelpers, FormikValues } from 'formik';
 import React from 'react';
 
 type Temp<Values extends FormikValues = FormikValues, ExtraProps = {}> =
@@ -28,6 +28,14 @@ export const FormModal: React.FC<PropTypes> = ({
   formikProps,
 }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { onSubmit } = formikProps;
+  const closeOnSubmit = (
+    vals: FormikValues,
+    helpers: FormikHelpers<FormikValues>
+  ) => {
+    onSubmit(vals, helpers);
+    onClose();
+  };
   return (
     <>
       <Button onClick={onOpen}>{buttonLabel}</Button>
@@ -36,7 +44,7 @@ export const FormModal: React.FC<PropTypes> = ({
         <ModalContent>
           <ModalHeader>{title}</ModalHeader>
           <ModalCloseButton />
-          <Formik {...formikProps}>
+          <Formik {...formikProps} onSubmit={closeOnSubmit}>
             {() => (
               <>
                 <Form>
