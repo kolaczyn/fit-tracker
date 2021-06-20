@@ -35,7 +35,7 @@ const apple: Food = {
 const avocado: Food = {
   name: 'Avocado',
   portion: 214,
-  id: '3',
+  id: '30',
   category: 'Fruit',
   nutrients: {
     calories: 318,
@@ -44,6 +44,20 @@ const avocado: Food = {
     protein: 4,
   },
 };
+
+const hamburger: Food = {
+  name: 'Hamburger',
+  portion: 100,
+  id: '69',
+  category: 'Junk Food',
+  nutrients: {
+    calories: 250,
+    fat: 9,
+    carbs: 31,
+    protein: 12,
+  },
+};
+
 
 const useSelectedFood = () => {
   const [selectedFoodIds, setSelectedFoodIds] = useState(
@@ -63,6 +77,7 @@ const useSelectedFood = () => {
   useEffect(() => {
     dispatch(addtoFoodList(banana));
     dispatch(addtoFoodList(apple));
+    dispatch(addtoFoodList(hamburger));
 
     setTimeout(() => {
       dispatch(addtoFoodList(avocado));

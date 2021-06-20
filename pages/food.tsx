@@ -1,16 +1,13 @@
 import { Button } from '@chakra-ui/button';
 import { HStack, Spacer, VStack } from '@chakra-ui/layout';
+import { NextSeo } from 'next-seo';
 import React from 'react';
 
-import { FoodItem } from '../components/food/FoodItem';
 import { AddFood } from '../components/food/AddFood';
-import { NextSeo } from 'next-seo';
-import useSelectedFood from '../hooks/useSelectedFood';
-import { NutrientsStats } from '../components/food/NutrientsStats';
-import useEatenCalories from '../hooks/useEatenCalories';
-import { SetGoal } from '../components/food/SetGoal';
-import { useAppSelector } from '../redux/hooks';
+import { FoodItem } from '../components/food/FoodItem';
 import { IntakeProgress } from '../components/food/IntakeProgress';
+import { SetGoal } from '../components/food/SetGoal';
+import useSelectedFood from '../hooks/useSelectedFood';
 
 export const FoodPage: React.FC = () => {
   const {
@@ -21,24 +18,12 @@ export const FoodPage: React.FC = () => {
     isActive,
     toggleFood,
   } = useSelectedFood();
-  const { eatenCalories } = useEatenCalories();
-  const nutrientsGoal = useAppSelector(state => state.trackIntake.intakeGoal);
 
-  const progressArgs = {
-    label: 'Calories Goal: 2500',
-    alreadyEaten: 1100,
-    selected: 200,
-    goal: 2500,
-  };
   return (
     <>
       <NextSeo title="Add Food | Track Fit" />
       <VStack width="100%" alignItems="stretch" spacing="4">
-        <IntakeProgress {...progressArgs} />
-        <IntakeProgress {...progressArgs} alreadyEaten={2600} />
-        <NutrientsStats nutrients={nutrientsGoal} />
-        <NutrientsStats nutrients={eatenCalories} />
-        <NutrientsStats nutrients={foodIntake} />
+        <IntakeProgress selected={foodIntake} />
         <HStack>
           <Button
             onClick={handleConsoomSelected}
