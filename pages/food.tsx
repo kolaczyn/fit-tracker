@@ -10,6 +10,7 @@ import { NutrientsStats } from '../components/food/NutrientsStats';
 import useEatenCalories from '../hooks/useEatenCalories';
 import { SetGoal } from '../components/food/SetGoal';
 import { useAppSelector } from '../redux/hooks';
+import { IntakeProgress } from '../components/food/IntakeProgress';
 
 export const FoodPage: React.FC = () => {
   const {
@@ -23,10 +24,18 @@ export const FoodPage: React.FC = () => {
   const { eatenCalories } = useEatenCalories();
   const nutrientsGoal = useAppSelector(state => state.trackIntake.intakeGoal);
 
+  const progressArgs = {
+    label: 'Calories Goal: 2500',
+    alreadyEaten: 1100,
+    selected: 200,
+    goal: 2500,
+  };
   return (
     <>
       <NextSeo title="Add Food | Track Fit" />
       <VStack width="100%" alignItems="stretch" spacing="4">
+        <IntakeProgress {...progressArgs} />
+        <IntakeProgress {...progressArgs} alreadyEaten={2600} />
         <NutrientsStats nutrients={nutrientsGoal} />
         <NutrientsStats nutrients={eatenCalories} />
         <NutrientsStats nutrients={foodIntake} />
