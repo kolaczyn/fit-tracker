@@ -1,23 +1,13 @@
-import {
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalHeader,
-  ModalOverlay,
-} from '@chakra-ui/modal';
-import { ModalFooter, Button, Divider, useDisclosure } from '@chakra-ui/react';
-import { Form, Formik } from 'formik';
+import { Divider } from '@chakra-ui/react';
 import React from 'react';
-import * as Yup from 'yup';
 import { v4 as uuidv4 } from 'uuid';
-
-import { InputWrapper } from '../form/InputWrapper';
+import * as Yup from 'yup';
 import { Nutrients } from '../../customTypes';
 import { useAppDispatch } from '../../redux/hooks';
 import { addtoFoodList } from '../../redux/trackIntakeSlice';
 import stringValuesToNums from '../../utils/stringValuesToNums';
 import { FormModal } from '../form/FormModal';
+import { InputWrapper } from '../form/InputWrapper';
 
 type FormState = {
   name: string;

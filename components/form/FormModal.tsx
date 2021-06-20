@@ -41,7 +41,7 @@ export const FormModal: React.FC<FormModalProps> = ({
                   <ModalBody>{children}</ModalBody>
                   <ModalFooter>
                     <Button colorScheme="green" type="submit">
-                      Add Food
+                      {buttonLabel}
                     </Button>
                   </ModalFooter>
                 </Form>
