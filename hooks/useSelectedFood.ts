@@ -4,60 +4,8 @@ import { useState, useEffect } from 'react';
 import { Food, Nutrients } from '../customTypes';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
 import { addtoFoodList, addtoFoodEaten } from '../redux/trackIntakeSlice';
+import initialFoods from '../static/initialFoods';
 import normalizedToArray from '../utils/normalizedToArray';
-
-const banana: Food = {
-  name: 'Banana',
-  portion: 118,
-  id: '0',
-  category: 'Fruit',
-  nutrients: {
-    calories: 105,
-    fat: 0.389,
-    carbs: 27,
-    protein: 1,
-  },
-};
-
-const apple: Food = {
-  name: 'Apple',
-  portion: 91,
-  id: '1',
-  category: 'Fruit',
-  nutrients: {
-    calories: 91,
-    fat: 0.273,
-    carbs: 24,
-    protein: 0.482,
-  },
-};
-
-const avocado: Food = {
-  name: 'Avocado',
-  portion: 214,
-  id: '30',
-  category: 'Fruit',
-  nutrients: {
-    calories: 318,
-    fat: 29,
-    carbs: 18,
-    protein: 4,
-  },
-};
-
-const hamburger: Food = {
-  name: 'Hamburger',
-  portion: 100,
-  id: '69',
-  category: 'Junk Food',
-  nutrients: {
-    calories: 250,
-    fat: 9,
-    carbs: 31,
-    protein: 12,
-  },
-};
-
 
 const useSelectedFood = () => {
   const [selectedFoodIds, setSelectedFoodIds] = useState(
@@ -75,13 +23,7 @@ const useSelectedFood = () => {
   const foodListArray: Food[] = normalizedToArray(foodListItems);
 
   useEffect(() => {
-    dispatch(addtoFoodList(banana));
-    dispatch(addtoFoodList(apple));
-    dispatch(addtoFoodList(hamburger));
-
-    setTimeout(() => {
-      dispatch(addtoFoodList(avocado));
-    }, 2000);
+    initialFoods.forEach(food => dispatch(addtoFoodList(food)));
   }, []);
 
   const handleConsoomSelected = () => {
