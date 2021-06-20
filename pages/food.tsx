@@ -1,10 +1,9 @@
 import { Button } from '@chakra-ui/button';
-import { useDisclosure } from '@chakra-ui/hooks';
 import { HStack, Spacer, VStack } from '@chakra-ui/layout';
 import React from 'react';
 
 import { FoodItem } from '../components/food/FoodItem';
-import { AddFoodContainer } from '../components/food/AddFood';
+import {AddFood } from '../components/food/AddFood';
 import { NextSeo } from 'next-seo';
 import useSelectedFood from '../hooks/useSelectedFood';
 import { NutrientsStats } from '../components/food/NutrientsStats';
@@ -35,7 +34,7 @@ export const FoodPage: React.FC = () => {
             Consoom
           </Button>
           <Spacer />
-          <AddFoodContainer />
+          <AddFood />
           <Button>Change goal</Button>
         </HStack>
         <VStack width="100%" alignItems="stretch" spacing="3">
