@@ -1,7 +1,7 @@
 import { createSlice, Action, PayloadAction } from '@reduxjs/toolkit';
-import { Nutrients } from '../customTypes';
+import { NutrientsI } from '../customTypes';
 
-type State = Nutrients<number>;
+type State = NutrientsI<number>;
 
 const initialState: State = {
   calories: 0,
@@ -16,7 +16,7 @@ const nutrientsSlice = createSlice({
   reducers: {
     addNutrients: (
       state: State,
-      action: PayloadAction<Nutrients<number | string>>
+      action: PayloadAction<NutrientsI<number | string>>
     ) => {
       const { calories, fat, carbs, protein } = action.payload;
       // I couldn't find a better way of doing this without making TypeScript angry

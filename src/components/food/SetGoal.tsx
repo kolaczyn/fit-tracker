@@ -1,54 +1,45 @@
-import { Button } from '@chakra-ui/react';
-import { Formik, Form } from 'formik';
 import React from 'react';
-import * as Yup from 'yup';
 import { InputWrapper } from '../form/InputWrapper';
-import { Nutrients } from '../../customTypes';
-import { useAppDispatch } from '../../redux/hooks';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { setIntakeGoal } from '../../redux/trackIntakeSlice';
-import stringValuesToNums from '../../utils/stringValuesToNums';
 import { FormModal } from '../form/FormModal';
+import Nutrients from '../../models/Nutrients';
+import { NutrientsI } from '../../customTypes';
+import { VStack } from '@chakra-ui/layout';
 
-const validationSchema = Yup.object({
-  calories: Yup.number().min(0).required('Calories is a required field'),
-  fat: Yup.number().min(0).required('Fat is a required field'),
-  carbs: Yup.number().min(0).required('Carbs is a required field'),
-  protein: Yup.number().min(0).required('Protein is a required field'),
-});
+const validationSchema = Nutrients.yupValidationSchema();
 
-type FormState = Nutrients<string>;
-
-const initialFormState: FormState = {
-  calories: '',
-  fat: '',
-  carbs: '',
-  protein: '',
-};
+const initialFormState = Nutrients.initialFormState();
 
 export const SetGoal: React.FC = ({}) => {
   const dispatch = useAppDispatch();
+  const currentGoals: NutrientsI<number> = useAppSelector(
+    state => state.trackIntake.intakeGoal
+  );
   return (
     <FormModal
       title="Change Goal"
       buttonLabel="Change Goal"
       formikProps={{
-        initialValues: initialFormState,
+        initialValues: currentGoals,
         validationSchema,
-        // @ts-ignore
-        onSubmit(data: FormState) {
-          dispatch(setIntakeGoal(stringValuesToNums(data)));
+        onSubmit(data) {
+          // @ts-ignore
+          dispatch(setIntakeGoal(Nutrients.newNutrientsFromString(data)));
         },
       }}
     >
-      <InputWrapper
-        label="Calores"
-        name="calories"
-        placeholder={0}
-        unit="Calories"
-      />
-      <InputWrapper label="Fat" name="fat" placeholder={0} unit="g" />
-      <InputWrapper label="Carbs" name="carbs" placeholder={0} unit="g" />
-      <InputWrapper label="Protein" name="protein" placeholder={0} unit="g" />
+      <VStack>
+        <InputWrapper
+          label="Calores"
+          name="calories"
+          placeholder={0}
+          unit="Calories"
+        />
+        <InputWrapper label="Fat" name="fat" placeholder={0} unit="g" />
+        <InputWrapper label="Carbs" name="carbs" placeholder={0} unit="g" />
+        <InputWrapper label="Protein" name="protein" placeholder={0} unit="g" />
+      </VStack>
     </FormModal>
   );
 };

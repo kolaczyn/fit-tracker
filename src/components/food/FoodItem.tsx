@@ -4,6 +4,7 @@ import { Stack, Tag } from '@chakra-ui/react';
 import React from 'react';
 import { ColorScheme, Food } from '../../customTypes';
 import dumbHash from '../../utils/dumbHash';
+import nutrientToColorScheme from '../../utils/nutrientToColorScheme';
 import prettyPrintGrams from '../../utils/prettyPrintGrams';
 import { AppBox } from '../ui/AppBox';
 
@@ -27,7 +28,9 @@ export const FoodItem: React.FC<FoodItemProps> = ({
   isActive,
 }) => {
   const categoryColorScheme =
-    PICKABLE_COLOR_SCHEMES[dumbHash(food.category) % PICKABLE_COLOR_SCHEMES.length];
+    PICKABLE_COLOR_SCHEMES[
+      dumbHash(food.category) % PICKABLE_COLOR_SCHEMES.length
+    ];
   return (
     <AppBox
       data-testid="food-component"
@@ -48,13 +51,13 @@ export const FoodItem: React.FC<FoodItemProps> = ({
             <Stack direction={['column', 'column', 'row']}>
               <Text as="i">{food.nutrients.calories} Calories</Text>
               <HStack>
-                <Tag size="sm" colorScheme="red">
+                <Tag size="sm" colorScheme={nutrientToColorScheme.fat}>
                   Fat: {prettyPrintGrams(food.nutrients.fat)}
                 </Tag>
-                <Tag size="sm" colorScheme="yellow">
+                <Tag size="sm" colorScheme={nutrientToColorScheme.carbs}>
                   Carbs: {prettyPrintGrams(food.nutrients.carbs)}
                 </Tag>
-                <Tag size="sm" colorScheme="green">
+                <Tag size="sm" colorScheme={nutrientToColorScheme.protein}>
                   Protein: {prettyPrintGrams(food.nutrients.protein)}
                 </Tag>
               </HStack>

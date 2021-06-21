@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Food, NormalizedIndex, Nutrients } from '../customTypes';
+import { v4 as uuidv4 } from 'uuid';
+import { Food, NormalizedIndex, NutrientsI } from '../customTypes';
 
 // I might change this to classes
 // and move this to util/ folder,
@@ -16,7 +17,7 @@ type State = {
   foodList: NormalizedIndex<Food>;
   // this should be just a reference to foodList, e.g. ids
   foodEaten: string[];
-  intakeGoal: Nutrients<number>;
+  intakeGoal: NutrientsI<number>;
 };
 
 const initialState: State = {
@@ -34,22 +35,34 @@ const nutrientsSlice = createSlice({
   name: 'trackIntake',
   initialState,
   reducers: {
-    // `addToFoodList` and `addToFoodEaten` are extremely similar, I might want to merge them
-    addtoFoodList: (state: State, action: PayloadAction<Food>) => {
-      const id = action.payload.id;
-      state.foodList.allIds.push(id);
-      state.foodList.byId[id] = action.payload;
+    addToFoodList: {
+      reducer(state: State, action: PayloadAction<Food>) {
+        const id = action.payload.id;
+        state.foodList.allIds.push(id);
+        state.foodList.byId[id] = action.payload;
+      },
+      prepare(food: Omit<Food, 'id'>) {
+        return {
+          payload: {
+            ...food,
+            id: uuidv4(),
+          },
+        };
+      },
     },
     addtoFoodEaten: (state: State, action: PayloadAction<string[]>) => {
       state.foodEaten = [...state.foodEaten, ...action.payload];
     },
-    setIntakeGoal: (state: State, action: PayloadAction<Nutrients<number>>) => {
+    setIntakeGoal: (
+      state: State,
+      action: PayloadAction<NutrientsI<number>>
+    ) => {
       state.intakeGoal = action.payload;
     },
   },
 });
 
-export const { addtoFoodList, addtoFoodEaten, setIntakeGoal } =
+export const { addToFoodList, addtoFoodEaten, setIntakeGoal } =
   nutrientsSlice.actions;
 
 export default nutrientsSlice.reducer;

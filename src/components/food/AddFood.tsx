@@ -1,10 +1,10 @@
 import { Divider } from '@chakra-ui/react';
 import React from 'react';
-import { v4 as uuidv4 } from 'uuid';
 import * as Yup from 'yup';
-import { Nutrients } from '../../customTypes';
+import { NutrientsI } from '../../customTypes';
+import Nutrients from '../../models/Nutrients';
 import { useAppDispatch } from '../../redux/hooks';
-import { addtoFoodList } from '../../redux/trackIntakeSlice';
+import { addToFoodList } from '../../redux/trackIntakeSlice';
 import stringValuesToNums from '../../utils/stringValuesToNums';
 import { FormModal } from '../form/FormModal';
 import { InputWrapper } from '../form/InputWrapper';
@@ -13,31 +13,21 @@ type FormState = {
   name: string;
   category: string;
   portion: string;
-  nutrients: Nutrients<string>;
+  nutrients: NutrientsI<string>;
 };
 
 const validationSchema = Yup.object({
   name: Yup.string().min(1).required(),
   category: Yup.string().min(1),
-  portion: Yup.number().min(0).required(),
-  nutrients: Yup.object({
-    calories: Yup.number().min(0).required('Calories is a required field'),
-    fat: Yup.number().min(0).required('Fat is a required field'),
-    carbs: Yup.number().min(0).required('Carbs is a required field'),
-    protein: Yup.number().min(0).required('Protein is a required field'),
-  }),
+  portion: Yup.number().min(0),
+  nutrients: Nutrients.yupValidationSchema(false),
 });
 
 const initialFormState: FormState = {
   name: '',
   category: '',
   portion: '',
-  nutrients: {
-    calories: '',
-    fat: '',
-    carbs: '',
-    protein: '',
-  },
+  nutrients: Nutrients.initialFormState(),
 };
 
 export const AddFood: React.FC = () => {
@@ -53,11 +43,10 @@ export const AddFood: React.FC = () => {
         onSubmit(data: FormState) {
           // TODO this is so fucking ugly, I can't even
           dispatch(
-            addtoFoodList({
+            addToFoodList({
               ...data,
               nutrients: stringValuesToNums(data.nutrients),
               portion: Number(data.portion),
-              id: uuidv4(),
             })
           );
         },
@@ -84,7 +73,7 @@ export const AddFood: React.FC = () => {
         // It may look a little bit weird, we'll see
         unit="g"
       />
-      <Divider my="2" />
+      <Divider my="5" />
       <InputWrapper
         label="Calores"
         name="nutrients.calories"
