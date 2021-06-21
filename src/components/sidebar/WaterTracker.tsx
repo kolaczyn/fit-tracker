@@ -20,7 +20,7 @@ export const WaterTracker: React.FC<WaterTrackerProps> = ({}) => {
       <Text my="2">
         You drank {glassesDrank} glasses of water today. {hitGoalMessage}
       </Text>
-      <Button colorScheme="blue" onClick={incrementGlasses}>
+      <Button variant="outline" colorScheme="blue" onClick={incrementGlasses}>
         Drink a glass of water
       </Button>
     </AppBox>

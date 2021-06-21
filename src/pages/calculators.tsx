@@ -22,7 +22,6 @@ export const Calculator: React.FC<CalculatorProps> = ({}) => {
     } else if (hash === '#tdee') {
       setTabIndex(2);
     }
-    console.log('hello world!');
   };
   useEffect(() => {
     loremIpsum();

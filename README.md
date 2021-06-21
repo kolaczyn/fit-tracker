@@ -19,7 +19,6 @@
 - the sidebar moves in TDEE calculator tab
 - the calculators all render into the DOM, which causes it to have 3 component with the same id (weight-something and waist-something). This doesn't seem to cause any problems now, but might screw me up in the future. Fix this - there doesn't seem to be a way to only render one tab at the time to the DOM with Chakra's Tabs, though maybe I wasn't looking hard enough. I may need to change the input's name to something e.g. `weightBMI`
 - there are some layout issues on rotated iPad
-- add find feature with `fuse.js`
 - for mobile, add alternative for tooltip
 - looks bad on mobile in TDEE calculator
 
@@ -29,4 +28,3 @@
 - add fancy slide in of the content on page load
 - if a form is partilally filled it (e.g. add food) send an alert asking user if he's sure, and he'll loose progress
 - the sidebar is hidden on the mobile - make sidebar's content accessable on the mobile through line in the hamburger menu
-- the scrollbar looks ugly in light mode
