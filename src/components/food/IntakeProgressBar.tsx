@@ -1,4 +1,6 @@
+import { useColorModeValue } from '@chakra-ui/color-mode';
 import { Box, BoxProps, Grid, HStack, Text } from '@chakra-ui/layout';
+import { Tag } from '@chakra-ui/tag';
 import React from 'react';
 
 interface IntakeProgressBarProps {
@@ -27,32 +29,29 @@ export const IntakeProgressBar: React.FC<IntakeProgressBarProps> = ({
   selected,
   goal,
 }) => {
+  const bg = useColorModeValue('purple.50', 'gray.800');
   const eatenProgress = Math.round((alreadyEaten / goal) * 100);
   const selectedProgress = Math.round((selected / goal) * 100);
   const progressLeft = 100 - eatenProgress - selectedProgress;
-  const isOverLimit = alreadyEaten > goal + selected;
+  const isOverLimit = alreadyEaten + selected > goal;
   return (
-    <Grid templateColumns="1fr 2fr" gap={2}>
-      <Text>{label}</Text>
-      <Box textAlign="center" textColor="black">
+    <Grid templateColumns="3fr 1fr" gap="4">
+      <Box>
         {isOverLimit ? (
-          <ProgressBox bg="red.400">
-            <Text width="100%">{alreadyEaten - goal} Calories over limit</Text>
-          </ProgressBox>
+          <ProgressBox bg="red.400"></ProgressBox>
         ) : (
-          <ProgressBox bg="teal.100">
-            <Box height="100%" width={`${eatenProgress}%`} bg="green.400">
-              <Text>{alreadyEaten}</Text>
-            </Box>
-            <Box height="100%" width={`${selectedProgress}%`} bg="green.300">
-              <Text>{selected}</Text>
-            </Box>
-            <Box height="100%" width={`${progressLeft}%`}>
-              <Text>{goal - alreadyEaten}</Text>
-            </Box>
+          <ProgressBox bg={bg}>
+            <Box height="100%" width={`${eatenProgress}%`} bg="green.300" />
+            <Box height="100%" width={`${selectedProgress}%`} bg="green.100" />
+            <Box height="100%" width={`${progressLeft}%`} />
           </ProgressBox>
         )}
       </Box>
+      <Tag justifySelf="flex-start">
+        <Text fontSize={['md', 'lg']} fontWeight="bold">
+          {label}
+        </Text>
+      </Tag>
     </Grid>
   );
 };

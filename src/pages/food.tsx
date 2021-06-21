@@ -1,24 +1,16 @@
-import { Button, IconButton } from '@chakra-ui/button';
-import { CloseIcon, SearchIcon } from '@chakra-ui/icons';
-import {
-  Input,
-  InputGroup,
-  InputLeftElement,
-  InputRightElement,
-} from '@chakra-ui/input';
+import { Button } from '@chakra-ui/button';
 import { HStack, Spacer, VStack } from '@chakra-ui/layout';
 import { useBreakpointValue } from '@chakra-ui/media-query';
+import FuzzySearch from 'fuzzy-search';
 import { NextSeo } from 'next-seo';
-import React, { ChangeEvent, useEffect, useRef, useState } from 'react';
-
+import React, { useRef, useState } from 'react';
 import { AddFood } from '../components/food/AddFood';
-import { Food } from '../customTypes';
 import { FoodItem } from '../components/food/FoodItem';
 import { IntakeProgress } from '../components/food/IntakeProgress';
 import { SetGoal } from '../components/food/SetGoal';
-import useSelectedFood from '../hooks/useSelectedFood';
 import { SearchBar } from '../components/ui/SearchBar';
-import FuzzySearch from 'fuzzy-search';
+import useSelectedFood from '../hooks/useSelectedFood';
+
 
 export const FoodPage: React.FC = () => {
   const {
