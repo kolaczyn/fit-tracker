@@ -29,5 +29,4 @@
 - if a form is partilally filled it (e.g. add food) send an alert asking user if he's sure, and he'll loose progress
 - the sidebar is hidden on the mobile - make sidebar's content accessable on the mobile through line in the hamburger menu
 - move generating uuid to the store
-- change `addtoFoodList` into `addtoFoodList` (capitalize the _t_)
 - the search feature is broken sometimes, figure out why (storing computed state in useState?). I'm using `foodListArray` instead of `searchResult`

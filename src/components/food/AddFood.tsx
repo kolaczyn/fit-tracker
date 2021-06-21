@@ -5,7 +5,7 @@ import * as Yup from 'yup';
 import { NutrientsI } from '../../customTypes';
 import Nutrients from '../../models/Nutrients';
 import { useAppDispatch } from '../../redux/hooks';
-import { addtoFoodList } from '../../redux/trackIntakeSlice';
+import { addToFoodList } from '../../redux/trackIntakeSlice';
 import stringValuesToNums from '../../utils/stringValuesToNums';
 import { FormModal } from '../form/FormModal';
 import { InputWrapper } from '../form/InputWrapper';
@@ -44,7 +44,7 @@ export const AddFood: React.FC = () => {
         onSubmit(data: FormState) {
           // TODO this is so fucking ugly, I can't even
           dispatch(
-            addtoFoodList({
+            addToFoodList({
               ...data,
               nutrients: stringValuesToNums(data.nutrients),
               portion: Number(data.portion),

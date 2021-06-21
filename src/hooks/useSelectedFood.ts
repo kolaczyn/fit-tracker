@@ -3,7 +3,7 @@ import { cleanup } from '@testing-library/react';
 import { useState, useEffect } from 'react';
 import { Food, NutrientsI } from '../customTypes';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
-import { addtoFoodList, addtoFoodEaten } from '../redux/trackIntakeSlice';
+import { addToFoodList, addtoFoodEaten } from '../redux/trackIntakeSlice';
 import initialFoods from '../static/initialFoods';
 import normalizedToArray from '../utils/normalizedToArray';
 
@@ -23,7 +23,7 @@ const useSelectedFood = () => {
   const foodListArray: Food[] = normalizedToArray(foodListItems);
 
   useEffect(() => {
-    initialFoods.forEach(food => dispatch(addtoFoodList(food)));
+    initialFoods.forEach(food => dispatch(addToFoodList(food)));
   }, []);
 
   const handleConsoomSelected = () => {

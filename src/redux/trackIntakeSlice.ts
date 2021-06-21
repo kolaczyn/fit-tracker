@@ -34,8 +34,7 @@ const nutrientsSlice = createSlice({
   name: 'trackIntake',
   initialState,
   reducers: {
-    // `addToFoodList` and `addToFoodEaten` are extremely similar, I might want to merge them
-    addtoFoodList: (state: State, action: PayloadAction<Food>) => {
+    addToFoodList: (state: State, action: PayloadAction<Food>) => {
       const id = action.payload.id;
       state.foodList.allIds.push(id);
       state.foodList.byId[id] = action.payload;
@@ -49,7 +48,7 @@ const nutrientsSlice = createSlice({
   },
 });
 
-export const { addtoFoodList, addtoFoodEaten, setIntakeGoal } =
+export const { addToFoodList, addtoFoodEaten, setIntakeGoal } =
   nutrientsSlice.actions;
 
 export default nutrientsSlice.reducer;
