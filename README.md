@@ -26,3 +26,4 @@
 - if a form is partilally filled it (e.g. add food) send an alert asking user if he's sure, and he'll loose progress
 - I should only show if your are past the limit only for Calories
 - there are some errors while submitting a class instance into the store - because its methods are not serializable. Maybe I should switch my approach from class based to functional?
+- extract bg and textColor with `useColorModeValue` into a custom hook or find a better way to handle this

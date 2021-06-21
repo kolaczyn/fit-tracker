@@ -54,7 +54,7 @@ export const FoodPage: React.FC = () => {
           <SetGoal />
         </HStack>
         <SearchBar handleSearch={handleSearch} />
-        <VStack width="100%" alignItems="stretch" spacing="3">
+        <VStack width="100%" alignItems="stretch" spacing="4">
           {foodListArray.map(food => (
             <FoodItem
               key={food.id}

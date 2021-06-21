@@ -10,6 +10,8 @@ export const NavLinks: React.FC<NavLinksProps> = ({}) => {
       <AppLink href="/food" label="Food" />
       {/* <AppLink href="/meals" label="Meals" /> */}
       <AppLink href="/calculators" label="Calculators" />
+      <AppLink href="/login" label="Login" />
+      <AppLink href="/register" label="Register" />
     </>
   );
 };
