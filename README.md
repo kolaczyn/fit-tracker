@@ -24,3 +24,4 @@
 - the sidebar is hidden on the mobile - make sidebar's content accessable on the mobile through line in the hamburger menu
 - the search feature is broken sometimes, figure out why (storing computed state in useState?). I'm using `foodListArray` instead of `searchResult`
 - if a form is partilally filled it (e.g. add food) send an alert asking user if he's sure, and he'll loose progress
+- I should only show if your are past the limit only for Calories

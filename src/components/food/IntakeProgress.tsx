@@ -24,7 +24,7 @@ export const IntakeProgress: React.FC<IntakeProgresProps> = ({ selected }) => {
       {nutrientsNames.map(nutrientName => (
         <IntakeProgressBar
           key={nutrientName}
-          label={capitalizeFirstLetter(nutrientName)}
+          nutrientName={nutrientName}
           goal={nutrientsGoal[nutrientName]}
           alreadyEaten={eatenCalories[nutrientName]}
           selected={selected[nutrientName]}
