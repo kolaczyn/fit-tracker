@@ -4,7 +4,7 @@ import { AppBox } from '../ui/AppBox';
 
 export const Bar: React.FC<BoxProps> = ({ children, ...props }) => {
   return (
-    <AppBox opacity="95%" boxShadow="lg" w="100%" px="4" py="2" {...props}>
+    <AppBox rounded="none" opacity="95%" boxShadow="lg" w="100%" px="4" py="2" {...props}>
       {children}
     </AppBox>
   );

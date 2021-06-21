@@ -25,9 +25,8 @@
 
 - add indicators saying if e.g. your BMI is okay, give explanation what does BMI and TDEE mean and their uses cases, give instructions on how you should measure yourself
 - sometimes numbers like 102.000000003 show up - round floats to second digit after period
-- always show the scrollbar
 - start with empty gender, so the user is forced to select the correct gender
 - add fancy slide in of the content on page load
 - if a form is partilally filled it (e.g. add food) send an alert asking user if he's sure, and he'll loose progress
 - the sidebar is hidden on the mobile - make sidebar's content accessable on the mobile through line in the hamburger menu
-- hide category if it's null or an empty string
+- the scrollbar looks ugly in light mode
