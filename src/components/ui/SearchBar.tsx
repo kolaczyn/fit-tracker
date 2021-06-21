@@ -52,7 +52,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({ handleSearch }) => {
             <IconButton
               aria-label="Clear input"
               variant="ghost"
-              icon={<CloseIcon color="red.300" />}
+              icon={<CloseIcon color="gray.500" />}
             />
           }
         />

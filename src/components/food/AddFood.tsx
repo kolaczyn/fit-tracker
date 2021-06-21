@@ -19,8 +19,8 @@ type FormState = {
 const validationSchema = Yup.object({
   name: Yup.string().min(1).required(),
   category: Yup.string().min(1),
-  portion: Yup.number().min(0).required(),
-  nutrients: Nutrients.yupValidationSchema(),
+  portion: Yup.number().min(0),
+  nutrients: Nutrients.yupValidationSchema(false),
 });
 
 const initialFormState: FormState = {
@@ -73,7 +73,7 @@ export const AddFood: React.FC = () => {
         // It may look a little bit weird, we'll see
         unit="g"
       />
-      <Divider my="2" />
+      <Divider my="5" />
       <InputWrapper
         label="Calores"
         name="nutrients.calories"

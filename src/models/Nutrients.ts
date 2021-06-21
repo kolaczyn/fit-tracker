@@ -30,11 +30,20 @@ export default class Nutrients implements NutrientsI<number> {
     carbs: '',
     protein: '',
   });
-  static yupValidationSchema = () =>
-    Yup.object({
-      calories: Yup.number().min(0).required('Calories is a required field'),
-      fat: Yup.number().min(0).required('Fat is a required field'),
-      carbs: Yup.number().min(0).required('Carbs is a required field'),
-      protein: Yup.number().min(0).required('Protein is a required field'),
-    });
+  static yupValidationSchema = (isAllRequired: boolean = true) =>
+    isAllRequired
+      ? Yup.object({
+          calories: Yup.number()
+            .min(0)
+            .required('Calories is a required field'),
+          fat: Yup.number().min(0).required('Fat is a required field'),
+          carbs: Yup.number().min(0).required('Carbs is a required field'),
+          protein: Yup.number().min(0).required('Protein is a required field'),
+        })
+      : Yup.object({
+          calories: Yup.number().min(0),
+          fat: Yup.number().min(0),
+          carbs: Yup.number().min(0),
+          protein: Yup.number().min(0),
+        });
 }
