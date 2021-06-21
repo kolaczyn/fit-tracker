@@ -4,7 +4,7 @@ import React from 'react';
 import { AppChakraProvider } from '../components/providers/AppChakraProvider';
 import { StoreProvider } from '../components/providers/StoreProvider';
 import { GeneralLayout } from '../components/layout/GeneralLayout';
-import '../../static/niceScrollbar.css'
+import '../static/niceScrollbar.css'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

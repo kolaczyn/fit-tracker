@@ -1,17 +1,13 @@
 import React from 'react';
 import {
-  LineChart,
   XAxis,
   AreaChart,
   YAxis,
-  ReferenceLine,
   Area,
   Tooltip,
-  CartesianGrid,
-  Line,
   ResponsiveContainer,
 } from 'recharts';
-import data from '../../../static/dummyChartData';
+import data from '../../static/dummyChartData';
 
 interface WeightChartProps {}
 

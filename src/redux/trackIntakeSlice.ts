@@ -1,4 +1,4 @@
-import { createSlice, Action, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Food, NormalizedIndex, Nutrients } from '../customTypes';
 
 // I might change this to classes

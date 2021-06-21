@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { Food, Nutrients } from '../customTypes';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
 import { addtoFoodList, addtoFoodEaten } from '../redux/trackIntakeSlice';
-import initialFoods from '../../static/initialFoods';
+import initialFoods from '../static/initialFoods';
 import normalizedToArray from '../utils/normalizedToArray';
 
 const useSelectedFood = () => {

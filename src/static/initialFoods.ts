@@ -1,4 +1,4 @@
-import { Food } from '../src/customTypes';
+import { Food } from '../customTypes';
 
 const initialFoods: Food[] = [
   {
