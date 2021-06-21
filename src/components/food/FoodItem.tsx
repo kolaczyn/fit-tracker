@@ -1,11 +1,9 @@
 import { Checkbox } from '@chakra-ui/checkbox';
-import { EditIcon, HamburgerIcon } from '@chakra-ui/icons';
-import { Box, Flex, HStack, Spacer, Text, VStack } from '@chakra-ui/layout';
-import { Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/menu';
-import { IconButton, Stack, Tag, useColorModeValue } from '@chakra-ui/react';
+import { Flex, HStack, Spacer, Text, VStack } from '@chakra-ui/layout';
+import { Stack, Tag } from '@chakra-ui/react';
 import React from 'react';
-
-import { Food } from '../../customTypes';
+import { ColorScheme, Food } from '../../customTypes';
+import dumbHash from '../../utils/dumbHash';
 import prettyPrintGrams from '../../utils/prettyPrintGrams';
 import { AppBox } from '../ui/AppBox';
 
@@ -15,11 +13,21 @@ interface FoodItemProps {
   isActive: boolean;
 }
 
+// possible color schemes for the category
+const PICKABLE_COLOR_SCHEMES: ColorScheme[] = [
+  'blue',
+  'purple',
+  'green',
+  'orange',
+];
+
 export const FoodItem: React.FC<FoodItemProps> = ({
   food,
   toggleFood,
   isActive,
 }) => {
+  const categoryColorScheme =
+    PICKABLE_COLOR_SCHEMES[dumbHash(food.category) % PICKABLE_COLOR_SCHEMES.length];
   return (
     <AppBox
       data-testid="food-component"
@@ -30,9 +38,11 @@ export const FoodItem: React.FC<FoodItemProps> = ({
         <VStack align="left">
           <HStack>
             <Text as="b">{food.name}</Text>
-            <Tag size="sm" colorScheme="cyan">
-              {food.category}
-            </Tag>
+            {!!food.category ? (
+              <Tag size="sm" colorScheme={categoryColorScheme}>
+                {food.category}
+              </Tag>
+            ) : null}
           </HStack>
           <HStack>
             <Stack direction={['column', 'column', 'row']}>

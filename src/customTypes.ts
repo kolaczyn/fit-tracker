@@ -56,9 +56,29 @@ export type Food = {
   nutrients: Nutrients<number>;
 };
 
-
 export interface NormalizedIndex<T> {
   byId: Record<string, T>;
   allIds: string[];
 }
 
+// Chakra UI's colorSchemes
+// I couldn't find one exported, so I put it here
+export type ColorScheme =
+  | 'whiteAlpha'
+  | 'blackAlpha'
+  | 'gray'
+  | 'red'
+  | 'orange'
+  | 'yellow'
+  | 'green'
+  | 'teal'
+  | 'blue'
+  | 'cyan'
+  | 'purple'
+  | 'pink'
+  | 'linkedin'
+  | 'facebook'
+  | 'messenger'
+  | 'whatsapp'
+  | 'twitter'
+  | 'telegram';
