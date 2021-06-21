@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Food, NormalizedIndex, Nutrients } from '../customTypes';
+import { Food, NormalizedIndex, NutrientsI } from '../customTypes';
 
 // I might change this to classes
 // and move this to util/ folder,
@@ -16,7 +16,7 @@ type State = {
   foodList: NormalizedIndex<Food>;
   // this should be just a reference to foodList, e.g. ids
   foodEaten: string[];
-  intakeGoal: Nutrients<number>;
+  intakeGoal: NutrientsI<number>;
 };
 
 const initialState: State = {
@@ -43,7 +43,7 @@ const nutrientsSlice = createSlice({
     addtoFoodEaten: (state: State, action: PayloadAction<string[]>) => {
       state.foodEaten = [...state.foodEaten, ...action.payload];
     },
-    setIntakeGoal: (state: State, action: PayloadAction<Nutrients<number>>) => {
+    setIntakeGoal: (state: State, action: PayloadAction<NutrientsI<number>>) => {
       state.intakeGoal = action.payload;
     },
   },

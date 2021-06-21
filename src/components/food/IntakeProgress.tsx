@@ -1,11 +1,11 @@
 import React from 'react';
-import { Nutrients } from '../../customTypes';
+import { NutrientsI } from '../../customTypes';
 import useEatenCalories from '../../hooks/useEatenCalories';
 import { useAppSelector } from '../../redux/hooks';
 import { IntakeProgressBar } from './IntakeProgressBar';
 
 interface IntakeProgresProps {
-  selected: Nutrients<number>;
+  selected: NutrientsI<number>;
 }
 
 export const IntakeProgress: React.FC<IntakeProgresProps> = ({ selected }) => {

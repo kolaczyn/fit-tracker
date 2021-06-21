@@ -1,29 +1,13 @@
-import { Button } from '@chakra-ui/react';
-import { Formik, Form } from 'formik';
 import React from 'react';
-import * as Yup from 'yup';
 import { InputWrapper } from '../form/InputWrapper';
-import { Nutrients } from '../../customTypes';
 import { useAppDispatch } from '../../redux/hooks';
 import { setIntakeGoal } from '../../redux/trackIntakeSlice';
-import stringValuesToNums from '../../utils/stringValuesToNums';
 import { FormModal } from '../form/FormModal';
+import Nutrients from '../../models/Nutrients';
 
-const validationSchema = Yup.object({
-  calories: Yup.number().min(0).required('Calories is a required field'),
-  fat: Yup.number().min(0).required('Fat is a required field'),
-  carbs: Yup.number().min(0).required('Carbs is a required field'),
-  protein: Yup.number().min(0).required('Protein is a required field'),
-});
+const validationSchema = Nutrients.yupValidationSchema();
 
-type FormState = Nutrients<string>;
-
-const initialFormState: FormState = {
-  calories: '',
-  fat: '',
-  carbs: '',
-  protein: '',
-};
+const initialFormState = Nutrients.initialFormState();
 
 export const SetGoal: React.FC = ({}) => {
   const dispatch = useAppDispatch();
@@ -34,9 +18,9 @@ export const SetGoal: React.FC = ({}) => {
       formikProps={{
         initialValues: initialFormState,
         validationSchema,
-        // @ts-ignore
-        onSubmit(data: FormState) {
-          dispatch(setIntakeGoal(stringValuesToNums(data)));
+        onSubmit(data) {
+          // @ts-ignore
+          dispatch(setIntakeGoal(Nutrients.newNutrientsFromString(data)));
         },
       }}
     >

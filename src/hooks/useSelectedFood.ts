@@ -1,7 +1,7 @@
 import { effect } from '@chakra-ui/react';
 import { cleanup } from '@testing-library/react';
 import { useState, useEffect } from 'react';
-import { Food, Nutrients } from '../customTypes';
+import { Food, NutrientsI } from '../customTypes';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
 import { addtoFoodList, addtoFoodEaten } from '../redux/trackIntakeSlice';
 import initialFoods from '../static/initialFoods';
@@ -12,7 +12,7 @@ const useSelectedFood = () => {
     () => new Set<string>()
   );
   const dispatch = useAppDispatch();
-  const [foodIntake, setFoodIntake] = useState<Nutrients<number>>({
+  const [foodIntake, setFoodIntake] = useState<NutrientsI<number>>({
     calories: 0,
     carbs: 0,
     fat: 0,

@@ -1,14 +1,14 @@
 import { Grid, GridItem, Stat, StatLabel, StatNumber } from '@chakra-ui/react';
 import React from 'react';
-import { Nutrients } from '../../customTypes';
+import { NutrientsI } from '../../customTypes';
 import prettyPrintGrams from '../../utils/prettyPrintGrams';
 
 interface NutrientsStatsProps {
-  nutrients: Nutrients<number>;
+  nutrients: NutrientsI<number>;
 }
 
 // I'm using this in order to make TypeScript happy
-const keysOfNutrients: Array<keyof Nutrients<number>> = [
+const keysOfNutrients: Array<keyof NutrientsI<number>> = [
   'calories',
   'fat',
   'carbs',

@@ -63,7 +63,7 @@ export const FoodPage: React.FC = () => {
         </HStack>
         <SearchBar handleSearch={handleSearch} />
         <VStack width="100%" alignItems="stretch" spacing="3">
-          {searchResult.map(food => (
+          {foodListArray.map(food => (
             <FoodItem
               key={food.id}
               food={food}
