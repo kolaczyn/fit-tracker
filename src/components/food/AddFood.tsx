@@ -1,6 +1,5 @@
 import { Divider } from '@chakra-ui/react';
 import React from 'react';
-import { v4 as uuidv4 } from 'uuid';
 import * as Yup from 'yup';
 import { NutrientsI } from '../../customTypes';
 import Nutrients from '../../models/Nutrients';
@@ -48,7 +47,6 @@ export const AddFood: React.FC = () => {
               ...data,
               nutrients: stringValuesToNums(data.nutrients),
               portion: Number(data.portion),
-              id: uuidv4(),
             })
           );
         },

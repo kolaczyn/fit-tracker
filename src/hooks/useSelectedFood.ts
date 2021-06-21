@@ -1,5 +1,3 @@
-import { effect } from '@chakra-ui/react';
-import { cleanup } from '@testing-library/react';
 import { useState, useEffect } from 'react';
 import { Food, NutrientsI } from '../customTypes';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';

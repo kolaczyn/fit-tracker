@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { v4 as uuidv4 } from 'uuid';
 import { Food, NormalizedIndex, NutrientsI } from '../customTypes';
 
 // I might change this to classes
@@ -34,15 +35,28 @@ const nutrientsSlice = createSlice({
   name: 'trackIntake',
   initialState,
   reducers: {
-    addToFoodList: (state: State, action: PayloadAction<Food>) => {
-      const id = action.payload.id;
-      state.foodList.allIds.push(id);
-      state.foodList.byId[id] = action.payload;
+    addToFoodList: {
+      reducer(state: State, action: PayloadAction<Food>) {
+        const id = action.payload.id;
+        state.foodList.allIds.push(id);
+        state.foodList.byId[id] = action.payload;
+      },
+      prepare(food: Omit<Food, 'id'>) {
+        return {
+          payload: {
+            ...food,
+            id: uuidv4(),
+          },
+        };
+      },
     },
     addtoFoodEaten: (state: State, action: PayloadAction<string[]>) => {
       state.foodEaten = [...state.foodEaten, ...action.payload];
     },
-    setIntakeGoal: (state: State, action: PayloadAction<NutrientsI<number>>) => {
+    setIntakeGoal: (
+      state: State,
+      action: PayloadAction<NutrientsI<number>>
+    ) => {
       state.intakeGoal = action.payload;
     },
   },

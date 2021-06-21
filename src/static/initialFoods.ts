@@ -1,10 +1,9 @@
 import { Food } from '../customTypes';
 
-const initialFoods: Food[] = [
+const initialFoods: Omit<Food, 'id'>[] = [
   {
     name: 'Banana',
     portion: 118,
-    id: '0',
     category: 'Fruit',
     nutrients: {
       calories: 105,
@@ -16,7 +15,6 @@ const initialFoods: Food[] = [
   {
     name: 'Apple',
     portion: 91,
-    id: '1',
     category: 'Fruit',
     nutrients: {
       calories: 91,
@@ -28,7 +26,6 @@ const initialFoods: Food[] = [
   {
     name: 'Avocado',
     portion: 214,
-    id: '30',
     category: 'Fruit',
     nutrients: {
       calories: 318,
@@ -40,7 +37,6 @@ const initialFoods: Food[] = [
   {
     name: 'Hamburger',
     portion: 100,
-    id: '69',
     category: 'Junk Food',
     nutrients: {
       calories: 250,
@@ -52,7 +48,6 @@ const initialFoods: Food[] = [
   {
     name: 'Kaiser roll',
     portion: 55,
-    id: 'kajzerka',
     category: 'Bread',
     nutrients: {
       calories: 162.8,
@@ -64,7 +59,6 @@ const initialFoods: Food[] = [
   {
     name: 'Hard-boiled egg',
     portion: 35,
-    id: 'eggboiled',
     category: '',
     nutrients: {
       calories: 54,
@@ -76,7 +70,6 @@ const initialFoods: Food[] = [
   {
     name: 'Fried egg',
     portion: 35,
-    id: 'firedegg',
     category: '',
     nutrients: {
       calories: 68,
@@ -88,7 +81,6 @@ const initialFoods: Food[] = [
   {
     name: 'Glass of Coke',
     portion: 247,
-    id: 'coke',
     category: '',
     nutrients: {
       calories: 93,
@@ -100,7 +92,6 @@ const initialFoods: Food[] = [
   {
     name: 'Glass of milk',
     portion: 256,
-    id: 'melk',
     category: 'Dairy',
     nutrients: {
       calories: 158,
