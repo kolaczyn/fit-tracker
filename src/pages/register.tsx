@@ -1,22 +1,27 @@
 import {
   Box,
   Button,
-  Checkbox,
-  FormControl,
-  FormLabel,
   Heading,
   Link as ChakraLink,
-  Input,
-  VStack,
   Text,
+  VStack,
 } from '@chakra-ui/react';
+import { Form, Formik } from 'formik';
 import { NextSeo } from 'next-seo';
-import React from 'react';
+import NextLink from 'next/link';
+import React, { useState } from 'react';
+import * as Yup from 'yup';
+import { InputWrapper } from '../components/form/InputWrapper';
 import { AuthPage } from '../components/layout/AuthPage';
 import { AppBox } from '../components/ui/AppBox';
-import NextLink from 'next/link';
+import { register } from '../redux/authSlice';
+import { useAppDispatch, useAppSelector } from '../redux/hooks';
+import passwordPlaceholderDots from '../static/passwordPlaceholderDots';
 
 export const RegisterPage: React.FC = ({}) => {
+  const dispatch = useAppDispatch();
+  const isLoading = useAppSelector(state => state.auth.isLoading);
+  const [firebaseError, setFirebaseError] = useState('');
   return (
     <>
       <NextSeo title="Register | Track Fit" />
@@ -26,26 +31,62 @@ export const RegisterPage: React.FC = ({}) => {
           <Box my="5">
             <hr />
           </Box>
-          <VStack spacing="4">
-            <FormControl>
-              <FormLabel>Email</FormLabel>
-              <Input variant="filled" placeholder="example@gmail.com" />
-            </FormControl>
-            <FormControl>
-              <FormLabel>Password</FormLabel>
-              <Input variant="filled" placeholder="Password" />
-            </FormControl>
-            <FormControl>
-              <FormLabel>Confirm Password</FormLabel>
-              <Input variant="filled" placeholder="Confirm Password" />
-            </FormControl>
-            <Text alignSelf="flex-start">
-              <NextLink href="/login">
-                <ChakraLink>Already have an account? Log In instead</ChakraLink>
-              </NextLink>
-            </Text>
-            <Button isFullWidth>Register</Button>
-          </VStack>
+          <Formik
+            validationSchema={Yup.object({
+              email: Yup.string().email().required(),
+              password: Yup.string().min(6).required(),
+              confirmPassword: Yup.string().oneOf(
+                [Yup.ref('password')],
+                "The passwords don't match"
+              ),
+            })}
+            initialValues={{ email: '', password: '', confirmPassword: '' }}
+            onSubmit={async ({ email, password }) => {
+              const { payload } = await dispatch(register({ email, password }));
+              setFirebaseError(payload);
+            }}
+          >
+            {() => (
+              <Form>
+                <VStack spacing="4">
+                  <InputWrapper
+                    variant="filled"
+                    label="Email"
+                    name="email"
+                    type="email"
+                    placeholder="example@gmail.com"
+                  />
+                  <InputWrapper
+                    label="Password"
+                    name="password"
+                    type="password"
+                    variant="filled"
+                    placeholder={passwordPlaceholderDots}
+                  />
+                  <InputWrapper
+                    label="Confirm Password"
+                    name="confirmPassword"
+                    type="password"
+                    variant="filled"
+                    placeholder={passwordPlaceholderDots}
+                  />
+
+                  <Text alignSelf="flex-start" textColor="red.400">
+                    {firebaseError}
+                  </Text>
+                  <Text alignSelf="flex-start">
+                    Already have an account?{' '}
+                    <NextLink href="/login">
+                      <ChakraLink color="teal.500">Log In instead</ChakraLink>
+                    </NextLink>
+                  </Text>
+                  <Button type="submit" isDisabled={isLoading} isFullWidth>
+                    {isLoading ? 'Please Wait...' : 'Register'}
+                  </Button>
+                </VStack>
+              </Form>
+            )}
+          </Formik>
         </AppBox>
       </AuthPage>
     </>

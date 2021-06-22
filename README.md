@@ -21,9 +21,10 @@
 - add indicators saying if e.g. your BMI is okay, give explanation what does BMI and TDEE mean and their uses cases, give instructions on how you should measure yourself
 - start with empty gender, so the user is forced to select the correct gender
 - add fancy slide in of the content on page load
-- the sidebar is hidden on the mobile - make sidebar's content accessable on the mobile through line in the hamburger menu
+- the sidebar is hidden on the mobile - make sidebar's content accessable on the mobile through line in the hamburger menu **SOLUTION** just stack main content and sidebar verticaly. And add `<main>` tag somewhere
 - the search feature is broken sometimes, figure out why (storing computed state in useState?). I'm using `foodListArray` instead of `searchResult`
 - if a form is partilally filled it (e.g. add food) send an alert asking user if he's sure, and he'll loose progress
 - I should only show if your are past the limit only for Calories
 - there are some errors while submitting a class instance into the store - because its methods are not serializable. Maybe I should switch my approach from class based to functional?
 - extract bg and textColor with `useColorModeValue` into a custom hook or find a better way to handle this
+- fix layout on `<100vh` two column pages (e.g. `/`)

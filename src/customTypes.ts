@@ -61,6 +61,11 @@ export interface NormalizedIndex<T> {
   allIds: string[];
 }
 
+export type UserCredentials = {
+  email: string,
+  password: string,
+}
+
 // Chakra UI's colorSchemes
 // I couldn't find one exported, so I put it here
 export type ColorScheme =
