@@ -6,7 +6,7 @@ import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { updateMetrics, setUnits } from '../../redux/metricsSlice';
 import { RadioWrapper } from '../form/RadioWrapper';
 
-export const UnitsSelector: React.FC<BoxProps> = ({...props}) => {
+export const UnitsSelector: React.FC<BoxProps> = ({ ...props }) => {
   const dispatch = useAppDispatch();
   // FIXME for some reason this doesn't work properly
   const loadedUnits = useAppSelector(
@@ -15,15 +15,13 @@ export const UnitsSelector: React.FC<BoxProps> = ({...props}) => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const units = e.target.value as Units;
-    dispatch(updateMetrics({ units }));
+        dispatch(setUnits(units));
   };
   return (
     <Formik
       enableReinitialize
       initialValues={{ units: loadedUnits }}
-      onSubmit={({ units }: { units: Units }) => {
-        dispatch(setUnits(units));
-      }}
+      onSubmit={() => {}}
     >
       {() => (
         <Box {...props}>

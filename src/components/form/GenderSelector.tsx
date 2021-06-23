@@ -21,9 +21,7 @@ export const GenderSelector: React.FC<BoxProps> = ({ ...props }) => {
     <Formik
       enableReinitialize
       initialValues={{ gender: loadedGender }}
-      onSubmit={({ gender }: { gender: Gender }) => {
-        dispatch(updateMetrics({ gender }));
-      }}
+      onSubmit={() => {}}
     >
       {() => (
         <Box {...props}>

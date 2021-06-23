@@ -22,11 +22,13 @@ const metricsSlice = createSlice({
       // action shouldn't accept Units, because we should handle them differently (reset all cm and kg based units or convert them to other measurement)
       action: PayloadAction<Partial<Omit<Metrics, Units>>>
     ) => {
-      action.payload.units
+      action.payload.units;
       return { ...state, ...action.payload };
     },
+    // for now I'm just gonna reset all the values if the user changes units
     setUnits: (state: State, action: PayloadAction<Units>) => {
-      state.units = action.payload;
+      console.log('resttings')
+      return { ...initialState, units: action.payload };
     },
   },
 });

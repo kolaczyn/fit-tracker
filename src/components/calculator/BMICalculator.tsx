@@ -1,4 +1,4 @@
-import { Button, VStack } from '@chakra-ui/react';
+import { VStack } from '@chakra-ui/react';
 import { Form, Formik } from 'formik';
 import { NextSeo } from 'next-seo';
 import React, { useState } from 'react';
@@ -28,6 +28,7 @@ const initialFormState: BMICalculatorData<string> = {
 export const BMICalculator: React.FC<BMICalculatorProps> = ({}) => {
   const dispatch = useAppDispatch();
   const { weightUnit, lengthUnit } = useUnits();
+  const { bmiCalc } = useCalcFunctions();
 
   const [bmi, setBmi] = useState<number | null>(null);
 
@@ -38,10 +39,9 @@ export const BMICalculator: React.FC<BMICalculatorProps> = ({}) => {
         validationSchema={validationSchema}
         initialValues={initialFormState}
         onSubmit={(formState: BMICalculatorData<string>) => {
-          const { height: heightInCm, weight: weightInKg } =
-            stringValuesToNums(formState);
-          setBmi(calculateBMIMetric({ weight: weightInKg, height: heightInCm }));
-          dispatch(updateMetrics({ weight: weightInKg, height: heightInCm }));
+          const formStateNums = stringValuesToNums(formState);
+          setBmi(bmiCalc(formStateNums));
+          dispatch(updateMetrics(formStateNums));
         }}
       >
         {() => (
