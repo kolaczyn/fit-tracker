@@ -54,11 +54,11 @@ export const BodyFatWomen: React.FC<BodyFatWomenProps> = ({}) => {
           } = stringValuesToNums(formState);
           // @ts-ignore
           const tempBodyFat = calculateBodyFatForWomenImperial({
-            weightInLb,
-            hipInInch,
-            waistInInch,
-            forearmInInch,
-            writstInInch,
+            weight: weightInLb,
+            hip: hipInInch,
+            waist: waistInInch,
+            forearm: forearmInInch,
+            wrist: writstInInch,
           });
           setBodyFat(tempBodyFat);
         }}

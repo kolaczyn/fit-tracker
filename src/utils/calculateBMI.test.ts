@@ -11,7 +11,7 @@ describe('calculateBMI', () => {
   test.each(cases)(
     'should correctly calculate BMI of %s for %s kg %s cm',
     (correct, weightInKg, heightInCm) => {
-      expect(calculateBMIMetric({ weightInKg, heightInCm })).toBeCloseTo(
+      expect(calculateBMIMetric({ weight: weightInKg, height: heightInCm })).toBeCloseTo(
         correct,
         1
       );

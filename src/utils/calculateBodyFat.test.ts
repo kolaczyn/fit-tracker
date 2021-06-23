@@ -18,7 +18,7 @@ describe('calculateBodyFat', () => {
 });
 
 const menCases: [number, BodyFatMenDataImperial][] = [
-  [21.22, { weightInLb: 201, waistInInch: 37 }],
+  [21.22, { weight: 201, waist: 37 }],
 ];
 // TODO finish this
 describe('calculateBodyFatForMen', () => {
@@ -34,21 +34,21 @@ const womenCases: [number, BodyFatWomenDataImperial][] = [
   [
     14.5,
     {
-      weightInLb: 180,
-      writstInInch: 10,
-      hipInInch: 32,
-      forearmInInch: 50,
-      waistInInch: 24,
+      weight: 180,
+      wrist: 10,
+      hip: 32,
+      forearm: 50,
+      waist: 24,
     },
   ],
   [
     11.48,
     {
-      weightInLb: 140,
-      writstInInch: 8,
-      hipInInch: 30,
-      forearmInInch: 48,
-      waistInInch: 22,
+      weight: 140,
+      wrist: 8,
+      hip: 30,
+      forearm: 48,
+      waist: 22,
     },
   ],
 ];

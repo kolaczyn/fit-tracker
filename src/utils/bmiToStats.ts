@@ -19,12 +19,12 @@ const bmiToCategory = (
 };
 
 const heightAndBMIToWeight = ({
-  heightInCm,
+  height,
   targetBMI,
 }: {
-  heightInCm: number;
+  height: number;
   targetBMI: number;
-}) => targetBMI * (heightInCm / 100) ** 2;
+}) => targetBMI * (height / 100) ** 2;
 
 export type BMIStats = {
   category: BMICategory;
@@ -32,12 +32,20 @@ export type BMIStats = {
   currentBMI: number;
 };
 
-const calculateBMIStatsMetric = ({ heightInCm, weightInKg }: BMIDataMetric): BMIStats => {
-  const currentBMI = calculateBMIMetric({ heightInCm, weightInKg });
+const calculateBMIStatsMetric = ({
+  height,
+  weight,
+}: BMIDataMetric): BMIStats => {
+  const currentBMI = calculateBMIMetric({
+    height,
+    weight,
+  });
   const { category, targetBMI } = bmiToCategory(currentBMI);
 
   let targetWeight =
-    targetBMI === null ? null : heightAndBMIToWeight({ heightInCm, targetBMI });
+    targetBMI === null
+      ? null
+      : heightAndBMIToWeight({ height: height, targetBMI });
 
   return { category, currentBMI, targetWeight };
 };

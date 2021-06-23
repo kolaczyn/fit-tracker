@@ -12,50 +12,45 @@ const activityLevelToMultiplier: Record<ActivityLevel, number> = {
   [ActivityLevel.ExtremelyActive]: 1.9,
 };
 
-export interface TDEEDataMetric {
+export type TDEEData = {
   activityLevel: ActivityLevel;
-  weightInKg: number;
-  heightInCm: number;
+  weight: number;
+  height: number;
   age: number;
-}
-export interface TDEEDataImperial {
-  activityLevel: ActivityLevel;
-  weightInLb: number;
-  heightInInch: number;
-  age: number;
-}
+};
+// I'm aliasin these variables to make it appear in the autocomplete
+export type TDEEDataMetric = TDEEData;
+export type TDEEDataImperial = TDEEData;
 
 export const calculateTDEEForMaleMetric = (data: TDEEDataMetric) => {
-  const { heightInCm, weightInKg, activityLevel, age } = data;
+  const { height: heightInCm, weight: weightInKg, activityLevel, age } = data;
   const multiplier = activityLevelToMultiplier[activityLevel];
   return multiplier * (13.75 * weightInKg + 5 * heightInCm - 6.76 * age + 66);
 };
 export const calculateTDEEForMaleImperial = ({
-  weightInLb,
-  heightInInch,
+  weight,
+  height,
   ...rest
 }: TDEEDataImperial) =>
   calculateTDEEForMaleMetric({
-    weightInKg: poundsToKg(weightInLb),
-    heightInCm: inchToCm(heightInInch),
+    weight: poundsToKg(weight),
+    height: inchToCm(height),
     ...rest,
   });
 
 export const calculateTDEEForFemaleImperial = ({
-  weightInLb,
-  heightInInch,
+  weight,
+  height,
   ...rest
 }: TDEEDataImperial) =>
   calculateTDEEForFemaleMetric({
-    weightInKg: poundsToKg(weightInLb),
-    heightInCm: inchToCm(heightInInch),
+    weight: poundsToKg(weight),
+    height: inchToCm(height),
     ...rest,
   });
 
 export const calculateTDEEForFemaleMetric = (data: TDEEDataMetric) => {
-  const { heightInCm, weightInKg, activityLevel, age } = data;
+  const { height, weight, activityLevel, age } = data;
   const multiplier = activityLevelToMultiplier[activityLevel];
-  return (
-    multiplier * (9.56 * weightInKg + 1.85 * heightInCm - 4.68 * age + 655)
-  );
+  return multiplier * (9.56 * weight + 1.85 * height - 4.68 * age + 655);
 };

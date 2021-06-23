@@ -3,80 +3,73 @@
 import { cmToInch, kgToPound } from './unitsConversion';
 
 //www.bmi-calculator.net/body-fat-calculator/body-fat-formula.php
-export interface BodyFatWomenDataImperial {
-  weightInLb: number;
-  writstInInch: number;
-  hipInInch: number;
-  forearmInInch: number;
-  waistInInch: number;
-}
-export type BodyFatMenDataImperial = {
-  weightInLb: number;
-  waistInInch: number;
+export type BodyFatWomenData = {
+  weight: number;
+  wrist: number;
+  hip: number;
+  forearm: number;
+  waist: number;
 };
-export interface BodyFatWomenDataMetric {
-  weightInKg: number;
-  writstInCm: number;
-  hipInCm: number;
-  forearmInCm: number;
-  waistInCm: number;
-}
-export type BodyFatMenDataMetric = {
-  weightInKg: number;
-  waistInCm: number;
+export type BodyFatMenData = {
+  weight: number;
+  waist: number;
 };
+export type BodyFatWomenDataImperial = BodyFatWomenData;
+export type BodyFatMenDataImperial = BodyFatMenData;
+export type BodyFatWomenDataMetric = BodyFatWomenData;
+export type BodyFatMenDataMetric = BodyFatMenData;
 
 export const calculateBodyFatForWomenImperial = ({
-  weightInLb,
-  writstInInch,
-  hipInInch,
-  forearmInInch,
-  waistInInch,
+  weight,
+  wrist,
+  hip,
+  forearm,
+  waist,
 }: BodyFatWomenDataImperial): number => {
-  const factor1 = weightInLb * 0.732 + 8.987;
-  const factor2 = writstInInch / 3.14;
-  const factor3 = waistInInch * 0.157;
-  const factor4 = hipInInch * 0.249;
-  const factor5 = forearmInInch * 0.434;
+  const factor1 = weight * 0.732 + 8.987;
+  const factor2 = wrist / 3.14;
+  const factor3 = waist * 0.157;
+  const factor4 = hip * 0.249;
+  const factor5 = forearm * 0.434;
 
   const leanBodyMass = factor1 + factor2 - factor3 - factor4 + factor5;
-  return calculateBodyFat(weightInLb, leanBodyMass);
+  return calculateBodyFat(weight, leanBodyMass);
 };
 
 export const calculateBodyFatForMenImperial = ({
-  weightInLb,
-  waistInInch,
+  weight,
+  waist,
 }: BodyFatMenDataImperial): number => {
-  const factor1 = weightInLb * 1.082 + 94.42;
-  const factor2 = waistInInch * 4.15;
+  const factor1 = weight * 1.082 + 94.42;
+  const factor2 = waist * 4.15;
 
   const leanBodyMass = factor1 - factor2;
-  return calculateBodyFat(weightInLb, leanBodyMass);
+  return calculateBodyFat(weight, leanBodyMass);
 };
 
 export const calculateBodyFatForWomenMetric = ({
-  weightInKg,
-  forearmInCm,
-  hipInCm,
-  waistInCm,
-  writstInCm,
+  weight: weight,
+  forearm: forearm,
+  hip: hip,
+  waist: waist,
+  wrist: wrist,
 }: BodyFatWomenDataMetric): number => {
   return calculateBodyFatForWomenImperial({
-    forearmInInch: cmToInch(forearmInCm),
-    hipInInch: cmToInch(hipInCm),
-    waistInInch: cmToInch(waistInCm),
-    weightInLb: kgToPound(weightInKg),
-    writstInInch: cmToInch(writstInCm),
+    forearm: cmToInch(forearm),
+    hip: cmToInch(hip),
+    waist: cmToInch(waist),
+    weight: kgToPound(weight),
+    wrist: cmToInch(wrist),
   });
 };
 
 export const calculateBodyFatForMenMetric = ({
-  weightInKg,
-  waistInCm,
+  weight,
+  waist,
 }: BodyFatMenDataMetric): number => {
   return calculateBodyFatForMenImperial({
-    waistInInch: cmToInch(waistInCm),
-    weightInLb: kgToPound(weightInKg),
+    waist: cmToInch(waist),
+    weight: kgToPound(weight),
   });
 };
 /** returns body fat in percentage */

@@ -41,8 +41,8 @@ export const Calculator: React.FC<CalculatorProps> = ({}) => {
   let bmiStats;
   if (condition) {
     bmiStats = calculateBMIStatsMetric({
-      heightInCm: metrics.height!,
-      weightInKg: metrics.weight!,
+      height: metrics.height!,
+      weight: metrics.weight!,
     });
   }
   const loremIpsum = () => {

@@ -15,8 +15,10 @@ import React, { useState } from 'react';
 import * as Yup from 'yup';
 
 import { ActivityLevel, TDEECalculatorData } from '../../customTypes';
+import useCalcFunctions from '../../hooks/useCalcFunctions';
 import useUnits from '../../hooks/useUnits';
 import { useAppSelector } from '../../redux/hooks';
+import { setUnits } from '../../redux/metricsSlice';
 import {
   calculateTDEEForFemaleMetric,
   calculateTDEEForMaleMetric,
@@ -25,7 +27,6 @@ import isMale from '../../utils/isMale';
 import stringValuesToNums from '../../utils/stringValuesToNums';
 import { InputWrapper } from '../form/InputWrapper';
 import { RadioWithTooltip } from '../form/RadioWithTooltip';
-import { RadioWrapper } from '../form/RadioWrapper';
 import { SubmitAndResult } from '../form/SubmitAndResult';
 
 const validationSchema = Yup.object({
@@ -46,6 +47,7 @@ export const TDEECalculator: React.FC<TDEECalculatorProps> = ({}) => {
   const gender = useAppSelector(data => data.metrics.gender);
   const { weightUnit, lengthUnit, ageUnit } = useUnits();
   const [userTDEE, setUserTDEE] = useState<number | null>(null);
+  const { TDEECalc } = useCalcFunctions();
   return (
     <>
       <NextSeo title="TDEE Calculator | Track Fit" />
@@ -56,15 +58,13 @@ export const TDEECalculator: React.FC<TDEECalculatorProps> = ({}) => {
           activityLevel,
           ...restData
         }: TDEECalculatorData<string>) => {
-          const calcFunc = isMale(gender)
-            ? calculateTDEEForMaleMetric
-            : calculateTDEEForFemaleMetric;
-          const {
-            weight: weightInKg,
-            height: heightInCm,
-            age,
-          } = stringValuesToNums(restData);
-          setUserTDEE(calcFunc({ weightInKg, heightInCm, age, activityLevel }));
+          const restDataAsNum = stringValuesToNums(restData);
+          console.log('running')
+          const tdee = TDEECalc({
+            activityLevel,
+            ...restDataAsNum,
+          });
+          setUserTDEE(tdee);
         }}
       >
         {() => (

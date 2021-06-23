@@ -10,8 +10,8 @@ export const BMIResultCard: React.FC<BMIResultCardProps> = ({}) => {
   if (metrics.height === null || metrics.weight === null) return null;
 
   const bmiStats = calculateBMIStatsMetric({
-    heightInCm: metrics.height,
-    weightInKg: metrics.weight,
+    height: metrics.height,
+    weight: metrics.weight,
   });
 
   return (

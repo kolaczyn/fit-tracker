@@ -10,8 +10,8 @@ const maleCases: [number, TDEEDataMetric][] = [
     2546.29,
     {
       activityLevel: ActivityLevel.LightlyActive,
-      weightInKg: 83,
-      heightInCm: 183,
+      weight: 83,
+      height: 183,
       age: 40,
     },
   ],
@@ -19,8 +19,8 @@ const maleCases: [number, TDEEDataMetric][] = [
     2241.564,
     {
       activityLevel: ActivityLevel.Sendetary,
-      weightInKg: 83,
-      heightInCm: 170,
+      weight: 83,
+      height: 170,
       age: 28,
     },
   ],
@@ -31,8 +31,8 @@ const femaleCases: [number, TDEEDataMetric][] = [
     2553.24,
     {
       activityLevel: ActivityLevel.VeryActive,
-      weightInKg: 69,
-      heightInCm: 178,
+      weight: 69,
+      height: 178,
       age: 35,
     },
   ],

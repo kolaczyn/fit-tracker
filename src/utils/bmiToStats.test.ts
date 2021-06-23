@@ -4,8 +4,8 @@ import { BMIData, BMIDataMetric } from './calculateBMI';
 const cases: { bmiData: BMIDataMetric; answer: BMIStats }[] = [
   {
     bmiData: {
-      heightInCm: 185,
-      weightInKg: 86.8,
+      height: 185,
+      weight: 86.8,
     },
     answer: {
       category: BMICategory.Overweight,
@@ -15,8 +15,8 @@ const cases: { bmiData: BMIDataMetric; answer: BMIStats }[] = [
   },
   {
     bmiData: {
-      heightInCm: 170,
-      weightInKg: 100,
+      height: 170,
+      weight: 100,
     },
     answer: {
       category: BMICategory.Obesity,
@@ -26,8 +26,8 @@ const cases: { bmiData: BMIDataMetric; answer: BMIStats }[] = [
   },
   {
     bmiData: {
-      heightInCm: 200,
-      weightInKg: 70,
+      height: 200,
+      weight: 70,
     },
     answer: {
       category: BMICategory.Underweight,
@@ -37,8 +37,8 @@ const cases: { bmiData: BMIDataMetric; answer: BMIStats }[] = [
   },
   {
     bmiData: {
-      heightInCm: 183,
-      weightInKg: 71,
+      height: 183,
+      weight: 71,
     },
     answer: {
       category: BMICategory.NormalWeight,

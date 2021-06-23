@@ -18,3 +18,8 @@
 - there are some errors while submitting a class instance into the store - because its methods are not serializable. Maybe I should switch my approach from class based to functional?
 
 - add indicators saying if e.g. your BMI is okay, give explanation what does BMI and TDEE mean and their uses cases, give instructions on how you should measure yourself
+- make sidebar and main content cards more consistant
+- add `<aside>` tag for the sidebar and `<main>` for the main section
+- and `<nav>` and `<ul>` for the links
+- hide hamburger on desktop
+- make spacing between main and sidebar equal to spacing betweem navbar, content and footer. And make sure spacing between cards is the same in main and aside

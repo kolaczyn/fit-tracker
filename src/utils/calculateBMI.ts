@@ -1,24 +1,24 @@
 import { XOR } from 'ts-xor';
 import { inchToCm, poundsToKg } from './unitsConversion';
 export type BMIDataMetric = {
-  weightInKg: number;
-  heightInCm: number;
+  weight: number;
+  height: number;
 };
 export type BMIDataImperial = {
-  weighInLb: number;
-  heightInInch: number;
+  weight: number;
+  height: number;
 };
 
 export type BMIData = XOR<BMIDataMetric, BMIDataImperial>;
 
-export const calculateBMIMetric = ({ weightInKg, heightInCm }: BMIDataMetric) =>
-  weightInKg / Math.pow(heightInCm / 100, 2);
+export const calculateBMIMetric = ({ weight, height }: BMIDataMetric) =>
+  weight / Math.pow(height / 100, 2);
 
 export const calculateBMIImperial = ({
-  weighInLb: weighInPound,
-  heightInInch,
+  weight,
+  height,
 }: BMIDataImperial) =>
   calculateBMIMetric({
-    weightInKg: poundsToKg(weighInPound),
-    heightInCm: inchToCm(heightInInch),
+    weight: poundsToKg(weight),
+    height: inchToCm(height),
   });

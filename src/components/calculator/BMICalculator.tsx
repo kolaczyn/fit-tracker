@@ -4,6 +4,7 @@ import { NextSeo } from 'next-seo';
 import React, { useState } from 'react';
 import * as Yup from 'yup';
 import { BMICalculatorData } from '../../customTypes';
+import useCalcFunctions from '../../hooks/useCalcFunctions';
 import useUnits from '../../hooks/useUnits';
 import { useAppDispatch } from '../../redux/hooks';
 import { updateMetrics } from '../../redux/metricsSlice';
@@ -39,7 +40,7 @@ export const BMICalculator: React.FC<BMICalculatorProps> = ({}) => {
         onSubmit={(formState: BMICalculatorData<string>) => {
           const { height: heightInCm, weight: weightInKg } =
             stringValuesToNums(formState);
-          setBmi(calculateBMIMetric({ weightInKg, heightInCm }));
+          setBmi(calculateBMIMetric({ weight: weightInKg, height: heightInCm }));
           dispatch(updateMetrics({ weight: weightInKg, height: heightInCm }));
         }}
       >
