@@ -1,17 +1,17 @@
-import { ActivityLevel } from '../customTypes';
+import { ActivityLevel } from '../../customTypes';
 import {
-  calculateTDEEForMale,
-  calculateTDEEForFemale,
-  TDEEData,
+  calculateTDEEForMaleMetric,
+  calculateTDEEForFemaleMetric,
+  TDEEDataMetric,
 } from './calculateTDEE';
 
-const maleCases: [number, TDEEData][] = [
+const maleCases: [number, TDEEDataMetric][] = [
   [
     2546.29,
     {
       activityLevel: ActivityLevel.LightlyActive,
-      weightInKg: 83,
-      heightInCm: 183,
+      weight: 83,
+      height: 183,
       age: 40,
     },
   ],
@@ -19,20 +19,20 @@ const maleCases: [number, TDEEData][] = [
     2241.564,
     {
       activityLevel: ActivityLevel.Sendetary,
-      weightInKg: 83,
-      heightInCm: 170,
+      weight: 83,
+      height: 170,
       age: 28,
     },
   ],
 ];
 
-const femaleCases: [number, TDEEData][] = [
+const femaleCases: [number, TDEEDataMetric][] = [
   [
     2553.24,
     {
       activityLevel: ActivityLevel.VeryActive,
-      weightInKg: 69,
-      heightInCm: 178,
+      weight: 69,
+      height: 178,
       age: 35,
     },
   ],
@@ -42,7 +42,7 @@ describe('CalculateTDEEforMale', () => {
   test.each(maleCases)(
     'correctly calculates TDEE for male %s <- %s',
     (correct, data) => {
-      expect(calculateTDEEForMale(data)).toBeCloseTo(correct);
+      expect(calculateTDEEForMaleMetric(data)).toBeCloseTo(correct);
     }
   );
 });
@@ -50,7 +50,7 @@ describe('CalculateTDEEforFemale', () => {
   test.each(femaleCases)(
     'correctly calculates TDEE for female %s <- %s',
     (correct, data) => {
-      expect(calculateTDEEForFemale(data)).toBeCloseTo(correct);
+      expect(calculateTDEEForFemaleMetric(data)).toBeCloseTo(correct);
     }
   );
 });

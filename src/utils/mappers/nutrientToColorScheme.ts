@@ -1,4 +1,4 @@
-import { ColorScheme, NutrientsI } from '../customTypes';
+import { ColorScheme, NutrientsI } from '../../customTypes';
 
 const nutrientToColorScheme: Record<keyof NutrientsI<number>, ColorScheme> = {
   calories: 'gray',

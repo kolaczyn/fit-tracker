@@ -1,30 +1,15 @@
-import { PhoneIcon, QuestionOutlineIcon } from '@chakra-ui/icons';
-import {
-  Box,
-  FormLabel,
-  Grid,
-  HStack,
-  Radio,
-  RadioGroup,
-  Tooltip,
-  VStack,
-} from '@chakra-ui/react';
+import { FormLabel, Grid, RadioGroup, VStack } from '@chakra-ui/react';
 import { Form, Formik } from 'formik';
 import { NextSeo } from 'next-seo';
 import React, { useState } from 'react';
 import * as Yup from 'yup';
-
 import { ActivityLevel, TDEECalculatorData } from '../../customTypes';
+import useCalcFunctions from '../../hooks/useCalcFunctions';
+import useUnits from '../../hooks/useUnits';
 import { useAppSelector } from '../../redux/hooks';
-import {
-  calculateTDEEForFemale,
-  calculateTDEEForMale,
-} from '../../utils/calculateTDEE';
-import isMale from '../../utils/isMale';
-import stringValuesToNums from '../../utils/stringValuesToNums';
+import stringValuesToNums from '../../utils/mappers/stringValuesToNums';
 import { InputWrapper } from '../form/InputWrapper';
 import { RadioWithTooltip } from '../form/RadioWithTooltip';
-import { RadioWrapper } from '../form/RadioWrapper';
 import { SubmitAndResult } from '../form/SubmitAndResult';
 
 const validationSchema = Yup.object({
@@ -42,8 +27,9 @@ const initialFormState: TDEECalculatorData<string> = {
 
 interface TDEECalculatorProps {}
 export const TDEECalculator: React.FC<TDEECalculatorProps> = ({}) => {
-  const gender = useAppSelector(data => data.metrics.gender);
+  const { weightUnit, lengthUnit, ageUnit } = useUnits();
   const [userTDEE, setUserTDEE] = useState<number | null>(null);
+  const { TDEECalc } = useCalcFunctions();
   return (
     <>
       <NextSeo title="TDEE Calculator | Track Fit" />
@@ -54,15 +40,13 @@ export const TDEECalculator: React.FC<TDEECalculatorProps> = ({}) => {
           activityLevel,
           ...restData
         }: TDEECalculatorData<string>) => {
-          const calcFunc = isMale(gender)
-            ? calculateTDEEForMale
-            : calculateTDEEForFemale;
-          const {
-            weight: weightInKg,
-            height: heightInCm,
-            age,
-          } = stringValuesToNums(restData);
-          setUserTDEE(calcFunc({ weightInKg, heightInCm, age, activityLevel }));
+          const restDataAsNum = stringValuesToNums(restData);
+          console.log('running');
+          const tdee = TDEECalc({
+            activityLevel,
+            ...restDataAsNum,
+          });
+          setUserTDEE(tdee);
         }}
       >
         {() => (
@@ -71,7 +55,12 @@ export const TDEECalculator: React.FC<TDEECalculatorProps> = ({}) => {
               <RadioGroup>
                 <FormLabel>Activity Level</FormLabel>
                 <Grid
-                  templateColumns={['repeat(1, 1fr)', 'repeat(2, 1fr)', 'repeat(2, 1fr)', 'repeat(3, 1fr)']}
+                  templateColumns={[
+                    'repeat(1, 1fr)',
+                    'repeat(2, 1fr)',
+                    'repeat(2, 1fr)',
+                    'repeat(3, 1fr)',
+                  ]}
                   gap={1}
                   justifyItems="start"
                 >
@@ -117,19 +106,19 @@ export const TDEECalculator: React.FC<TDEECalculatorProps> = ({}) => {
                 label="Weight"
                 name="weight"
                 placeholder={0}
-                unit="kg"
+                unit={weightUnit}
               />
               <InputWrapper
                 label="Height"
                 name="height"
                 placeholder={0}
-                unit="cm"
+                unit={lengthUnit}
               />
               <InputWrapper
                 label="Age"
                 name="age"
                 placeholder={0}
-                unit="years"
+                unit={ageUnit}
               />
               <SubmitAndResult value={userTDEE} text="Your TDEE is" />
             </VStack>

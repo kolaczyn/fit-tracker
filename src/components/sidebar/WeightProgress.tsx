@@ -5,10 +5,12 @@ import { AppBox } from '../ui/AppBox';
 
 export const WeightProgress: React.FC = ({}) => {
   return (
-      <AppBox width="100%">
-        <Heading fontSize="3xl" borderBottomWidth="1px">Weight</Heading>
-        <Box my="2" />
-        <WeightChart />
-      </AppBox>
+    <AppBox width="100%">
+      <Heading fontSize="3xl">Weight</Heading>
+      <Box marginY="2">
+        <hr />
+      </Box>
+      <WeightChart />
+    </AppBox>
   );
 };

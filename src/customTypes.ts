@@ -26,10 +26,10 @@ export enum ActivityLevel {
 export enum Gender {
   Male = 'Male',
   Female = 'Female',
-  // before you scream at me for not including MtF, FtM,
-  // I don't know if there are well defined transgender formulas
-  // and I'm assuming that it also depends on the person,
-  // what stage are they on, etc
+}
+export enum Units {
+  Metric = 'Metric',
+  Imperial = 'Imperial',
 }
 
 export type TDEECalculatorData<T extends string | number> = {
@@ -46,6 +46,7 @@ export type Metrics = {
   age: number | null;
   waist: number | null;
   gender: Gender;
+  units: Units;
 };
 
 export type Food = {

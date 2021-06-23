@@ -1,6 +1,6 @@
 import normalizedToArray from './normalizedToArray';
-import { NormalizedIndex } from '../customTypes';
-import { BMIData } from './calculateBMI';
+import { NormalizedIndex } from '../../customTypes';
+import { BMIData } from '../calculator/calculateBMI';
 
 // TODO this looks ugly af
 describe('normalizedToArray', () => {

@@ -3,8 +3,10 @@ import { Form, Formik } from 'formik';
 import { NextSeo } from 'next-seo';
 import React, { useState } from 'react';
 import * as Yup from 'yup';
-import { calculateBodyFatForMen } from '../../utils/calculateBodyFat';
-import stringValuesToNums from '../../utils/stringValuesToNums';
+import useCalcFunctions from '../../hooks/useCalcFunctions';
+import useUnits from '../../hooks/useUnits';
+import { calculateBodyFatForMenImperial } from '../../utils/calculator/calculateBodyFat';
+import stringValuesToNums from '../../utils/mappers/stringValuesToNums';
 import { InputWrapper } from '../form/InputWrapper';
 import { SubmitAndResult } from '../form/SubmitAndResult';
 
@@ -26,6 +28,8 @@ const initialFormState: FormState = {
 
 export const BodyFatMen: React.FC<BodyFatMenProps> = ({}) => {
   const [bodyFat, setBodyFat] = useState<number | null>(null);
+  const { weightUnit, lengthUnit } = useUnits();
+  const { bodyFatCalc } = useCalcFunctions();
 
   return (
     <>
@@ -35,14 +39,11 @@ export const BodyFatMen: React.FC<BodyFatMenProps> = ({}) => {
         initialValues={initialFormState}
         onSubmit={(formState: FormState) => {
           // setBodyFat(calculateBodyFatForMen(Number(weight), Number(waist)));
-          const { weight: weightInLb, waist: waistInInch } =
-            stringValuesToNums(formState);
+          const valuesAsNumbers = stringValuesToNums(formState);
+          // I'm not sure why TypeScript doesn't allow me to let me pass male version of the props
           // @ts-ignore
-          const tempBodyFat = calculateBodyFatForMen({
-            weightInLb,
-            waistInInch,
-          });
-          setBodyFat(tempBodyFat);
+          const bodyFat = bodyFatCalc(valuesAsNumbers);
+          setBodyFat(bodyFat);
         }}
       >
         {() => (
@@ -52,13 +53,13 @@ export const BodyFatMen: React.FC<BodyFatMenProps> = ({}) => {
                 label="Weight"
                 name="weight"
                 placeholder={0}
-                unit="pounds"
+                unit={weightUnit}
               />
               <InputWrapper
                 label="Waist"
                 name="waist"
                 placeholder={0}
-                unit="inches"
+                unit={lengthUnit}
               />
               <SubmitAndResult
                 value={bodyFat}
