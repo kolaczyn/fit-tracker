@@ -3,9 +3,9 @@ import { Flex, HStack, Spacer, Text, VStack } from '@chakra-ui/layout';
 import { Stack, Tag } from '@chakra-ui/react';
 import React from 'react';
 import { ColorScheme, Food } from '../../customTypes';
-import dumbHash from '../../utils/dumbHash';
-import nutrientToColorScheme from '../../utils/nutrientToColorScheme';
-import prettyPrintGrams from '../../utils/prettyPrintGrams';
+import dumbHash from '../../utils/mappers/dumbHash';
+import nutrientToColorScheme from '../../utils/mappers/nutrientToColorScheme';
+import prettyPrintGrams from '../../utils/stringUtils/prettyPrintGrams';
 import { AppBox } from '../ui/AppBox';
 
 interface FoodItemProps {

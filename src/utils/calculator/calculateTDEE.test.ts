@@ -1,4 +1,4 @@
-import { ActivityLevel } from '../customTypes';
+import { ActivityLevel } from '../../customTypes';
 import {
   calculateTDEEForMaleMetric,
   calculateTDEEForFemaleMetric,

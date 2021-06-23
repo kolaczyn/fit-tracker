@@ -1,5 +1,5 @@
-import { ActivityLevel } from '../customTypes';
-import { inchToCm, poundsToKg } from './unitsConversion';
+import { ActivityLevel } from '../../customTypes';
+import { inchToCm, poundsToKg } from '../units/unitsConversion';
 
 // as per:
 //https://healthyweightlossperweek.org/knowledge-base/total-daily-energy-expenditure-tdee-formula-and-examples/

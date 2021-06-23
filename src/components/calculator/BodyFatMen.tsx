@@ -5,8 +5,8 @@ import React, { useState } from 'react';
 import * as Yup from 'yup';
 import useCalcFunctions from '../../hooks/useCalcFunctions';
 import useUnits from '../../hooks/useUnits';
-import { calculateBodyFatForMenImperial } from '../../utils/calculateBodyFat';
-import stringValuesToNums from '../../utils/stringValuesToNums';
+import { calculateBodyFatForMenImperial } from '../../utils/calculator/calculateBodyFat';
+import stringValuesToNums from '../../utils/mappers/stringValuesToNums';
 import { InputWrapper } from '../form/InputWrapper';
 import { SubmitAndResult } from '../form/SubmitAndResult';
 

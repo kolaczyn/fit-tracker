@@ -2,7 +2,7 @@ import React from 'react';
 import { NutrientsI } from '../../customTypes';
 import useEatenCalories from '../../hooks/useEatenCalories';
 import { useAppSelector } from '../../redux/hooks';
-import capitalizeFirstLetter from '../../utils/capitalizeFirstLetter';
+import capitalizeFirstLetter from '../../utils/stringUtils/capitalizeFirstLetter';
 import { IntakeProgressBar } from './IntakeProgressBar';
 
 interface IntakeProgresProps {

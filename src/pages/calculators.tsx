@@ -31,7 +31,7 @@ import { GenderSelector } from '../components/form/GenderSelector';
 import { GenderDependent } from '../components/render/GenderDependent';
 import { CardWithHeader } from '../components/ui/CardWithHeader';
 import { useAppSelector } from '../redux/hooks';
-import calculateBMIStatsMetric from '../utils/bmiToStats';
+import calculateBMIStatsMetric from '../utils/calculator/bmiToStats';
 
 interface CalculatorProps {}
 export const Calculator: React.FC<CalculatorProps> = ({}) => {

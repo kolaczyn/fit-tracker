@@ -1,6 +1,6 @@
 // as per:
 
-import { cmToInch, kgToPound } from './unitsConversion';
+import { cmToInch, kgToPound } from '../units/unitsConversion';
 
 //www.bmi-calculator.net/body-fat-calculator/body-fat-formula.php
 export type BodyFatWomenData = {

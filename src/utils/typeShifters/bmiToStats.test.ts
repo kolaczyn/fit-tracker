@@ -1,5 +1,5 @@
-import calculateBMIStatsMetric, { BMIStats, BMICategory } from './bmiToStats';
-import { BMIData, BMIDataMetric } from './calculateBMI';
+import calculateBMIStatsMetric, { BMIStats, BMICategory } from '../calculator/bmiToStats';
+import { BMIData, BMIDataMetric } from '../calculator/calculateBMI';
 
 const cases: { bmiData: BMIDataMetric; answer: BMIStats }[] = [
   {

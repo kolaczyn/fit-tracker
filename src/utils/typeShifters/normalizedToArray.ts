@@ -1,4 +1,4 @@
-import { NormalizedIndex } from '../customTypes';
+import { NormalizedIndex } from '../../customTypes';
 export default function normalizedToArray<T>(normIdx: NormalizedIndex<T>): T[] {
   const { byId } = normIdx;
   const out: T[] = [];

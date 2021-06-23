@@ -3,7 +3,7 @@ import { Food, NutrientsI } from '../customTypes';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
 import { addToFoodList, addtoFoodEaten } from '../redux/trackIntakeSlice';
 import initialFoods from '../static/initialFoods';
-import normalizedToArray from '../utils/normalizedToArray';
+import normalizedToArray from '../utils/typeShifters/normalizedToArray';
 
 const useSelectedFood = () => {
   const [selectedFoodIds, setSelectedFoodIds] = useState(

@@ -1,5 +1,5 @@
 import { XOR } from 'ts-xor';
-import { inchToCm, poundsToKg } from './unitsConversion';
+import { inchToCm, poundsToKg } from '../units/unitsConversion';
 export type BMIDataMetric = {
   weight: number;
   height: number;

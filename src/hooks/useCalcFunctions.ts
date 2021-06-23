@@ -4,7 +4,7 @@ import { useAppSelector } from '../redux/hooks';
 import {
   calculateBMIImperial,
   calculateBMIMetric,
-} from '../utils/calculateBMI';
+} from '../utils/calculator/calculateBMI';
 import {
   calculateBodyFatForMenMetric,
   calculateBodyFatForMenImperial,
@@ -12,14 +12,14 @@ import {
   calculateBodyFatForWomenMetric,
   BodyFatMenData,
   BodyFatWomenData,
-} from '../utils/calculateBodyFat';
+} from '../utils/calculator/calculateBodyFat';
 import {
   calculateTDEEForMaleMetric,
   calculateTDEEForFemaleImperial,
   calculateTDEEForFemaleMetric,
   calculateTDEEForMaleImperial,
   TDEEData,
-} from '../utils/calculateTDEE';
+} from '../utils/calculator/calculateTDEE';
 
 /** returns correct functions depending on the gender and units of measurement */
 const useCalcFunctions = (): {

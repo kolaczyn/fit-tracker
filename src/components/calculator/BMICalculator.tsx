@@ -8,8 +8,7 @@ import useCalcFunctions from '../../hooks/useCalcFunctions';
 import useUnits from '../../hooks/useUnits';
 import { useAppDispatch } from '../../redux/hooks';
 import { updateMetrics } from '../../redux/metricsSlice';
-import { calculateBMIMetric } from '../../utils/calculateBMI';
-import stringValuesToNums from '../../utils/stringValuesToNums';
+import stringValuesToNums from '../../utils/mappers/stringValuesToNums';
 import { InputWrapper } from '../form/InputWrapper';
 import { SubmitAndResult } from '../form/SubmitAndResult';
 

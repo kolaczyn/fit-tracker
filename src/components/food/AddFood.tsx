@@ -5,7 +5,7 @@ import { NutrientsI } from '../../customTypes';
 import Nutrients from '../../models/Nutrients';
 import { useAppDispatch } from '../../redux/hooks';
 import { addToFoodList } from '../../redux/trackIntakeSlice';
-import stringValuesToNums from '../../utils/stringValuesToNums';
+import stringValuesToNums from '../../utils/mappers/stringValuesToNums';
 import { FormModal } from '../form/FormModal';
 import { InputWrapper } from '../form/InputWrapper';
 

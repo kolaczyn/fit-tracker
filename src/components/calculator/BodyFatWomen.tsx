@@ -1,11 +1,11 @@
 import { VStack } from '@chakra-ui/react';
 import { Form, Formik } from 'formik';
 import React, { useState } from 'react';
-import { calculateBodyFatForWomenImperial } from '../../utils/calculateBodyFat';
+import { calculateBodyFatForWomenImperial } from '../../utils/calculator/calculateBodyFat';
 // import * as Yup from 'yup';
 import { InputWrapper } from '../form/InputWrapper';
 import { SubmitAndResult } from '../form/SubmitAndResult';
-import stringValuesToNums from '../../utils/stringValuesToNums';
+import stringValuesToNums from '../../utils/mappers/stringValuesToNums';
 import { NextSeo } from 'next-seo';
 import useUnits from '../../hooks/useUnits';
 

@@ -1,7 +1,7 @@
 import { Grid, GridItem, Stat, StatLabel, StatNumber } from '@chakra-ui/react';
 import React from 'react';
 import { NutrientsI } from '../../customTypes';
-import prettyPrintGrams from '../../utils/prettyPrintGrams';
+import prettyPrintGrams from '../../utils/stringUtils/prettyPrintGrams';
 
 interface NutrientsStatsProps {
   nutrients: NutrientsI<number>;

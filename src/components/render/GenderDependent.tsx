@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { useAppSelector } from '../../redux/hooks';
-import isMale from '../../utils/isMale';
+import isMale from '../../utils/oneLiners/isMale';
 
 interface GenderDependentProps {
   MaleComponent: React.ComponentType;

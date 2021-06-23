@@ -1,7 +1,7 @@
 import { Heading, Text } from '@chakra-ui/layout';
 import React, { useEffect } from 'react';
 import { useAppSelector } from '../../redux/hooks';
-import calculateBMIStatsMetric, { BMICategory } from '../../utils/bmiToStats';
+import calculateBMIStatsMetric, { BMICategory } from '../../utils/calculator/bmiToStats';
 
 interface BMIResultCardProps {}
 

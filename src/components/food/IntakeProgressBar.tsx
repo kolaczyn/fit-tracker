@@ -4,9 +4,9 @@ import { Tag } from '@chakra-ui/tag';
 import { Tooltip } from '@chakra-ui/tooltip';
 import React from 'react';
 import { NutrientsI } from '../../customTypes';
-import capitalizeFirstLetter from '../../utils/capitalizeFirstLetter';
-import nutrientToColorScheme from '../../utils/nutrientToColorScheme';
-import prettyPrintGrams from '../../utils/prettyPrintGrams';
+import capitalizeFirstLetter from '../../utils/stringUtils/capitalizeFirstLetter';
+import nutrientToColorScheme from '../../utils/mappers/nutrientToColorScheme';
+import prettyPrintGrams from '../../utils/stringUtils/prettyPrintGrams';
 
 interface IntakeProgressBarProps {
   nutrientName: keyof NutrientsI<number>;

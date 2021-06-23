@@ -8,7 +8,7 @@ import {
 } from '@chakra-ui/react';
 import { useField } from 'formik';
 import React from 'react';
-import capitalizeFirstLetter from '../../utils/capitalizeFirstLetter';
+import capitalizeFirstLetter from '../../utils/stringUtils/capitalizeFirstLetter';
 
 type InputWrapper = {
   label: string;
