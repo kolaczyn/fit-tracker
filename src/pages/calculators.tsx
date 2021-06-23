@@ -8,6 +8,7 @@ import {
   Grid,
   Box,
   Divider,
+  Flex,
 } from '@chakra-ui/react';
 import { TabPanels, Tabs } from '@chakra-ui/tabs';
 import { NextSeo } from 'next-seo';
@@ -23,13 +24,14 @@ import { BMICalculator } from '../components/calculator/BMICalculator';
 import { BMIResultCard } from '../components/calculator/BMIResultCard';
 import { BodyFatMen } from '../components/calculator/BodyFatMen';
 import { BodyFatWomen } from '../components/calculator/BodyFatWomen';
+import { CalculatorFAQ } from '../components/calculator/CalculatorFAQ';
 import { TDEECalculator } from '../components/calculator/TDEECalculator';
+import { UnitsSelector } from '../components/calculator/UnitsSelector';
 import { GenderSelector } from '../components/form/GenderSelector';
 import { GenderDependent } from '../components/render/GenderDependent';
-import { AppBox } from '../components/ui/AppBox';
 import { CardWithHeader } from '../components/ui/CardWithHeader';
 import { useAppSelector } from '../redux/hooks';
-import calculateBMIStats, { BMICategory } from '../utils/bmiToStats';
+import calculateBMIStatsMetric from '../utils/bmiToStats';
 
 interface CalculatorProps {}
 export const Calculator: React.FC<CalculatorProps> = ({}) => {
@@ -38,7 +40,7 @@ export const Calculator: React.FC<CalculatorProps> = ({}) => {
   const condition = metrics.height && metrics.weight;
   let bmiStats;
   if (condition) {
-    bmiStats = calculateBMIStats({
+    bmiStats = calculateBMIStatsMetric({
       heightInCm: metrics.height!,
       weightInKg: metrics.weight!,
     });
@@ -75,8 +77,15 @@ export const Calculator: React.FC<CalculatorProps> = ({}) => {
         description="Calculate your BMI, Body Fat percentage and Total Daily Energy Expenditure"
       />
       <VStack alignItems="stretch" spacing={4}>
-        <AppBox>
-          <GenderSelector />
+        <CardWithHeader title="Calculators">
+          <Flex
+            my={4}
+            justifyContent="stretch"
+            flexDirection={['column', 'column', 'column', 'row']}
+          >
+            <GenderSelector flexGrow={1} />
+            <UnitsSelector flexGrow={1} />
+          </Flex>
           <Tabs
             index={tabIndex}
             onChange={handleTabsChange}
@@ -104,7 +113,7 @@ export const Calculator: React.FC<CalculatorProps> = ({}) => {
               </TabPanel>
             </TabPanels>
           </Tabs>
-        </AppBox>
+        </CardWithHeader>
         {condition ? (
           <CardWithHeader title={`${tabIndexToTabName[tabIndex]} Results`}>
             {
@@ -116,6 +125,9 @@ export const Calculator: React.FC<CalculatorProps> = ({}) => {
             }
           </CardWithHeader>
         ) : null}
+        <CardWithHeader noDivider title="FAQ">
+          <CalculatorFAQ />
+        </CardWithHeader>
       </VStack>
     </>
   );

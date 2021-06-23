@@ -1,7 +1,7 @@
 import { Heading, Text } from '@chakra-ui/layout';
 import React, { useEffect } from 'react';
 import { useAppSelector } from '../../redux/hooks';
-import calculateBMIStats, { BMICategory } from '../../utils/bmiToStats';
+import calculateBMIStatsMetric, { BMICategory } from '../../utils/bmiToStats';
 
 interface BMIResultCardProps {}
 
@@ -9,7 +9,7 @@ export const BMIResultCard: React.FC<BMIResultCardProps> = ({}) => {
   const metrics = useAppSelector(state => state.metrics);
   if (metrics.height === null || metrics.weight === null) return null;
 
-  const bmiStats = calculateBMIStats({
+  const bmiStats = calculateBMIStatsMetric({
     heightInCm: metrics.height,
     weightInKg: metrics.weight,
   });

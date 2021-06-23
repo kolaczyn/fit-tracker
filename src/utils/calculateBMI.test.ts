@@ -1,4 +1,4 @@
-import calculateBMI from './calculateBMI';
+import { calculateBMIMetric } from './calculateBMI';
 
 const cases: [number, number, number][] = [
   [25.5, 87.3, 185],
@@ -11,7 +11,10 @@ describe('calculateBMI', () => {
   test.each(cases)(
     'should correctly calculate BMI of %s for %s kg %s cm',
     (correct, weightInKg, heightInCm) => {
-      expect(calculateBMI({ weightInKg, heightInCm })).toBeCloseTo(correct, 1);
+      expect(calculateBMIMetric({ weightInKg, heightInCm })).toBeCloseTo(
+        correct,
+        1
+      );
     }
   );
 });

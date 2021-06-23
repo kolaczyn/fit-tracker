@@ -1,4 +1,4 @@
-import calculateBMI, { BMIData } from './calculateBMI';
+import { calculateBMIMetric, BMIDataMetric } from './calculateBMI';
 
 export enum BMICategory {
   Underweight = 'Underweight ',
@@ -32,8 +32,8 @@ export type BMIStats = {
   currentBMI: number;
 };
 
-const calculateBMIStats = ({ heightInCm, weightInKg }: BMIData): BMIStats => {
-  const currentBMI = calculateBMI({ heightInCm, weightInKg });
+const calculateBMIStatsMetric = ({ heightInCm, weightInKg }: BMIDataMetric): BMIStats => {
+  const currentBMI = calculateBMIMetric({ heightInCm, weightInKg });
   const { category, targetBMI } = bmiToCategory(currentBMI);
 
   let targetWeight =
@@ -42,4 +42,4 @@ const calculateBMIStats = ({ heightInCm, weightInKg }: BMIData): BMIStats => {
   return { category, currentBMI, targetWeight };
 };
 
-export default calculateBMIStats;
+export default calculateBMIStatsMetric;

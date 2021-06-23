@@ -15,10 +15,11 @@ import React, { useState } from 'react';
 import * as Yup from 'yup';
 
 import { ActivityLevel, TDEECalculatorData } from '../../customTypes';
+import useUnits from '../../hooks/useUnits';
 import { useAppSelector } from '../../redux/hooks';
 import {
-  calculateTDEEForFemale,
-  calculateTDEEForMale,
+  calculateTDEEForFemaleMetric,
+  calculateTDEEForMaleMetric,
 } from '../../utils/calculateTDEE';
 import isMale from '../../utils/isMale';
 import stringValuesToNums from '../../utils/stringValuesToNums';
@@ -43,6 +44,7 @@ const initialFormState: TDEECalculatorData<string> = {
 interface TDEECalculatorProps {}
 export const TDEECalculator: React.FC<TDEECalculatorProps> = ({}) => {
   const gender = useAppSelector(data => data.metrics.gender);
+  const { weightUnit, lengthUnit, ageUnit } = useUnits();
   const [userTDEE, setUserTDEE] = useState<number | null>(null);
   return (
     <>
@@ -55,8 +57,8 @@ export const TDEECalculator: React.FC<TDEECalculatorProps> = ({}) => {
           ...restData
         }: TDEECalculatorData<string>) => {
           const calcFunc = isMale(gender)
-            ? calculateTDEEForMale
-            : calculateTDEEForFemale;
+            ? calculateTDEEForMaleMetric
+            : calculateTDEEForFemaleMetric;
           const {
             weight: weightInKg,
             height: heightInCm,
@@ -71,7 +73,12 @@ export const TDEECalculator: React.FC<TDEECalculatorProps> = ({}) => {
               <RadioGroup>
                 <FormLabel>Activity Level</FormLabel>
                 <Grid
-                  templateColumns={['repeat(1, 1fr)', 'repeat(2, 1fr)', 'repeat(2, 1fr)', 'repeat(3, 1fr)']}
+                  templateColumns={[
+                    'repeat(1, 1fr)',
+                    'repeat(2, 1fr)',
+                    'repeat(2, 1fr)',
+                    'repeat(3, 1fr)',
+                  ]}
                   gap={1}
                   justifyItems="start"
                 >
@@ -117,19 +124,19 @@ export const TDEECalculator: React.FC<TDEECalculatorProps> = ({}) => {
                 label="Weight"
                 name="weight"
                 placeholder={0}
-                unit="kg"
+                unit={weightUnit}
               />
               <InputWrapper
                 label="Height"
                 name="height"
                 placeholder={0}
-                unit="cm"
+                unit={lengthUnit}
               />
               <InputWrapper
                 label="Age"
                 name="age"
                 placeholder={0}
-                unit="years"
+                unit={ageUnit}
               />
               <SubmitAndResult value={userTDEE} text="Your TDEE is" />
             </VStack>

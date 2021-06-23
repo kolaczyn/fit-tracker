@@ -1,9 +1,9 @@
 import {
-  calculateBodyFatForMen,
-  calculateBodyFatForWomen,
+  calculateBodyFatForMenImperial,
+  calculateBodyFatForWomenImperial,
   exportedForTesting,
-  BodyFatMenData,
-  BodyFatWomenData,
+  BodyFatMenDataImperial,
+  BodyFatWomenDataImperial,
 } from './calculateBodyFat';
 
 const { calculateBodyFat } = exportedForTesting;
@@ -17,7 +17,7 @@ describe('calculateBodyFat', () => {
   });
 });
 
-const menCases: [number, BodyFatMenData][] = [
+const menCases: [number, BodyFatMenDataImperial][] = [
   [21.22, { weightInLb: 201, waistInInch: 37 }],
 ];
 // TODO finish this
@@ -25,12 +25,12 @@ describe('calculateBodyFatForMen', () => {
   test.each(menCases)(
     'correctly calculates body fat for men %s <- %s',
     (correct, data) => {
-      expect(calculateBodyFatForMen(data)).toBeCloseTo(correct);
+      expect(calculateBodyFatForMenImperial(data)).toBeCloseTo(correct);
     }
   );
 });
 
-const womenCases: [number, BodyFatWomenData][] = [
+const womenCases: [number, BodyFatWomenDataImperial][] = [
   [
     14.5,
     {
@@ -57,7 +57,7 @@ describe('calculateBodyFatForWomen', () => {
   test.each(womenCases)(
     'correctly calculates body fat for women %s <- %s',
     (correct, data) => {
-      expect(calculateBodyFatForWomen(data)).toBeCloseTo(correct);
+      expect(calculateBodyFatForWomenImperial(data)).toBeCloseTo(correct);
     }
   );
 });

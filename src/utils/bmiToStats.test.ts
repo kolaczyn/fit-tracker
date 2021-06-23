@@ -1,7 +1,7 @@
-import calculateBMIStats, { BMIStats, BMICategory } from './bmiToStats';
-import { BMIData } from './calculateBMI';
+import calculateBMIStatsMetric, { BMIStats, BMICategory } from './bmiToStats';
+import { BMIData, BMIDataMetric } from './calculateBMI';
 
-const cases: { bmiData: BMIData; answer: BMIStats }[] = [
+const cases: { bmiData: BMIDataMetric; answer: BMIStats }[] = [
   {
     bmiData: {
       heightInCm: 185,
@@ -50,7 +50,8 @@ const cases: { bmiData: BMIData; answer: BMIStats }[] = [
 
 describe('bmiToStats', () => {
   test.each(cases)('%o', ({ bmiData, answer }) => {
-    const { category, currentBMI, targetWeight } = calculateBMIStats(bmiData);
+    const { category, currentBMI, targetWeight } =
+      calculateBMIStatsMetric(bmiData);
     expect(category).toBe(answer.category);
     expect(currentBMI).toBeCloseTo(answer.currentBMI, 1);
     if (answer.targetWeight !== null) {

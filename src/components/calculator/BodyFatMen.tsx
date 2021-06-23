@@ -3,7 +3,8 @@ import { Form, Formik } from 'formik';
 import { NextSeo } from 'next-seo';
 import React, { useState } from 'react';
 import * as Yup from 'yup';
-import { calculateBodyFatForMen } from '../../utils/calculateBodyFat';
+import useUnits from '../../hooks/useUnits';
+import { calculateBodyFatForMenImperial } from '../../utils/calculateBodyFat';
 import stringValuesToNums from '../../utils/stringValuesToNums';
 import { InputWrapper } from '../form/InputWrapper';
 import { SubmitAndResult } from '../form/SubmitAndResult';
@@ -26,6 +27,7 @@ const initialFormState: FormState = {
 
 export const BodyFatMen: React.FC<BodyFatMenProps> = ({}) => {
   const [bodyFat, setBodyFat] = useState<number | null>(null);
+  const { weightUnit, lengthUnit } = useUnits();
 
   return (
     <>
@@ -38,7 +40,7 @@ export const BodyFatMen: React.FC<BodyFatMenProps> = ({}) => {
           const { weight: weightInLb, waist: waistInInch } =
             stringValuesToNums(formState);
           // @ts-ignore
-          const tempBodyFat = calculateBodyFatForMen({
+          const tempBodyFat = calculateBodyFatForMenImperial({
             weightInLb,
             waistInInch,
           });
@@ -52,13 +54,13 @@ export const BodyFatMen: React.FC<BodyFatMenProps> = ({}) => {
                 label="Weight"
                 name="weight"
                 placeholder={0}
-                unit="pounds"
+                unit={weightUnit}
               />
               <InputWrapper
                 label="Waist"
                 name="waist"
                 placeholder={0}
-                unit="inches"
+                unit={lengthUnit}
               />
               <SubmitAndResult
                 value={bodyFat}
