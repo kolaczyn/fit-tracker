@@ -13,7 +13,7 @@ interface WeightChartProps {}
 
 export const WeightChart: React.FC<WeightChartProps> = ({}) => {
   return (
-    <ResponsiveContainer width="100%" height={200}>
+    <ResponsiveContainer width="95%" height={200}>
       <AreaChart data={data}>
         <XAxis dataKey="date" />
         <YAxis domain={['dataMin - 0.5', 'dataMax + 0.5']} />

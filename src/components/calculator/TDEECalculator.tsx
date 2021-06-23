@@ -70,7 +70,11 @@ export const TDEECalculator: React.FC<TDEECalculatorProps> = ({}) => {
             <VStack spacing={4} alignItems="stretch">
               <RadioGroup>
                 <FormLabel>Activity Level</FormLabel>
-                <Grid templateColumns="repeat(3, 1fr)" gap={1.5}>
+                <Grid
+                  templateColumns={['repeat(1, 1fr)', 'repeat(2, 1fr)', 'repeat(2, 1fr)', 'repeat(3, 1fr)']}
+                  gap={1}
+                  justifyItems="start"
+                >
                   <RadioWithTooltip
                     label="Sendetary"
                     name="activityLevel"
