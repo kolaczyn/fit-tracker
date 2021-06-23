@@ -5,7 +5,7 @@ import React from 'react';
 export const Custom404: React.FC = ({}) => {
   return (
     <>
-      <NextSeo title="404 Page Not Found | Track Fit" />
+      <NextSeo title="404 Page Not Found | Track Fit" description="404 Page Not Found"/>
       <Heading as="h1">404 - Page Not Found</Heading>
     </>
   );

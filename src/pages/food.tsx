@@ -38,7 +38,7 @@ export const FoodPage: React.FC = () => {
 
   return (
     <>
-      <NextSeo title="Add Food | Track Fit" />
+      <NextSeo title="Add Food | Track Fit" description="Track your calories"/>
       <VStack width="100%" alignItems="stretch" spacing="4">
         <IntakeProgress selected={foodIntake} />
         <HStack>

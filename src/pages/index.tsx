@@ -4,7 +4,7 @@ import { AppBox } from '../components/ui/AppBox';
 export default function Home() {
   return (
     <>
-      <NextSeo title="Track Fit" />
+      <NextSeo title="Track Fit" description="Get in shape with Track Fit. Track you calories, weight and BMI and many more"/>
       <AppBox>
         <Heading as="h1">
           Welcome to Track <span style={{ fontWeight: 'normal' }}>Fit</span>!

@@ -42,7 +42,7 @@ export const Calculator: React.FC<CalculatorProps> = ({}) => {
   };
   return (
     <>
-      <NextSeo title="Calculator | Track Fit" />
+      <NextSeo title="Calculator | Track Fit" description="Calculate your BMI, Body Fat percentage and Total Daily Energy Expenditure"/>
       <AppBox>
         <GenderSelector />
         <Tabs

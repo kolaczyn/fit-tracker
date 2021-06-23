@@ -16,7 +16,7 @@ export const FooterLink: React.FC<FooterLinkProps> = ({
   shouldOpenInNewTab: openInNewTab
 }) => {
   return (
-    <Link href={href} target={ openInNewTab ? "_blank" : undefined }>
+    <Link rel="noreferrer" href={href} target={ openInNewTab ? "_blank" : undefined }>
       <Flex direction="column" align="center">
         {Icon ? <Icon /> : null}
         <span>{children}</span>

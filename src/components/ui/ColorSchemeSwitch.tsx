@@ -6,7 +6,7 @@ import React from 'react';
 export const ColorSchemeSwitch: React.FC = ({}) => {
   const { toggleColorMode, colorMode } = useColorMode();
   return (
-    <Button colorScheme="teal" variant="ghost" onClick={toggleColorMode}>
+    <Button aria-label="Toggle Theme" colorScheme="teal" variant="ghost" onClick={toggleColorMode}>
       {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
     </Button>
   );

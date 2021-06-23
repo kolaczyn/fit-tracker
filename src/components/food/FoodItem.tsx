@@ -67,7 +67,7 @@ export const FoodItem: React.FC<FoodItemProps> = ({
         <Spacer />
         <VStack>
           {/* the way I implement this checkbox may not be the most accessable */}
-          <Checkbox data-testid="food-toggle-checkbox" isChecked={isActive} />
+          <Checkbox data-testid="food-toggle-checkbox" aria-label="Toggle Consume" isChecked={isActive} />
           {/* we stop the propagation, so clicking the menu doesn't toggle selection of the food */}
           {/* Had to get rid of this for now, because it was causing some weird mobile layout issues */}
           {/* <Menu>
