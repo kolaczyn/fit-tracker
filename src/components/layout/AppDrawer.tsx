@@ -8,6 +8,7 @@ import {
   IconButton,
   VStack,
   DrawerFooter,
+  useBreakpointValue,
 } from '@chakra-ui/react';
 import { HamburgerIcon } from '@chakra-ui/icons';
 import { useRouter } from 'next/router';
@@ -32,9 +33,11 @@ export const AppDrawer: React.FC<AppDrawerProps> = ({}) => {
       router.events.off('routeChangeStart', handleRouteChange);
     };
   }, []);
+  const isHamburgerHidden = useBreakpointValue([false, false, true]);
   return (
     <>
       <IconButton
+        hidden={isHamburgerHidden}
         variant="ghost"
         colorScheme="teal"
         onClick={onOpen}
@@ -50,7 +53,7 @@ export const AppDrawer: React.FC<AppDrawerProps> = ({}) => {
           <DrawerBody>
             <VStack alignItems="stretch" spacing="2">
               <NavLinks />
-              <ColorSchemeSwitch />
+              <ColorSchemeSwitch showLabel />
             </VStack>
           </DrawerBody>
           <DrawerFooter borderTopWidth="1px">
